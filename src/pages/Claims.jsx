@@ -1,0 +1,1187 @@
+import React, { useState, useRef, useEffect } from "react";
+import {
+  Input,
+  Button,
+  Card,
+  Row,
+  Col,
+  Space,
+  Modal,
+  Select,
+  Radio,
+  Form,
+  Typography,
+  Tag,
+  Checkbox,
+  Dropdown,
+  Table,
+} from "antd";
+import {
+  SearchOutlined,
+  FilterOutlined,
+  CloseOutlined,
+  CopyOutlined,
+  StarFilled,
+  StarOutlined,
+} from "@ant-design/icons";
+import styled from "@emotion/styled";
+
+const { Search } = Input;
+const { Option } = Select;
+const { TextArea } = Input;
+const { Title, Text } = Typography;
+
+const StyledCard = styled(Card)`
+  margin-bottom: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  border: none;
+  padding: 20px;
+
+  .ant-card-body {
+    padding: 0;
+  }
+
+  .claim-id {
+    color: #0066cc;
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+
+  .device-name {
+    color: #38b6ff;
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+
+  .info-group {
+    width: 120px;
+
+    .label {
+      color: #8c8c8c;
+      font-size: 14px;
+      margin-bottom: 6px;
+    }
+    .value {
+      color: #262626;
+      font-size: 15px;
+      font-weight: 500;
+    }
+  }
+
+  .info-row {
+    display: flex;
+    gap: 80px;
+    margin-bottom: 18px;
+  }
+
+  .amount-container {
+    background-color: #f0f7ff;
+    padding: 8px 12px;
+    display: inline-block;
+    border-radius: 0;
+    .amount {
+      color: #0066cc;
+      font-weight: 600;
+      font-size: 16px;
+    }
+  }
+
+  .date-container {
+    background-color: #f0f9ff;
+    padding: 8px 12px;
+    display: inline-block;
+    border-radius: 0;
+    .date {
+      color: #1890ff;
+      font-size: 16px;
+    }
+  }
+`;
+
+const StatusContainer = styled.div`
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+`;
+
+const IconContainer = styled.div`
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  background-color: ${(props) => {
+    switch (props.status) {
+      case "in-progress":
+        return "#FFF7E6";
+      case "approved":
+        return "#E6F4FF";
+      case "done":
+        return "#E6FFF0";
+      case "rejected":
+        return "#FFF1F0";
+      default:
+        return "#F0F0F0";
+    }
+  }};
+`;
+
+const StatusIcon = styled.img`
+  width: 40px;
+  height: 40px;
+`;
+
+const StatusTag = styled.div`
+  padding: 4px 16px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 500;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  background-color: ${(props) => {
+    switch (props.status) {
+      case "in-progress":
+        return "#FFF7E6";
+      case "approved":
+        return "#E6F4FF";
+      case "done":
+        return "#E6FFF0";
+      case "rejected":
+        return "#FFF1F0";
+      default:
+        return "#F0F0F0";
+    }
+  }};
+  color: ${(props) => {
+    switch (props.status) {
+      case "in-progress":
+        return "#D46B08";
+      case "approved":
+        return "#0958D9";
+      case "done":
+        return "#389E0D";
+      case "rejected":
+        return "#CF1322";
+      default:
+        return "#595959";
+    }
+  }};
+`;
+
+const StyledModal = styled(Modal)`
+  .ant-modal-content {
+    border-radius: 0;
+    padding: 0;
+  }
+
+  .ant-modal-header {
+    border-bottom: none;
+    padding: 24px 24px 0;
+  }
+
+  .ant-modal-body {
+    padding: 24px;
+  }
+
+  .ant-modal-close {
+    top: 20px;
+    right: 20px;
+  }
+
+  .form-section {
+    margin-bottom: 24px;
+  }
+
+  .form-label {
+    font-weight: 500;
+    margin-bottom: 16px;
+    font-size: 16px;
+    display: block;
+    color: #262626;
+  }
+
+  .submit-button {
+    width: 100%;
+    height: 48px;
+    font-size: 16px;
+    background-color: #0066cc;
+    margin-top: 16px;
+  }
+`;
+
+const StyledSelect = styled(Select)`
+  &.ant-select-multiple .ant-select-selector {
+    padding: 5px 4px;
+    border-radius: 4px;
+    border: 1px solid #d9d9d9;
+    background-color: #fff;
+    height: auto;
+    min-height: 50px;
+    max-height: 120px;
+    overflow-y: auto;
+  }
+
+  .ant-select-selection-overflow {
+    flex-wrap: wrap;
+    min-height: 40px;
+    display: flex;
+    align-items: flex-start;
+    width: 100%;
+  }
+
+  .ant-select-selection-search {
+    margin-bottom: 4px;
+  }
+
+  .ant-select-selection-item {
+    background-color: #e6f4ff;
+    color: #0066cc;
+    border: 1px solid #91caff;
+    border-radius: 16px;
+    margin-right: 8px;
+    margin-bottom: 4px;
+    padding: 1px 8px;
+    height: auto;
+    line-height: 22px;
+    flex: 0 0 auto;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    .ant-select-selection-item-content {
+      margin-right: 4px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .ant-select-selection-item-remove {
+      color: #0066cc;
+      font-size: 12px;
+    }
+  }
+
+  &.ant-select-focused .ant-select-selector {
+    border-color: #40a9ff !important;
+    box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2);
+  }
+`;
+
+const StyledSuccessModal = styled(Modal)`
+  .ant-modal-content {
+    border-radius: 0;
+    padding: 0;
+  }
+
+  .ant-modal-body {
+    padding: 24px;
+    text-align: center;
+  }
+
+  .ant-modal-close {
+    top: 20px;
+    right: 20px;
+  }
+
+  .claim-id-container {
+    display: inline-flex;
+    align-items: center;
+    background-color: #f5f7fa;
+    padding: 12px 24px;
+    border-radius: 4px;
+    margin: 24px 0;
+  }
+
+  .claim-id {
+    color: #0066cc;
+    font-size: 18px;
+    font-weight: 500;
+    margin-right: 8px;
+  }
+
+  .copy-icon {
+    color: #0066cc;
+    cursor: pointer;
+  }
+
+  .shops-scroll-container {
+    display: flex;
+    overflow-x: auto;
+    padding: 8px 0;
+    gap: 16px;
+    scrollbar-width: thin;
+    scrollbar-color: #d9d9d9 #f5f5f5;
+
+    &::-webkit-scrollbar {
+      height: 6px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: #d9d9d9;
+      border-radius: 3px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background-color: #f5f5f5;
+    }
+  }
+
+  .shop-card {
+    border: 1px solid #38b6ff;
+    border-radius: 4px;
+    padding: 20px;
+    text-align: center;
+    margin-bottom: 4px;
+    min-width: 260px;
+    flex: 0 0 auto;
+    background-color: #e8f2ff;
+  }
+
+  .shop-name {
+    font-size: 18px;
+    font-weight: 600;
+    color: #004aad;
+    margin-bottom: 16px;
+    text-align: center;
+  }
+
+  .shop-address {
+    font-size: 14px;
+    color: #262626;
+    margin-bottom: 16px;
+    text-align: center;
+  }
+
+  .shop-phone {
+    font-size: 14px;
+    color: #262626;
+    margin-bottom: 16px;
+    text-align: center;
+  }
+
+  .shop-rating {
+    margin-bottom: 16px;
+    text-align: center;
+  }
+
+  .copy-address-btn {
+    background-color: #0066cc;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin: 0 auto;
+  }
+`;
+
+const ClaimDetailsModal = styled(Modal)`
+  .ant-modal-content {
+    border-radius: 0;
+    padding: 0;
+  }
+
+  .ant-modal-body {
+    padding: 24px;
+  }
+
+  .ant-modal-close {
+    top: 20px;
+    right: 20px;
+  }
+
+  .device-id {
+    font-size: 16px;
+    color: #595959;
+    margin-bottom: 8px;
+  }
+
+  .claim-id {
+    color: #0066cc;
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+
+  .device-name {
+    color: #38b6ff;
+    font-size: 18px;
+    margin-bottom: 24px;
+  }
+
+  .amount-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+  }
+
+  .amount-container {
+    background-color: #f0f7ff;
+    padding: 8px 16px;
+    border-radius: 0;
+  }
+
+  .amount-label {
+    font-size: 16px;
+    font-weight: 500;
+    color: #262626;
+  }
+
+  .amount-value {
+    color: #0066cc;
+    font-weight: 600;
+    font-size: 18px;
+  }
+
+  .date-container {
+    background-color: #f0f9ff;
+    padding: 8px 16px;
+    border-radius: 0;
+  }
+
+  .date-label {
+    font-size: 16px;
+    font-weight: 500;
+    color: #262626;
+  }
+
+  .date-value {
+    color: #1890ff;
+    font-size: 18px;
+  }
+
+  .section-title {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 16px;
+    margin-top: 30px;
+  }
+
+  .description-label {
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 12px;
+  }
+
+  .description-text {
+    background-color: #f5f7fa;
+    padding: 16px;
+    border-radius: 4px;
+    color: #0066cc;
+    margin-bottom: 24px;
+  }
+
+  .claims-table {
+    margin-bottom: 30px;
+  }
+
+  .claims-table .ant-table-thead > tr > th {
+    background-color: #f5f5f5;
+    color: #262626;
+    font-weight: 500;
+  }
+`;
+
+const Claims = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);
+  const [isDetailsModalOpen, setIsDetailsModalOpen] = useState(false);
+  const [selectedClaim, setSelectedClaim] = useState(null);
+  const [form] = Form.useForm();
+  const [selectedIssues, setSelectedIssues] = useState([
+    "damaged_screen",
+    "broken_back_glass",
+  ]);
+  const [generatedClaimId, setGeneratedClaimId] = useState("CL-134763");
+
+  // Map of issue values to labels
+  const issueOptions = [
+    { value: "broken_screen_complete", label: "Broken Screen Complete" },
+    { value: "broken_inner_screen", label: "Broken Inner Screen Only" },
+    { value: "broken_outer_screen", label: "Broken Outer Screen Only" },
+    { value: "not_charging", label: "Not Charging" },
+    { value: "back_housing", label: "Back Housing/Cover" },
+    { value: "back_camera", label: "Back Camera not Working" },
+    { value: "front_camera", label: "Front Camera not Working" },
+    { value: "sim_card", label: "Sim-card not working" },
+    { value: "water_damage", label: "Water Damage" },
+    { value: "smashed_device", label: "Smashed Device" },
+    { value: "motherboard", label: "Motherboard Issue" },
+    { value: "overheating", label: "Overheating" },
+    { value: "audio_issues", label: "Audio Issues (Microphone/Speaker)" },
+    { value: "others", label: "Others" },
+  ];
+
+  // Handle issue selection change
+  const handleIssueChange = (values) => {
+    setSelectedIssues(values);
+  };
+
+  const showModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleCancel = () => {
+    setIsModalOpen(false);
+    form.resetFields();
+  };
+
+  const handleSubmit = () => {
+    form.validateFields().then((values) => {
+      console.log("Form values:", values);
+      setIsModalOpen(false);
+      // Generate a claim ID (using static one from the image for now)
+      setGeneratedClaimId("CL-134763");
+      // Show success modal
+      setIsSuccessModalOpen(true);
+      form.resetFields();
+    });
+  };
+
+  const handleSuccessModalClose = () => {
+    setIsSuccessModalOpen(false);
+  };
+
+  const handleCopyText = (text) => {
+    navigator.clipboard
+      .writeText(text)
+      .then(() => {
+        console.log("Text copied to clipboard");
+      })
+      .catch((err) => {
+        console.error("Failed to copy text: ", err);
+      });
+  };
+
+  // Get the status icon based on claim status
+  const getStatusIcon = (status) => {
+    switch (status) {
+      case "in-progress":
+        return "/statusInprogress.svg";
+      case "approved":
+        return "/statusApprove.svg";
+      case "done":
+        return "/statusDone.svg";
+      case "rejected":
+        return "/statusRejected.svg";
+      default:
+        return "/stausUncatagorize.svg";
+    }
+  };
+
+  const mockClaims = [
+    {
+      id: "CL-134763",
+      device: "iPhone 13 Pro MAX",
+      deviceId: "IP12567",
+      issue: "Damaged screen",
+      amount: "₦25,000.00",
+      date: "Dec 6, 2024",
+      status: "in-progress",
+    },
+    {
+      id: "CL-134763",
+      device: "iPhone 13 Pro MAX",
+      deviceId: "IP12567",
+      issue: "Damaged screen",
+      amount: "₦25,000.00",
+      date: "Dec 6, 2024",
+      status: "approved",
+    },
+    {
+      id: "CL-134763",
+      device: "iPhone 13 Pro MAX",
+      deviceId: "IP12567",
+      issue: "Damaged screen",
+      amount: "₦25,000.00",
+      date: "Dec 6, 2024",
+      status: "done",
+    },
+    {
+      id: "CL-134763",
+      device: "iPhone 13 Pro MAX",
+      deviceId: "IP12567",
+      issue: "Damaged screen",
+      amount: "₦25,000.00",
+      date: "Dec 6, 2024",
+      status: "uncategorized",
+    },
+    {
+      id: "CL-134763",
+      device: "iPhone 13 Pro MAX",
+      deviceId: "IP12567",
+      issue: "Damaged screen",
+      amount: "₦25,000.00",
+      date: "Dec 6, 2024",
+      status: "done",
+    },
+    {
+      id: "CL-134763",
+      device: "iPhone 13 Pro MAX",
+      deviceId: "IP12567",
+      issue: "Damaged screen",
+      amount: "₦25,000.00",
+      date: "Dec 6, 2024",
+      status: "done",
+    },
+    {
+      id: "CL-134763",
+      device: "iPhone 13 Pro MAX",
+      deviceId: "IP12567",
+      issue: "Damaged screen",
+      amount: "₦25,000.00",
+      date: "Dec 6, 2024",
+      status: "done",
+    },
+    {
+      id: "CL-134763",
+      device: "iPhone 13 Pro MAX",
+      deviceId: "IP12567",
+      issue: "Damaged screen",
+      amount: "₦25,000.00",
+      date: "Dec 6, 2024",
+      status: "done",
+    },
+    {
+      id: "CL-134763",
+      device: "iPhone 13 Pro MAX",
+      deviceId: "IP12567",
+      issue: "Damaged screen",
+      amount: "₦25,000.00",
+      date: "Dec 6, 2024",
+      status: "rejected",
+    },
+  ];
+
+  const shopLocations = [
+    {
+      id: 1,
+      name: "Shop 1",
+      shopName: "PHONEHHUBB Capital Abuja",
+      address:
+        "Suite F8, 4 Aminu Kano Cres, Wuse, Abuja 900288, Federal Capital Territory",
+      phone: "0901 003 0191",
+      rating: 4,
+      reviews: 16,
+    },
+    {
+      id: 1,
+      name: "Shop 1",
+      shopName: "PHONEHHUBB Capital Abuja",
+      address:
+        "Suite F8, 4 Aminu Kano Cres, Wuse, Abuja 900288, Federal Capital Territory",
+      phone: "0901 003 0191",
+      rating: 4,
+      reviews: 16,
+    },
+    {
+      id: 2,
+      name: "Shop 2",
+      shopName: "PHONEHHUBB Capital Abuja",
+      address:
+        "Suite F8, 4 Aminu Kano Cres, Wuse, Abuja 900288, Federal Capital Territory",
+      phone: "0901 003 0191",
+      rating: 4,
+      reviews: 16,
+    },
+  ];
+
+  // Add this function to handle opening the details modal
+  const showDetailsModal = (claim) => {
+    setSelectedClaim(claim);
+    setIsDetailsModalOpen(true);
+  };
+
+  const handleDetailsModalClose = () => {
+    setIsDetailsModalOpen(false);
+    setSelectedClaim(null);
+  };
+
+  // Add mock details for the claim
+  const claimDetails = {
+    items: [
+      { description: "Screen Damage", amount: "₦50,000" },
+      { description: "Battery Issue", amount: "₦60,000" },
+    ],
+    total: "₦110,000",
+    when: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis.",
+    where:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis.",
+    how: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis.",
+  };
+
+  // Table columns for claim details
+  const claimsTableColumns = [
+    {
+      title: "Description",
+      dataIndex: "description",
+      key: "description",
+    },
+    {
+      title: "Amount",
+      dataIndex: "amount",
+      key: "amount",
+      align: "right",
+    },
+  ];
+
+  return (
+    <div style={{ padding: "10px" }}>
+      <div
+        style={{
+          marginBottom: "24px",
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          background: "#f5f7fa",
+          borderRadius: "8px",
+        }}
+      >
+        <Search placeholder="Search here" style={{ width: 300 }} size="large" />
+        <Space size="middle">
+          <Button
+            icon={<FilterOutlined />}
+            style={{ height: 48, paddingLeft: 16, paddingRight: 16 }}
+            size="large"
+          >
+            Filter
+          </Button>
+          <Button
+            type="primary"
+            style={{ height: 48, paddingLeft: 16, paddingRight: 16 }}
+            size="large"
+            onClick={showModal}
+          >
+            New claim
+          </Button>
+        </Space>
+      </div>
+
+      <Row gutter={[16, 16]}>
+        {mockClaims.map((claim, index) => (
+          <Col xs={24} sm={12} lg={8} key={index}>
+            <StyledCard
+              onClick={() => showDetailsModal(claim)}
+              style={{ cursor: "pointer" }}
+            >
+              <div className="claim-id">{claim.id}</div>
+              <div className="device-name">{claim.device}</div>
+
+              <div className="info-row">
+                <div className="info-group">
+                  <div className="label">Device id</div>
+                  <div className="value">{claim.deviceId}</div>
+                </div>
+                <div className="info-group">
+                  <div className="label">Issue</div>
+                  <div className="value">{claim.issue}</div>
+                </div>
+              </div>
+
+              <div className="info-row" style={{ marginBottom: 0 }}>
+                <div className="info-group">
+                  <div className="label">Amount</div>
+                  <div className="amount-container">
+                    <span className="amount">{claim.amount}</span>
+                  </div>
+                </div>
+                <div className="info-group">
+                  <div className="label">Date</div>
+                  <div className="date-container">
+                    <span className="date">{claim.date}</span>
+                  </div>
+                </div>
+              </div>
+
+              <StatusContainer>
+                <IconContainer status={claim.status}>
+                  <StatusIcon
+                    src={getStatusIcon(claim.status)}
+                    alt={claim.status}
+                  />
+                </IconContainer>
+                <StatusTag status={claim.status}>
+                  {claim.status === "in-progress"
+                    ? "In progress"
+                    : claim.status.charAt(0).toUpperCase() +
+                      claim.status.slice(1)}
+                </StatusTag>
+              </StatusContainer>
+            </StyledCard>
+          </Col>
+        ))}
+      </Row>
+
+      <StyledModal
+        title={
+          <div>
+            <div style={{ fontSize: 28, fontWeight: 600, marginBottom: 4 }}>
+              New claim
+            </div>
+            <div style={{ color: "#8c8c8c", fontSize: 14 }}>
+              File claim to fix your device
+            </div>
+          </div>
+        }
+        open={isModalOpen}
+        onCancel={handleCancel}
+        footer={null}
+        width={600}
+        closeIcon={<CloseOutlined />}
+      >
+        <Form form={form} layout="vertical">
+          <div className="form-section">
+            <div className="form-label">My Device</div>
+            <Form.Item
+              name="device"
+              rules={[{ required: true, message: "Please select a device" }]}
+            >
+              <Select
+                placeholder="Select device model"
+                size="large"
+                style={{ width: "100%" }}
+              >
+                <Option value="iphone13">iPhone 13</Option>
+                <Option value="iphone13pro">iPhone 13 Pro</Option>
+                <Option value="iphone13promax">iPhone 13 Pro MAX</Option>
+                <Option value="samsungs21">Samsung Galaxy S21</Option>
+              </Select>
+            </Form.Item>
+          </div>
+
+          <div className="form-section">
+            <div className="form-label">Issue Type</div>
+            <Form.Item
+              name="issueType"
+              initialValue={selectedIssues}
+              rules={[
+                { required: true, message: "Please select at least one issue" },
+              ]}
+            >
+              <StyledSelect
+                mode="multiple"
+                placeholder="Select issue types"
+                style={{ width: "100%" }}
+                size="large"
+                onChange={handleIssueChange}
+                options={issueOptions}
+                tagRender={(props) => {
+                  const { label, closable, onClose } = props;
+                  return (
+                    <Tag
+                      color="#e6f4ff"
+                      style={{
+                        color: "#0066cc",
+                        borderColor: "#91caff",
+                        borderRadius: "16px",
+                        padding: "2px 10px",
+                        marginRight: "8px",
+                        marginBottom: "4px",
+                        display: "inline-flex",
+                        alignItems: "center",
+                        maxWidth: "100%",
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                        whiteSpace: "nowrap",
+                      }}
+                      closable={closable}
+                      onClose={onClose}
+                      closeIcon={
+                        <span style={{ color: "#0066cc", marginLeft: "4px" }}>
+                          ×
+                        </span>
+                      }
+                    >
+                      <span
+                        style={{ overflow: "hidden", textOverflow: "ellipsis" }}
+                      >
+                        {label}
+                      </span>
+                    </Tag>
+                  );
+                }}
+                maxTagCount={10}
+                listHeight={250}
+                optionFilterProp="label"
+                dropdownStyle={{ borderRadius: "4px" }}
+              />
+            </Form.Item>
+          </div>
+
+          <div className="form-section">
+            <div className="form-label">Provide Details</div>
+
+            <div style={{ marginBottom: 8 }}>When</div>
+            <Form.Item
+              name="when"
+              rules={[
+                {
+                  required: true,
+                  message: "Please provide when the damage occurred",
+                },
+              ]}
+            >
+              <Input size="large" />
+            </Form.Item>
+
+            <div style={{ marginBottom: 8 }}>Where</div>
+            <Form.Item
+              name="where"
+              rules={[
+                {
+                  required: true,
+                  message: "Please provide where the damage occurred",
+                },
+              ]}
+            >
+              <div style={{ position: "relative" }}>
+                <Input size="large" />
+              </div>
+            </Form.Item>
+
+            <div style={{ marginBottom: 8 }}>How</div>
+            <Form.Item
+              name="how"
+              rules={[
+                {
+                  required: true,
+                  message: "Please provide how the damage occurred",
+                },
+              ]}
+            >
+              <TextArea rows={4} />
+            </Form.Item>
+          </div>
+
+          <div className="form-section">
+            <div className="form-label">Claim Type</div>
+            <Form.Item
+              name="claimType"
+              initialValue="accidental"
+              rules={[{ required: true }]}
+            >
+              <Radio.Group>
+                <Radio value="accidental">Accidental Damage</Radio>
+                <Radio value="non-accidental">Non-Accidental Damage</Radio>
+              </Radio.Group>
+            </Form.Item>
+          </div>
+
+          <div className="form-section">
+            <div className="form-label">State</div>
+            <Form.Item
+              name="state"
+              rules={[{ required: true, message: "Please select your state" }]}
+            >
+              <Select
+                placeholder="Select your state"
+                size="large"
+                style={{ width: "100%" }}
+              >
+                <Option value="lagos">Lagos</Option>
+                <Option value="abuja">Abuja</Option>
+                <Option value="kano">Kano</Option>
+                <Option value="rivers">Rivers</Option>
+              </Select>
+            </Form.Item>
+          </div>
+
+          <div className="form-section">
+            <div className="form-label">City</div>
+            <Form.Item
+              name="city"
+              rules={[{ required: true, message: "Please select your city" }]}
+            >
+              <Select
+                placeholder="Select your city"
+                size="large"
+                style={{ width: "100%" }}
+              >
+                <Option value="ikeja">Ikeja</Option>
+                <Option value="lekki">Lekki</Option>
+                <Option value="victoria_island">Victoria Island</Option>
+                <Option value="yaba">Yaba</Option>
+              </Select>
+            </Form.Item>
+          </div>
+
+          <Button
+            type="primary"
+            className="submit-button"
+            onClick={handleSubmit}
+          >
+            Submit
+          </Button>
+        </Form>
+      </StyledModal>
+
+      <StyledSuccessModal
+        open={isSuccessModalOpen}
+        onCancel={handleSuccessModalClose}
+        footer={null}
+        width={900}
+        closeIcon={<CloseOutlined />}
+      >
+        <h1 style={{ fontSize: 28, fontWeight: 600, marginBottom: 10 }}>
+          Your Claims has been filed successfully!
+        </h1>
+
+        <div className="claim-id-container">
+          <span className="claim-id">Claim ID: {generatedClaimId}</span>
+          <CopyOutlined
+            className="copy-icon"
+            onClick={() => handleCopyText(generatedClaimId)}
+          />
+        </div>
+
+        <div style={{ marginBottom: 20 }}>
+          <h3 style={{ fontSize: 18, fontWeight: 500 }}>
+            Based on your current location, here are the list of repair shops
+            near you
+          </h3>
+        </div>
+
+        <div className="shops-scroll-container">
+          {shopLocations.map((shop, index) => (
+            <div className="shop-card" key={`${shop.id}-${index}`}>
+              <div className="shop-name">{shop.name}</div>
+              <div className="shop-address">{shop.shopName}</div>
+              <div className="shop-address">{shop.address}</div>
+              <div className="shop-phone">{shop.phone}</div>
+              <div className="shop-rating">
+                {[...Array(5)].map((_, idx) =>
+                  idx < shop.rating ? (
+                    <StarFilled
+                      key={idx}
+                      style={{ color: "#38B6FF", fontSize: 18 }}
+                    />
+                  ) : (
+                    <StarOutlined
+                      key={idx}
+                      style={{ color: "#38B6FF", fontSize: 18 }}
+                    />
+                  )
+                )}
+                <span style={{ marginLeft: 8, color: "#38B6FF" }}>
+                  ({shop.reviews} Reviews)
+                </span>
+              </div>
+              <Button
+                className="copy-address-btn"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handleCopyText(shop.address);
+                }}
+              >
+                Copy address <CopyOutlined />
+              </Button>
+            </div>
+          ))}
+        </div>
+      </StyledSuccessModal>
+
+      <ClaimDetailsModal
+        open={isDetailsModalOpen}
+        onCancel={handleDetailsModalClose}
+        footer={null}
+        width={800}
+        closeIcon={<CloseOutlined />}
+      >
+        {selectedClaim && (
+          <>
+            <div style={{ marginTop: "20px" }}>
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "flex-start",
+                }}
+              >
+                <div>
+                  <div className="device-id">
+                    Device id: {selectedClaim.deviceId}
+                  </div>
+                  <div className="claim-id">{selectedClaim.id}</div>
+                  <div className="device-name">{selectedClaim.device}</div>
+                </div>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    gap: "8px",
+                  }}
+                >
+                  <IconContainer status={selectedClaim.status}>
+                    <StatusIcon
+                      src={getStatusIcon(selectedClaim.status)}
+                      alt={selectedClaim.status}
+                    />
+                  </IconContainer>
+                  <StatusTag status={selectedClaim.status}>
+                    {selectedClaim.status === "in-progress"
+                      ? "In progress"
+                      : selectedClaim.status.charAt(0).toUpperCase() +
+                        selectedClaim.status.slice(1)}
+                  </StatusTag>
+                </div>
+              </div>
+
+              <div className="amount-row">
+                <div className="amount-container">
+                  <div className="amount-label">Amount</div>
+                  <div className="amount-value">{selectedClaim.amount}</div>
+                </div>
+
+                <div className="date-container">
+                  <div className="date-label">Date</div>
+                  <div className="date-value">{selectedClaim.date}</div>
+                </div>
+              </div>
+            </div>
+
+            <div className="section-title">Claims Information</div>
+            <Table
+              className="claims-table"
+              columns={claimsTableColumns}
+              dataSource={claimDetails.items}
+              pagination={false}
+              bordered
+              summary={() => (
+                <Table.Summary fixed>
+                  <Table.Summary.Row>
+                    <Table.Summary.Cell index={0}>
+                      <strong>Total:</strong>
+                    </Table.Summary.Cell>
+                    <Table.Summary.Cell index={1} align="right">
+                      <strong>{claimDetails.total}</strong>
+                    </Table.Summary.Cell>
+                  </Table.Summary.Row>
+                </Table.Summary>
+              )}
+            />
+
+            <div className="section-title">General Description</div>
+
+            <div className="description-label">When</div>
+            <div className="description-text">{claimDetails.when}</div>
+
+            <div className="description-label">Where</div>
+            <div className="description-text">{claimDetails.where}</div>
+
+            <div className="description-label">How</div>
+            <div className="description-text">{claimDetails.how}</div>
+          </>
+        )}
+      </ClaimDetailsModal>
+    </div>
+  );
+};
+
+export default Claims;
