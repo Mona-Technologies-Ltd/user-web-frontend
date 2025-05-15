@@ -9,6 +9,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { logout } from "../redux/slices/authSlice";
 import BreadcrumbComponent from "../components/Breadcrumb";
+import ToggleMenu from "./ToggleMenu";
 
 const { Header: AntHeader } = Layout;
 
@@ -49,6 +50,10 @@ const Header = ({ collapsed, colorBgContainer }) => {
         style={{ display: "flex", alignItems: "center" }}
       >
         <BreadcrumbComponent />
+      </div>
+
+      <div className="mobile_nav">
+        <ToggleMenu />
       </div>
     </AntHeader>
   );

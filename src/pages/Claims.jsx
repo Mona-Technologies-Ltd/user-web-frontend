@@ -25,12 +25,16 @@ import {
   StarOutlined,
 } from "@ant-design/icons";
 import styled from "@emotion/styled";
+import StatusCards from "./StatusCards";
+import { FaShieldAlt } from "react-icons/fa";
+import "./StatusCards.css";
 
+import { FiSearch } from "react-icons/fi";
 const { Search } = Input;
 const { Option } = Select;
 const { TextArea } = Input;
 const { Title, Text } = Typography;
-
+import "./ SearchFilterBar.css";
 const StyledCard = styled(Card)`
   margin-bottom: 16px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
@@ -76,7 +80,7 @@ const StyledCard = styled(Card)`
   }
 
   .amount-container {
-    background-color: #f0f7ff;
+    background-color: #D7F0FF59;
     padding: 8px 12px;
     display: inline-block;
     border-radius: 0;
@@ -116,17 +120,30 @@ const IconContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  background-color: ${(props) => {
+  box-shadow: 0 0 6px 4px ${(props) => {
     switch (props.status) {
-      case "in-progress":
-        return "#FFF7E6";
+      case "pending":
+        return "#FFB82E40";
       case "approved":
         return "#E6F4FF";
-      case "done":
-        return "#E6FFF0";
+      case "completed":
+        return "#00752F40";
       case "rejected":
-        return "#FFF1F0";
+        return "#FF460240";
+      default:
+        return "#F0F0F0";
+    }
+  }};
+  background-color: ${(props) => {
+    switch (props.status) {
+      case "pending":
+        return "#FFB82E40";
+      case "approved":
+        return "#E6F4FF";
+      case "completed":
+        return "#00752F40";
+      case "rejected":
+        return "#FF460240";
       default:
         return "#F0F0F0";
     }
@@ -143,14 +160,15 @@ const StatusTag = styled.div`
   border-radius: 20px;
   font-size: 14px;
   font-weight: 500;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  /* box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08); */
+  
   background-color: ${(props) => {
     switch (props.status) {
-      case "in-progress":
+      case "pending":
         return "#FFF7E6";
       case "approved":
         return "#E6F4FF";
-      case "done":
+      case "completed":
         return "#E6FFF0";
       case "rejected":
         return "#FFF1F0";
@@ -160,11 +178,11 @@ const StatusTag = styled.div`
   }};
   color: ${(props) => {
     switch (props.status) {
-      case "in-progress":
+      case "pending":
         return "#D46B08";
       case "approved":
         return "#0958D9";
-      case "done":
+      case "completed":
         return "#389E0D";
       case "rejected":
         return "#CF1322";
@@ -292,8 +310,9 @@ const StyledSuccessModal = styled(Modal)`
   .claim-id-container {
     display: inline-flex;
     align-items: center;
-    background-color: #f5f7fa;
+    background-color: #D7F0FF59;
     padding: 12px 24px;
+    border: 1px solid #38B6FF;
     border-radius: 4px;
     margin: 24px 0;
   }
@@ -333,14 +352,15 @@ const StyledSuccessModal = styled(Modal)`
   }
 
   .shop-card {
-    border: 1px solid #38b6ff;
+    border: 1px solid #0768E973;
     border-radius: 4px;
     padding: 20px;
     text-align: center;
     margin-bottom: 4px;
-    min-width: 260px;
+    /* min-width: 160px; */
+    width: 45%;
     flex: 0 0 auto;
-    background-color: #e8f2ff;
+    background-color: #E8F2FF59;
   }
 
   .shop-name {
@@ -417,13 +437,15 @@ const ClaimDetailsModal = styled(Modal)`
 
   .amount-row {
     display: flex;
-    justify-content: space-between;
+    justify-content: start;
+    align-items: start;
+    flex-direction: column;
     margin-bottom: 30px;
   }
 
   .amount-container {
     background-color: #f0f7ff;
-    padding: 8px 16px;
+    padding: 5px;
     border-radius: 0;
   }
 
@@ -487,6 +509,89 @@ const ClaimDetailsModal = styled(Modal)`
     font-weight: 500;
   }
 `;
+  const mockClaims = [
+    {
+      id: "CL-1347632234",
+      device: "iPhone 13 Pro MAX",
+      deviceId: "IP12567",
+      issue: "Damaged screen",
+      amount: "₦25,000.00",
+      date: "Dec 6, 2024",
+      status: "pending",
+    },
+    {
+      id: "CL-134763",
+      device: "iPhone 13 Pro MAX",
+      deviceId: "IP1256711",
+      issue: "Damaged screen",
+      amount: "₦25,000.00",
+      date: "Dec 6, 2024",
+      status: "approved",
+    },
+    {
+      id: "CL-134733632",
+      device: "iPhone 13 Pro MAX",
+      deviceId: "IP12567",
+      issue: "Damaged screen",
+      amount: "₦25,000.00",
+      date: "Dec 6, 2024",
+      status: "completed",
+    },
+    {
+      id: "CL-133476335",
+      device: "iPhone 13 Pro MAX",
+      deviceId: "IP12567",
+      issue: "Damaged screen",
+      amount: "₦25,000.00",
+      date: "Dec 6, 2024",
+      status: "uncategorized",
+    },
+    {
+      id: "CL-134768359",
+      device: "iPhone 13 Pro MAX",
+      deviceId: "IP12567",
+      issue: "Damaged screen",
+      amount: "₦25,000.00",
+      date: "Dec 6, 2024",
+      status: "completed",
+    },
+    {
+      id: "CL-134763",
+      device: "iPhone 13 Pro MAX",
+      deviceId: "IP12567",
+      issue: "Damaged screen",
+      amount: "₦25,000.00",
+      date: "Dec 6, 2024",
+      status: "completed",
+    },
+    {
+      id: "CL-183476356",
+      device: "iPhone 13 Pro MAX",
+      deviceId: "IP12567",
+      issue: "Damaged screen",
+      amount: "₦25,000.00",
+      date: "Dec 6, 2024",
+      status: "completed",
+    },
+    {
+      id: "CL-095134763",
+      device: "iPhone 13 Pro MAX",
+      deviceId: "IP12567",
+      issue: "Damaged screen",
+      amount: "₦25,000.00",
+      date: "Dec 6, 2024",
+      status: "completed",
+    },
+    {
+      id: "CL-356134763",
+      device: "iPhone 13 Pro MAX",
+      deviceId: "IP12567",
+      issue: "Damaged screen",
+      amount: "₦25,000.00",
+      date: "Dec 6, 2024",
+      status: "rejected",
+    },
+  ];
 
 const Claims = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -494,12 +599,20 @@ const Claims = () => {
   const [isDetailsModalOpen, setIsDetailsModalOpen] = useState(false);
   const [selectedClaim, setSelectedClaim] = useState(null);
   const [form] = Form.useForm();
+  const [searchTerm, setSearchTerm] = useState("");
+const [statusFilter, setStatusFilter] = useState("");
+
   const [selectedIssues, setSelectedIssues] = useState([
     "damaged_screen",
     "broken_back_glass",
   ]);
   const [generatedClaimId, setGeneratedClaimId] = useState("CL-134763");
-
+const filteredClaims = mockClaims.filter((claim) => {
+  const matchesSearch = claim.device.toLowerCase().includes(searchTerm.toLowerCase()) || 
+                        claim.id.toLowerCase().includes(searchTerm.toLowerCase());
+  const matchesStatus = statusFilter ? claim.status === statusFilter : true;
+  return matchesSearch && matchesStatus;
+});
   // Map of issue values to labels
   const issueOptions = [
     { value: "broken_screen_complete", label: "Broken Screen Complete" },
@@ -562,11 +675,11 @@ const Claims = () => {
   // Get the status icon based on claim status
   const getStatusIcon = (status) => {
     switch (status) {
-      case "in-progress":
+      case "pending":
         return "/statusInprogress.svg";
       case "approved":
         return "/statusApprove.svg";
-      case "done":
+      case "completed":
         return "/statusDone.svg";
       case "rejected":
         return "/statusRejected.svg";
@@ -575,89 +688,6 @@ const Claims = () => {
     }
   };
 
-  const mockClaims = [
-    {
-      id: "CL-134763",
-      device: "iPhone 13 Pro MAX",
-      deviceId: "IP12567",
-      issue: "Damaged screen",
-      amount: "₦25,000.00",
-      date: "Dec 6, 2024",
-      status: "in-progress",
-    },
-    {
-      id: "CL-134763",
-      device: "iPhone 13 Pro MAX",
-      deviceId: "IP12567",
-      issue: "Damaged screen",
-      amount: "₦25,000.00",
-      date: "Dec 6, 2024",
-      status: "approved",
-    },
-    {
-      id: "CL-134763",
-      device: "iPhone 13 Pro MAX",
-      deviceId: "IP12567",
-      issue: "Damaged screen",
-      amount: "₦25,000.00",
-      date: "Dec 6, 2024",
-      status: "done",
-    },
-    {
-      id: "CL-134763",
-      device: "iPhone 13 Pro MAX",
-      deviceId: "IP12567",
-      issue: "Damaged screen",
-      amount: "₦25,000.00",
-      date: "Dec 6, 2024",
-      status: "uncategorized",
-    },
-    {
-      id: "CL-134763",
-      device: "iPhone 13 Pro MAX",
-      deviceId: "IP12567",
-      issue: "Damaged screen",
-      amount: "₦25,000.00",
-      date: "Dec 6, 2024",
-      status: "done",
-    },
-    {
-      id: "CL-134763",
-      device: "iPhone 13 Pro MAX",
-      deviceId: "IP12567",
-      issue: "Damaged screen",
-      amount: "₦25,000.00",
-      date: "Dec 6, 2024",
-      status: "done",
-    },
-    {
-      id: "CL-134763",
-      device: "iPhone 13 Pro MAX",
-      deviceId: "IP12567",
-      issue: "Damaged screen",
-      amount: "₦25,000.00",
-      date: "Dec 6, 2024",
-      status: "done",
-    },
-    {
-      id: "CL-134763",
-      device: "iPhone 13 Pro MAX",
-      deviceId: "IP12567",
-      issue: "Damaged screen",
-      amount: "₦25,000.00",
-      date: "Dec 6, 2024",
-      status: "done",
-    },
-    {
-      id: "CL-134763",
-      device: "iPhone 13 Pro MAX",
-      deviceId: "IP12567",
-      issue: "Damaged screen",
-      amount: "₦25,000.00",
-      date: "Dec 6, 2024",
-      status: "rejected",
-    },
-  ];
 
   const shopLocations = [
     {
@@ -743,7 +773,33 @@ const Claims = () => {
           borderRadius: "8px",
         }}
       >
-        <Search placeholder="Search here" style={{ width: 300 }} size="large" />
+        {/* <Search placeholder="Search here" style={{ width: 500 }} size="large" /> */}
+        <div className="search-filter-container">
+            <div className="search-box">
+              <FiSearch className="search-icon" />
+              <input type="text" 
+              placeholder="Search by device or claim ID" 
+              value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)} />
+            </div>
+            <select className="status-dropdown"    
+              value={statusFilter}
+              onChange={(e) => setStatusFilter(e.target.value)}
+              style={{
+                  padding: "15px",
+                  paddingRight:"10px",
+                  paddingLeft:"10px",
+                  borderRadius: "4px",
+                  border: "1px solid #ccc",
+                }}
+            >
+              <option value="">Status</option>
+              <option value="pending">Pending</option>
+              <option value="approved">Approved</option>
+              <option value="completed">Completed</option>
+              <option value="rejected">Rejected</option>
+            </select>
+          </div>
         <Space size="middle">
           <Button
             icon={<FilterOutlined />}
@@ -764,40 +820,44 @@ const Claims = () => {
       </div>
 
       <Row gutter={[16, 16]}>
-        {mockClaims.map((claim, index) => (
+        {/* <StatusCards /> */}
+        {/* <StatusCards showDetailsModal={(claim) => console.log("Clicked claim:", claim)} /> */}
+
+        {filteredClaims.map((claim, index) => (
           <Col xs={24} sm={12} lg={8} key={index}>
             <StyledCard
               onClick={() => showDetailsModal(claim)}
               style={{ cursor: "pointer" }}
             >
-              <div className="claim-id">{claim.id}</div>
-              <div className="device-name">{claim.device}</div>
+               <div className="cardStatue" key={index}>
+                        <div className="cardStatue-left">
+                          <div className="claim-id">{claim.id}</div>
+                          <div className="device-name">{claim.device}</div>
+                          <div className="deviceStatue-details">
+                            <div className="detail-block">
+                              <span className="label">Device id</span>
+                              <div className="value">{claim.deviceId}</div>
+                            </div>
+                            <div className="detail-block">
+                              <span className="label">Issue</span>
+                              <div className="value">{claim.issue}</div>
+                            </div>
+                          </div>
+                          <div className="dateStatue-block">
+                            <span className="label">Date</span>
+                            <div className="dateStatue">{claim.date}</div>
+                          </div>
+                        </div>
+                       <div className="badge_statue_cover">
+                        
+                        {/* <div className={`badge-label ${claim.status}_normal`} style={{ background: claim.status}}>
+                          {claim.status}
+                  
+                          </div> */}
+                       </div>
+                      </div>
 
-              <div className="info-row">
-                <div className="info-group">
-                  <div className="label">Device id</div>
-                  <div className="value">{claim.deviceId}</div>
-                </div>
-                <div className="info-group">
-                  <div className="label">Issue</div>
-                  <div className="value">{claim.issue}</div>
-                </div>
-              </div>
-
-              <div className="info-row" style={{ marginBottom: 0 }}>
-                <div className="info-group">
-                  <div className="label">Amount</div>
-                  <div className="amount-container">
-                    <span className="amount">{claim.amount}</span>
-                  </div>
-                </div>
-                <div className="info-group">
-                  <div className="label">Date</div>
-                  <div className="date-container">
-                    <span className="date">{claim.date}</span>
-                  </div>
-                </div>
-              </div>
+             
 
               <StatusContainer>
                 <IconContainer status={claim.status}>
@@ -807,8 +867,8 @@ const Claims = () => {
                   />
                 </IconContainer>
                 <StatusTag status={claim.status}>
-                  {claim.status === "in-progress"
-                    ? "In progress"
+                  {claim.status === "pending"
+                    ? "pending"
                     : claim.status.charAt(0).toUpperCase() +
                       claim.status.slice(1)}
                 </StatusTag>
@@ -871,6 +931,7 @@ const Claims = () => {
                 size="large"
                 onChange={handleIssueChange}
                 options={issueOptions}
+                
                 tagRender={(props) => {
                   const { label, closable, onClose } = props;
                   return (
@@ -1025,10 +1086,10 @@ const Claims = () => {
         open={isSuccessModalOpen}
         onCancel={handleSuccessModalClose}
         footer={null}
-        width={900}
+        width={600}
         closeIcon={<CloseOutlined />}
       >
-        <h1 style={{ fontSize: 28, fontWeight: 600, marginBottom: 10 }}>
+        <h1 style={{ fontSize: 28, fontWeight: 600, marginBottom: 10, width:'70%', margin:'auto'}}>
           Your Claims has been filed successfully!
         </h1>
 
@@ -1125,8 +1186,8 @@ const Claims = () => {
                     />
                   </IconContainer>
                   <StatusTag status={selectedClaim.status}>
-                    {selectedClaim.status === "in-progress"
-                      ? "In progress"
+                    {selectedClaim.status === "pending"
+                      ? "pending"
                       : selectedClaim.status.charAt(0).toUpperCase() +
                         selectedClaim.status.slice(1)}
                   </StatusTag>
@@ -1134,15 +1195,16 @@ const Claims = () => {
               </div>
 
               <div className="amount-row">
+                <div className="amount-label">Date</div>
                 <div className="amount-container">
-                  <div className="amount-label">Amount</div>
-                  <div className="amount-value">{selectedClaim.amount}</div>
+                  
+                  <div className="amount-value">{selectedClaim.date}</div>
                 </div>
 
-                <div className="date-container">
+                {/* <div className="date-container">
                   <div className="date-label">Date</div>
                   <div className="date-value">{selectedClaim.date}</div>
-                </div>
+                </div> */}
               </div>
             </div>
 

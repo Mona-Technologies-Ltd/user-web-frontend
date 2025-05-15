@@ -1,6 +1,9 @@
 import React from "react";
 import { Row, Col } from "antd";
 import { Icon } from "@iconify/react";
+import DeviceDetails from "./DeviceDetails";
+import UserProfile from "./UserProfile";
+import RecentClaims from "./RecentClaims";
 
 const DashboardPage = () => {
   const deviceInfo = {
@@ -78,97 +81,13 @@ const DashboardPage = () => {
 
   return (
     <Row gutter={[24, 24]} className="dashboard-container">
-      <Col flex="1" className="dashboard-main">
-        <div className="device-section">
-          <div className="device-info">
-            <div className="brand-logo">
-              <div
-                style={{
-                  width: "70px",
-                  height: "70px",
-                  borderRadius: "50%",
-                  border: "2px solid #004aad",
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-              >
-                <img src="/apple-logo.svg" alt="Apple" />
-              </div>
-              <h1 style={{ color: "#004aad" }}>Apple</h1>
-            </div>
-            <div className="device-preview">
-              <img
-                src="/iPhone11.svg"
-                alt="Mona Logo"
-                style={{ width: "59%" }}
-              />
-              <button className="file-claim-btn">File New Claim</button>
-            </div>
-            <div
-              className="device-details"
-              style={{
-                border: "1px solid #004aad",
-                padding: "16px",
-              }}
-            >
-              {Object.entries(deviceInfo).map(([key, value]) => (
-                <div key={key} className="detail-row">
-                  <span className="detail-label text-info">
-                    {key.replace(/([A-Z])/g, " $1").toLowerCase()}
-                  </span>
-                  <span className="detail-value" style={{ color: "#00439E" }}>
-                    {value}
-                  </span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-        <div className="section-header">
-          <h2>Recent Claims</h2>
-          <button className="view-all-btn">View All</button>
-        </div>
-        <div className="claims-section">
-          <div className="claims-grid">
-            {recentClaims.map((claim, index) => (
-              <div key={index} className="claim-card">
-                <div className="claim-header">
-                  <h3>{claim.id}</h3>
-                  <span
-                    className={`status ${claim.status
-                      .toLowerCase()
-                      .replace(" ", "-")}`}
-                  >
-                    {claim.status}
-                  </span>
-                </div>
-                <div className="claim-details">
-                  <div className="detail-group">
-                    <span>Device id</span>
-                    <span>{claim.deviceId}</span>
-                  </div>
-                  <div className="detail-group">
-                    <span>Issue</span>
-                    <span>{claim.issue}</span>
-                  </div>
-                  <div className="detail-group">
-                    <span>Amount</span>
-                    <span>{claim.amount}</span>
-                  </div>
-                  <div className="detail-group">
-                    <span>Date</span>
-                    <span>{claim.date}</span>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </Col>
-
-      <Col flex="350px" className="dashboard-sidebar">
-        <div className="user-profile">
+      
+        {/* <Col flex="1" className="dashboard-sidebar">
+           
+        <div style={{ width:'100%', display:'flex' }}>
+       
+      </div> */}
+        {/* <div className="user-profile">
           <img
             src="/profile-placeholder.svg"
             alt="Profile"
@@ -231,9 +150,9 @@ const DashboardPage = () => {
               </span>
             </div>
           </div>
-        </div>
+        </div> */}
 
-        <div className="alerts-section">
+        {/* <div className="alerts-section">
           <h2 style={{ fontSize: "24px", marginBottom: "8px" }}>Alert</h2>
           <p
             className="support-text"
@@ -318,7 +237,7 @@ const DashboardPage = () => {
                   className="close-alert"
                   style={{
                     position: "absolute",
-                    top: "12px",
+                    top: "12px",  
                     right: "12px",
                     background: "none",
                     border: "none",
@@ -338,8 +257,117 @@ const DashboardPage = () => {
               </div>
             ))}
           </div>
+        </div> */}
+      {/* </Col> */}
+     
+      {/* <Col flex="1" className="dashboard-main"> */}
+        {/* <div className="device-section">
+          <div className="device-info">
+            <div className="brand-logo">
+              <div
+                style={{
+                  width: "70px",
+                  height: "70px",
+                  borderRadius: "50%",
+                  border: "2px solid #004aad",
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <img src="/apple-logo.svg" alt="Apple" />
+              </div>
+              <h1 style={{ color: "#004aad" }}>Apple</h1>
+            </div>
+            <div className="device-preview">
+              <img
+                src="/iPhone11.svg"
+                alt="Mona Logo"
+                style={{ width: "59%" }}
+              />
+              <button className="file-claim-btn">File New Claim</button>
+            </div>
+            <div
+              className="device-details"
+              style={{
+                border: "1px solid #004aad",
+                padding: "16px",
+              }}
+            >
+              {Object.entries
+
+              (deviceInfo).map(([key, value]) => (
+                <div key={key} className="detail-row">
+                  <span className="detail-label text-info">
+                    {key.replace(/([A-Z])/g, " $1").toLowerCase()}
+                  </span>
+                  <span className="detail-value" style={{ color: "#00439E" }}>
+                    {value}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div> */}
+      
+  
+      {/* </Col>*/}
+{/* <Col flex="100%" className="dashboard-main">
+<div style={{ display:'flex', gap:10, height:'28rem',}}>
+  <UserProfile />
+<DeviceDetails />
+</div>
+</Col> */}
+<Col flex="100%" className="dashboard-main">
+  <div className="profile-device-container">
+    <UserProfile />
+    <DeviceDetails />
+  </div>
+</Col>
+
+<Col flex="1" className="dashboard-main"> 
+{/* <div className="section-header">
+          <h2>Recent Claims</h2>
+          <button className="view-all-btn">View All</button>
         </div>
-      </Col>
+        <div className="claims-section">
+          <div className="claims-grid">
+            {recentClaims.map((claim, index) => (
+              <div key={index} className="claim-card">
+                <div className="claim-header">
+                  <h3>{claim.id}</h3>
+                  <span
+                    className={`status ${claim.status
+                      .toLowerCase()
+                      .replace(" ", "-")}`}
+                  >
+                    {claim.status}
+                  </span>
+                </div>
+                <div className="claim-details">
+                  <div className="detail-group">
+                    <span>Device id</span>
+                    <span>{claim.deviceId}</span>
+                  </div>
+                  <div className="detail-group">
+                    <span>Issue</span>
+                    <span>{claim.issue}</span>
+                  </div>
+                  <div className="detail-group">
+                    <span>Amount</span>
+                    <span>{claim.amount}</span>
+                  </div>
+                  <div className="detail-group">
+                    <span>Date</span>
+                    <span>{claim.date}</span>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div> */}
+        <RecentClaims  />
+</Col>
     </Row>
   );
 };

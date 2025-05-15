@@ -1,0 +1,203 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #f3f4f6;
+}
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 24px;
+  padding: 24px;
+}
+
+/* Individual Card */
+.cardStatue {
+  display: flex;
+  justify-content: space-between;
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px 24px;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.06);
+  transition: all 0.3s ease;
+  align-items: center;
+}
+
+/* Left Side Content */
+.cardStatue-left {
+  display: flex;
+  flex-direction: column;
+}
+
+.claim-id {
+  color: #1d4ed8;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.device-name {
+  color: #0ea5e9;
+  font-size: 14px;
+  margin-bottom: 16px;
+}
+
+.deviceStatue-details {
+  display: flex;
+  gap: 40px;
+  margin-bottom: 10px;
+}
+
+.detail-block {
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+  color: #111827;
+}
+
+.label {
+  color: #6b7280;
+  font-size: 13px;
+  margin-bottom: 2px;
+}
+
+.dateStatue-block {
+  margin-top: 4px;
+}
+
+.dateStatue {
+  /* display: inline-block; */
+  background: #D7F0FF59;
+  color: #38B6FF;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-weight: 500;
+  font-size: 14px;
+}
+.badge_statue_cover{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 15px;
+}
+/* Right Badge */
+.card-badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  font-size: 13px;
+  font-weight: 500;
+  color: white;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.shield-icon {
+  /* width: 28px;
+  height: 28px;
+  mask: url('https://www.svgrepo.com/show/503942/shield-check.svg') no-repeat center;
+  -webkit-mask: url('https://www.svgrepo.com/show/503942/shield-check.svg') no-repeat center;
+  mask-size: cover;
+  background-color: currentColor;
+  margin-bottom: 6px; */
+}
+
+/* Badge Variants */
+.pending {
+  background: #FFB82E40;
+  color: #f59e0b;
+  box-shadow: 0 0 12px 4px rgba(253, 224, 71, 0.5);
+}
+
+.approved {
+  background: #004AAD40;
+  color: #3b82f6;
+  box-shadow: 0 0 12px 4px rgba(59, 130, 246, 0.4);
+}
+
+.completed {
+  background: #00752F40;
+  color: #10b981;
+  box-shadow: 0 0 12px 4px rgba(16, 185, 129, 0.4);
+}
+
+.rejected {
+  background: rgba(239, 68, 68, 0.2);
+  color: #ef4444;
+  box-shadow: 0 0 12px 4px rgba(239, 68, 68, 0.4);
+}
+
+.pending_normal_icon {
+  /* background: rgba(253, 224, 71, 0.3); */
+  color: #f59e0b;
+  /* box-shadow: 0 0 12px 4px rgba(253, 224, 71, 0.5); */
+}
+
+.approved_normal_icon {
+  /* background: #004AAD40; */
+  color: #3b82f6;
+  /* box-shadow: 0 0 12px 4px rgba(59, 130, 246, 0.4); */
+}
+
+.completed_normal_icon {
+  /* background: #00752F40; */
+  color: #10b981;
+  /* box-shadow: 0 0 12px 4px rgba(16, 185, 129, 0.4); */
+}
+
+.rejected_normal_icon {
+  /* background: rgba(239, 68, 68, 0.2); */
+  color: #ef4444;
+  /* box-shadow: 0 0 12px 4px rgba(239, 68, 68, 0.4); */
+}
+.pending_normal_icon {
+  /* background: rgba(253, 224, 71, 0.3); */
+  color: #f59e0b;
+  /* box-shadow: 0 0 12px 4px rgba(253, 224, 71, 0.5); */
+}
+
+.approved_normal_icon {
+  /* background: #004AAD40; */
+  color: #3b82f6;
+  /* box-shadow: 0 0 12px 4px rgba(59, 130, 246, 0.4); */
+}
+
+.completed_normal_icon {
+  /* background: #00752F40; */
+  color: #10b981;
+  /* box-shadow: 0 0 12px 4px rgba(16, 185, 129, 0.4); */
+}
+
+.rejected_normal_icon {
+  /* background: rgba(239, 68, 68, 0.2); */
+  color: #ef4444;
+  /* box-shadow: 0 0 12px 4px rgba(239, 68, 68, 0.4); */
+}
+.uncategorized {
+  background: rgba(107, 114, 128, 0.2);
+  color: #6b7280;
+  /* box-shadow: 0 0 12px 4px rgba(107, 114, 128, 0.4); */
+}
+
+/* Mobile Responsive */
+@media (max-width: 600px) {
+  .cardStatue {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .card-badge {
+    margin-top: 20px;
+    align-self: center;
+  }
+
+  .deviceStatue-details {
+    flex-direction: column;
+    gap: 10px;
+  }
+}

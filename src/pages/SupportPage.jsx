@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md";
 import ActiveChat from "../components/ActiveChat";
 import ChatHistory from "../components/ChatHistory";
+import ChatInterface from "./ChatInterface";
 
 // Chat Component
 const ChatComponent = ({ onClose }) => {
@@ -123,7 +124,7 @@ const ChatComponent = ({ onClose }) => {
           sendMessage={sendMessage}
         />
       ) : (
-        <ChatHistory />
+        <ChatInterface />
       )}
     </>
   );

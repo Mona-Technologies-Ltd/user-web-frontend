@@ -19,7 +19,8 @@ const DevicesPage = () => {
       onboardingCenter: "Mona Tech",
       dateOnboarded: "Dec 6, 2024",
       expiryDate: "Dec 6, 2024",
-    },
+    }
+    ,
     {
       id: 2,
       brand: "Apple",
@@ -212,16 +213,18 @@ const DetailRow = styled.div`
 `;
 
 const DetailLabel = styled.span`
-  color: #38b6ff;
-  font-size: 14px;
+  color: #004AADA6;
+  font-size: 13px;
+  font-weight: 400;
 `;
 
 const DetailValue = styled.span`
-  color: #38b6ff;
-  font-weight: 500;
+  color: #004AAD;
+  font-weight: 400;
   display: flex;
   align-items: center;
   gap: 8px;
+  font-size: 13px;
 `;
 
 const EditIcon = styled.span`
@@ -259,27 +262,27 @@ const DateContainer = styled.div`
 
 const DateBox = styled.div`
   flex: 1;
-  background-color: #e6f0fa;
+  background-color: #DEE7FF59;
   padding: 12px;
   text-align: center;
 `;
 
 const DateLabel = styled.div`
-  color: #666;
+  color: #8A8894;
   font-size: 14px;
   margin-bottom: 8px;
 `;
 
 const DateValue = styled.div`
-  color: #38b6ff;
+  color: #38B6FF;
   font-weight: 500;
 `;
 
 const RenewButton = styled.button`
   padding: 12px;
-  background-color: #e8f2ff;
-  color: #38b6ff;
-  border: 1px solid #38b6ff;
+  background-color: #E8F2FF59;
+  color: #38B6FF;
+  border: 1px solid #38B6FF;
   cursor: pointer;
   font-weight: 500;
   transition: all 0.2s;

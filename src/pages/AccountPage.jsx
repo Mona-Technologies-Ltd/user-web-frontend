@@ -44,20 +44,22 @@ const AccountPage = () => {
             <Card className="profile-card">
               <div className="profile-header">
                 <div className="profile-image-container">
-                  <img
+                  
+                  <h1>{userData.name[0]}</h1>
+                  {/* <img
                     src={userData.profileImage}
                     alt="Profile"
                     className="profile-image"
-                  />
-                  <button className="edit-image-button">
+                  /> */}
+                  {/* <button className="edit-image-button">
                     <EditOutlined />
-                  </button>
+                  </button> */}
                 </div>
                 <div className="profile-info">
                   <Title level={3} className="user-name">
                     {userData.name}
                   </Title>
-                  <Tag color="blue" className="user-role">
+                  <Tag className="user-role">
                     {userData.role}
                   </Tag>
                 </div>
@@ -75,7 +77,7 @@ const AccountPage = () => {
                 <Col xs={24} sm={12}>
                   <div className="detail-item">
                     <Text className="detail-label">Gender</Text>
-                    <Tag color="#D7F0FF" className="gender-tag">
+                    <Tag className="gender-tag">
                       {userData.gender}
                     </Tag>
                   </div>

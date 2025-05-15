@@ -9,6 +9,7 @@
   display: flex;
   flex-direction: column;
   gap: 24px;
+  flex-wrap: wrap;
 }
 
 /* Device Section */
@@ -349,6 +350,20 @@
 .close-alert:hover {
   color: #333;
 }
+.profile-device-container {
+  display: flex;
+  gap: 10px;
+  height: 28rem;
+  flex-direction: row; /* Default for desktop */
+}
+
+@media (max-width: 768px) {
+  .profile-device-container {
+    flex-direction: column; /* Stack vertically on mobile */
+    height: auto; /* Let height grow with content */
+  }
+}
+
 
 /* Responsive Adjustments */
 @media (max-width: 1200px) {

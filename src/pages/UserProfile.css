@@ -1,0 +1,101 @@
+.user-profile-container {
+    /* max-width: 500px; */
+    width: 30%;
+    margin: auto;
+    /* padding: 1rem; */
+    padding: 2rem 1rem;
+    height: 100%;
+    font-family: 'Inter', sans-serif;
+    text-align: left;
+    background:#fff;
+
+
+  }
+  
+  .user-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+  
+  .avatar-circle {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #00aaff, #0033cc);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    font-weight: 600;
+    flex-shrink: 0;
+  }
+  
+  .username {
+    margin: 0;
+    font-size: 1.75rem;
+    font-weight: 500;
+    color: #111827;
+  }
+  
+  .badgeCus {
+    display: inline-block;
+    background-color: #E6F0FA;
+    color: #004AAD;
+    padding: 0.3rem 0.8rem;
+    border-radius: 4px;
+    font-weight: 500;
+    font-size: 0.9rem;
+    margin-top: 0.3rem;
+  }
+  
+  .contact-box {
+    background-color: #D7F0FF59;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 1rem;
+    color: #38B6FF;
+    font-weight: 500;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+   justify-content: center;
+  }
+  
+  .icon {
+    font-size: 1.2rem;
+  }
+  @media screen and (max-width: 780px) {
+    .user-profile-container{
+      width: 100%;
+    }
+  }
+  /* Mobile responsiveness */
+  @media screen and (max-width: 480px) {
+    .avatar-circle {
+      width: 70px;
+      height: 70px;
+      font-size: 2rem;
+    }
+  
+    .username {
+      font-size: 1.4rem;
+    }
+  
+    .badgeCus {
+      font-size: 0.8rem;
+    }
+  
+    .contact-box {
+      font-size: 0.9rem;
+      padding: 0.8rem;
+    }
+  
+    .icon {
+      font-size: 1rem;
+    }
+  }
+  
