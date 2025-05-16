@@ -124,7 +124,7 @@ const Sidebar = ({ collapsed, setCollapsed }) => {
             zIndex: 100,
             width: "28px",
             height: "28px",
-            borderRadius: "50%",
+            // borderRadius: "50%",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",

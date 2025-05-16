@@ -1,3 +1,6 @@
+import { BsPerson } from "react-icons/bs"; 
+import { BsFillPersonFill } from "react-icons/bs"; 
+import { RxDashboard } from "react-icons/rx"; 
 import React from "react";
 import { Layout, Menu, Button } from "antd";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -17,11 +20,11 @@ const Sidebar = ({ collapsed, setCollapsed }) => {
   // Extract the current path from location to determine which menu item is active
   const currentPath = location.pathname;
 
-  // Menu items configuration with paths and icons
+  // Menu items configuration with paths and icons <Icon icon="material-symbols:dashboard"  />
   const menuItems = [
     {
       key: "/dashboard",
-      icon: <Icon icon="material-symbols:dashboard" width="20" height="20" />,
+      icon: <RxDashboard size="20" /> ,
       label: "Dashboard",
     },
     {
@@ -41,7 +44,7 @@ const Sidebar = ({ collapsed, setCollapsed }) => {
     },
     {
       key: "/account",
-      icon: <Icon icon="mdi:account-circle-outline" width="20" height="20" />,
+      icon: <BsPerson size={20} />,
       label: "Account",
     },
   ];
@@ -114,7 +117,7 @@ const Sidebar = ({ collapsed, setCollapsed }) => {
             zIndex: 100,
             width: "28px",
             height: "28px",
-            borderRadius: "50%",
+            // borderRadius: "50%",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
