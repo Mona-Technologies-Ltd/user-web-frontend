@@ -1,8 +1,14 @@
 import { BiEditAlt } from "react-icons/bi"; 
 import React from 'react';
 import './DeviceDetails.css';
+import NewClaimModal from "./claims/NewClaimModal";
+import useModalStore from "./claims/store/useModalStore";
+// import useModalStore from './useModalStore'; // Import the Zustand store
 
 const DeviceDetails = () => {
+    //  const [showModal, setShowModal] = React.useState(false);
+  const { showModal, openModal, closeModal } = useModalStore(); // Access Zustand state and actions
+
   return (
     <div className="device-section">
       <div className="device-wrapper">
@@ -34,8 +40,10 @@ const DeviceDetails = () => {
                 alt="Mona Logo"
                 className="phone-image"
               />
-          <button className="claim-button">File New Claim</button>
+          <button className="claim-button" onClick={openModal}>
+            File New Claim</button>
         </div>
+        <NewClaimModal visible={showModal} onClose={closeModal} />
 
         {/* Right Info Panel */}
         <div className="right-panel">

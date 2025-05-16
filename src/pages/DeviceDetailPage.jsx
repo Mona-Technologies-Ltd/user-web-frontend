@@ -1,10 +1,13 @@
 import React from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import useModalStore from "./claims/store/useModalStore";
+import NewClaimModal from "./claims/NewClaimModal";
 
 const DeviceDetailPage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
+  const { showModal, openModal, closeModal } = useModalStore(); // Access Zustand state and actions
 
   // Mock device data - in a real app, fetch this based on the id
   const device = {
@@ -49,7 +52,7 @@ const DeviceDetailPage = () => {
             src={device.deviceImage}
             alt={`${device.brand} device`}
           />
-          <FileClaimButton>File New Claim</FileClaimButton>
+          <FileClaimButton   onClick={openModal}>File New Claim</FileClaimButton>
         </LeftSection>
 
         <RightContentSection>
@@ -111,12 +114,12 @@ const DeviceDetailPage = () => {
                       <ClaimLabel>Date</ClaimLabel>
                       <ClaimValue>{claim.date}</ClaimValue>
                     </ClaimRow>
-                    <ClaimRow>
+                    <ClaimRowStatus>
                       <ClaimLabel>Status</ClaimLabel>
                       <StatusBadge status={claim.status}>
                         {claim.status}
                       </StatusBadge>
-                    </ClaimRow>
+                    </ClaimRowStatus>
                   </ClaimItem>
                 ))}
               </ClaimsList>
@@ -151,6 +154,8 @@ const DeviceDetailPage = () => {
           </ProtectionPlanSection>
         </RightContentSection>
       </ContentWrapper>
+       <NewClaimModal visible={showModal} onClose={closeModal} />
+
     </Container>
   );
 };
@@ -220,6 +225,8 @@ const MiddleSection = styled.div`
   flex-direction: column;
   gap: 16px;
   width: 320px;
+  box-shadow: 0 0 5px 14px #E8F2FF73;
+
 `;
 
 const BrandSection = styled.div`
@@ -276,17 +283,26 @@ const ClaimsSection = styled.div`
 `;
 
 const ClaimsHeader = styled.div`
-  background-color: #e6f0fa;
+width: 95%;
+  background-color: #D7F0FF;
   padding: 12px 20px;
   font-weight: 600;
   font-size: 18px;
   display: flex;
   align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin: auto;
+  margin-bottom: .5rem;
+    box-shadow: 0 0 5px 14px #E8F2FF73;
+
 `;
 
 const ClaimsCount = styled.span`
   margin-left: 8px;
   color: #38b6ff;
+  text-align: center;
+  /* background: green; */
 `;
 
 const ClaimsList = styled.div`
@@ -294,13 +310,13 @@ const ClaimsList = styled.div`
   flex-direction: column;
   gap: 16px;
   padding: 16px;
-  background-color: #e6f0fa;
+  background-color: #D7F0FF59;
   height: calc(100% - 52px); /* Subtract header height */
   overflow-y: auto;
 `;
 
 const ClaimItem = styled.div`
-  background-color: #ffffff;
+  background-color: #D7F0FF;
   padding: 16px;
 `;
 
@@ -313,10 +329,21 @@ const ClaimRow = styled.div`
     margin-bottom: 0;
   }
 `;
+const ClaimRowStatus = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  background: #fff;
+  padding: .6rem;
 
+  &:last-child {
+    margin-bottom: 0;
+  }
+`;
 const ClaimLabel = styled.span`
   color: #38b6ff;
   font-size: 14px;
+  /* background: red; */
 `;
 
 const ClaimValue = styled.span`
@@ -370,24 +397,27 @@ const DatesSection = styled.div`
 
 const DateBox = styled.div`
   flex: 1;
-  background-color: #e6f0fa;
+  background-color: #DEE7FF59;
   padding: 12px;
   text-align: center;
 `;
 
 const DateLabel = styled.div`
-  color: #666;
+  color: #8A8894;
   font-size: 14px;
   margin-bottom: 8px;
 `;
 
 const DateValue = styled.div`
-  color: #38b6ff;
+  color: #38B6FF;
   font-weight: 500;
+  background: #E6F0FA;
+  width: 50%;
+  margin: auto;
 `;
 
 const CoverageSection = styled.div`
-  background-color: #e6f0fa;
+  background-color: #DEE7FF59;
   padding: 12px;
 `;
 
@@ -406,8 +436,8 @@ const CoverageItems = styled.div`
 `;
 
 const CoverageItem = styled.div`
-  background-color: #38b6ff;
-  color: white;
+  background-color: #E6F0FA;
+  color: #38B6FF;
   padding: 6px 12px;
   font-size: 14px;
 `;

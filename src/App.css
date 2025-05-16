@@ -17,6 +17,18 @@
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
+.ant-modal-content {
+  border-radius: 0 !important;
+}
+
+.ant-modal-body {
+  border-radius: 0 !important;
+}
+
+.ant-modal {
+  border-radius: 0 !important;
+}
+
 
 @keyframes logo-spin {
   from {

@@ -175,7 +175,7 @@ const DeviceInfoSection = styled.div`
   display: flex;
   flex-direction: column;
   gap: 16px;
-  width: 400px;
+  width: 300px;
 `;
 
 const BrandSection = styled.div`
@@ -204,6 +204,8 @@ const DetailsSection = styled.div`
   gap: 12px;
   border: 1px solid rgba(79, 70, 229, 0.45);
   padding: 16px;
+  box-shadow: 0 0 5px 14px #E8F2FF73;
+
 `;
 
 const DetailRow = styled.div`
@@ -233,9 +235,11 @@ const EditIcon = styled.span`
 `;
 
 const PlanDetailsContainer = styled.div`
+width: 50% !important;
+/* background: red; */
   display: flex;
   flex-direction: column;
-  flex: 1;
+  /* flex: 1; */
   gap: 16px;
 `;
 
@@ -276,11 +280,14 @@ const DateLabel = styled.div`
 const DateValue = styled.div`
   color: #38B6FF;
   font-weight: 500;
+  background: #E6F0FA;
+  width: 50%;
+  margin: auto;
 `;
 
 const RenewButton = styled.button`
   padding: 12px;
-  background-color: #E8F2FF59;
+  background-color: #E8F2FF;
   color: #38B6FF;
   border: 1px solid #38B6FF;
   cursor: pointer;

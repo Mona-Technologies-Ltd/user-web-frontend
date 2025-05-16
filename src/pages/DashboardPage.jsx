@@ -3,7 +3,7 @@ import { Row, Col } from "antd";
 import { Icon } from "@iconify/react";
 import DeviceDetails from "./DeviceDetails";
 import UserProfile from "./UserProfile";
-import RecentClaims from "./RecentClaims";
+import RecentClaims from "./claims/RecentClaims";
 
 const DashboardPage = () => {
   const deviceInfo = {

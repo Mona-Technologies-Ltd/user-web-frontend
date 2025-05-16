@@ -1,5 +1,5 @@
 import { createBrowserRouter, Navigate } from "react-router-dom";
-import Claims from "../pages/Claims";
+import Claims from "../pages/claims/Claims";
 import LoginPage from "../pages/auth/LoginPage";
 import DashboardPage from "../pages/DashboardPage";
 import AccountPage from "../pages/AccountPage";

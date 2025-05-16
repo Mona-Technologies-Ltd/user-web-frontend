@@ -116,8 +116,8 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 50px;
-  height: 50px;
+  width:80px;
+  height: 80px;
   border-radius: 50%;
   font-size: 13px;
   font-weight: 500;
@@ -181,6 +181,20 @@
  .issue{
     color: #111827;
   }
+.custom-modal .ant-modal-content {
+  border-radius: 0 !important; /* Removes border-radius from modal content */
+}
+
+.custom-modal .ant-modal-body {
+  border-radius: 0 !important; /* Removes border-radius from the modal body */
+}
+
+.custom-modal .ant-modal {
+  border-radius: 0 !important; /* Removes border-radius from the outer modal */
+}
+
+
+
   /* Mobile responsiveness */
   @media screen and (max-width: 768px) {
     .claims-grid {

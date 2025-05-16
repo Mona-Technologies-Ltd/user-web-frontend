@@ -52,6 +52,18 @@ button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
+.ant-modal-content {
+  border-radius: 0 !important;
+}
+
+.ant-modal-body {
+  border-radius: 0 !important;
+}
+
+.ant-modal {
+  border-radius: 0 !important;
+}
+
 
 @media (prefers-color-scheme: light) {
   :root {

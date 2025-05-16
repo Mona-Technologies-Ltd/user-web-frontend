@@ -1,0 +1,281 @@
+/* Modal container */
+.modal-container {
+  background: #ffffff;
+  /* border-radius: 16px; */
+  /* box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); */
+  /* max-width: 600px; */
+  width: 100%;
+  margin: 0 auto;
+  padding: 24px;
+  position: relative;
+  font-family: 'Arial', sans-serif;
+  top: 5rem;
+  height: auto;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #eaeaea;
+  padding-bottom: 16px;
+}
+
+.modal-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #1f2937;
+}
+
+.modal-close {
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.device-info {
+  margin-top: 16px;
+}
+
+.device-id,
+.claim-id {
+  font-size: 1rem;
+  color: #004AAD;
+}
+
+.deviceName {
+  font-size: 13px;
+  font-weight: 400;
+  color: #38B6FF;
+}
+
+.date {
+  margin: 8px 0;
+  font-size: 1rem;
+  color: #3b82f6;
+  font-weight: bold;
+}
+
+.approved_modal{
+    background: #DCEBFF;
+    width: 7rem;
+    text-align: center;
+    padding: 4.8px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #004AAD;
+    margin-top: 0.6rem;
+}
+
+/* .claimStatus {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fef3c7;
+  border-radius: 8px;
+  color: #d97706;
+  padding: 4px 8px;
+  font-size: 1rem;
+  font-weight: 600;
+} */
+
+.claims-info {
+  margin-top: 24px;
+}
+
+.claims-info h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.claims-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 24px;
+}
+
+.claims-table th,
+.claims-table td {
+  border: 1px solid #e5e7eb;
+  padding: 12px;
+  text-align: left;
+  font-size: 1rem;
+  color: #374151;
+}
+
+.claims-table th {
+  background: #f9fafb;
+  font-weight: 600;
+}
+
+.general-description {
+  margin-top: 16px;
+}
+
+.general-description h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.general-description p {
+  background: #f3f4f6;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 1rem;
+  color: #374151;
+  margin-bottom: 8px;
+}
+.modal-container {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #eaeaea;
+  padding-bottom: 15px;
+  margin-bottom: 20px;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.device-id {
+  font-size: 14px;
+  color: #888;
+}
+
+.claim-id {
+  font-size: 20px;
+  font-weight: bold;
+  color: #0056b3;
+}
+
+.device-name {
+  font-size: 16px;
+  color: #333;
+}
+
+.status-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  top: -4rem;
+  right: 1rem;
+}
+
+.statusCircle {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* background-color: #fef3c7;  */
+}
+
+.status-text {
+  font-size: 14px;
+  margin-top: 5px;
+  color: #eea10d;
+}
+
+.date-section {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.label {
+  font-size: 14px;
+  font-weight: bold;
+  color: #555;
+}
+
+.date-section .date-box {
+  font-size: 16px;
+  background-color: #D7F0FF59;
+  padding: 8px 12px;
+  border-radius: 5px;
+  display: inline-block;
+  color: #38B6FF;
+  width: 20%;
+}
+
+.claims-info {
+  margin-bottom: 20px;
+}
+
+.section-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.claims-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.claims-table th,
+.claims-table td {
+  padding: 10px;
+  text-align: left;
+  border: 1px solid #ddd;
+}
+
+.general-description {
+  margin-top: 20px;
+}
+
+.description-block {
+  margin-bottom: 15px;
+ 
+}
+
+.description-label {
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.descriptionText {
+  font-size: 14px;
+  
+  padding: 10px;
+  border-radius: 5px;
+ 
+}
+#d_t_m{
+     background: #DBEBFF59;
+      color: #004AAD;
+}
+/* Responsive Design */
+@media (max-width: 768px) {
+  .modal-container {
+    padding: 16px;
+  }
+
+  .modal-title {
+    font-size: 1.2rem;
+  }
+
+  .claims-table th,
+  .claims-table td {
+    font-size: 0.9rem;
+  }
+
+  .general-description p {
+    font-size: 0.9rem;
+  }
+}

@@ -356,6 +356,17 @@
   height: 28rem;
   flex-direction: row; /* Default for desktop */
 }
+.ant-modal-content {
+  border-radius: 0 !important;
+}
+
+.ant-modal-body {
+  border-radius: 0 !important;
+}
+
+.ant-modal {
+  border-radius: 0 !important;
+}
 
 @media (max-width: 768px) {
   .profile-device-container {

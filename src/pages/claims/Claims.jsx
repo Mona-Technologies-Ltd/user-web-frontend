@@ -35,11 +35,14 @@ const { Option } = Select;
 const { TextArea } = Input;
 const { Title, Text } = Typography;
 import "./ SearchFilterBar.css";
+import NewClaimModal from "./NewClaimModal";
+import useModalStore from "./store/useModalStore";
 const StyledCard = styled(Card)`
   margin-bottom: 16px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   border: none;
   padding: 20px;
+  border-radius: 0;
 
   .ant-card-body {
     padding: 0;
@@ -114,8 +117,8 @@ const StatusContainer = styled.div`
 `;
 
 const IconContainer = styled.div`
-  width: 60px;
-  height: 60px;
+  width: 75px;
+  height: 75px;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -157,7 +160,7 @@ const StatusIcon = styled.img`
 
 const StatusTag = styled.div`
   padding: 4px 16px;
-  border-radius: 20px;
+  /* border-radius: 20px; */
   font-size: 14px;
   font-weight: 500;
   /* box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08); */
@@ -601,6 +604,7 @@ const Claims = () => {
   const [form] = Form.useForm();
   const [searchTerm, setSearchTerm] = useState("");
 const [statusFilter, setStatusFilter] = useState("");
+  const { showModal, openModal, closeModal } = useModalStore(); // Access Zustand state and actions
 
   const [selectedIssues, setSelectedIssues] = useState([
     "damaged_screen",
@@ -615,20 +619,20 @@ const filteredClaims = mockClaims.filter((claim) => {
 });
   // Map of issue values to labels
   const issueOptions = [
-    { value: "broken_screen_complete", label: "Broken Screen Complete" },
-    { value: "broken_inner_screen", label: "Broken Inner Screen Only" },
-    { value: "broken_outer_screen", label: "Broken Outer Screen Only" },
-    { value: "not_charging", label: "Not Charging" },
-    { value: "back_housing", label: "Back Housing/Cover" },
-    { value: "back_camera", label: "Back Camera not Working" },
-    { value: "front_camera", label: "Front Camera not Working" },
-    { value: "sim_card", label: "Sim-card not working" },
-    { value: "water_damage", label: "Water Damage" },
-    { value: "smashed_device", label: "Smashed Device" },
-    { value: "motherboard", label: "Motherboard Issue" },
-    { value: "overheating", label: "Overheating" },
-    { value: "audio_issues", label: "Audio Issues (Microphone/Speaker)" },
-    { value: "others", label: "Others" },
+    { value: "Broken Screen Complete", label: "Broken Screen Complete" },
+    { value: "Broken Inner Screen Only", label: "Broken Inner Screen Only" },
+    { value: "Broken Outer Screen Only", label: "Broken Outer Screen Only" },
+    { value: "Not Charging", label: "Not Charging" },
+    { value: "Back Housing/Cover", label: "Back Housing/Cover" },
+    { value: "Back Camera not Working", label: "Back Camera not Working" },
+    { value: "Front Camera not Working", label: "Front Camera not Working" },
+    { value: "Sim-card not working", label: "Sim-card not working" },
+    { value: "Water Damage", label: "Water Damage" },
+    { value: "Smashed Device", label: "Smashed Device" },
+    { value: "Motherboard Issue", label: "Motherboard Issue" },
+    { value: "Overheating", label: "Overheating" },
+    { value: "Audio Issues (Microphone/Speaker)", label: "Audio Issues (Microphone/Speaker)" },
+    { value: "Others", label: "Others" },
   ];
 
   // Handle issue selection change
@@ -636,9 +640,9 @@ const filteredClaims = mockClaims.filter((claim) => {
     setSelectedIssues(values);
   };
 
-  const showModal = () => {
-    setIsModalOpen(true);
-  };
+  // const showModal = () => {
+  //   setIsModalOpen(true);
+  // };
 
   const handleCancel = () => {
     setIsModalOpen(false);
@@ -808,15 +812,19 @@ const filteredClaims = mockClaims.filter((claim) => {
           >
             Filter
           </Button>
+                  
+                 
           <Button
             type="primary"
             style={{ height: 48, paddingLeft: 16, paddingRight: 16 }}
             size="large"
-            onClick={showModal}
+            // onClick={showModal}
+            onClick={openModal}
           >
             New claim
           </Button>
         </Space>
+        
       </div>
 
       <Row gutter={[16, 16]}>
@@ -868,7 +876,7 @@ const filteredClaims = mockClaims.filter((claim) => {
                 </IconContainer>
                 <StatusTag status={claim.status}>
                   {claim.status === "pending"
-                    ? "pending"
+                    ? "Pending"
                     : claim.status.charAt(0).toUpperCase() +
                       claim.status.slice(1)}
                 </StatusTag>
@@ -877,7 +885,7 @@ const filteredClaims = mockClaims.filter((claim) => {
           </Col>
         ))}
       </Row>
-
+ <NewClaimModal visible={showModal} onClose={closeModal} />
       <StyledModal
         title={
           <div>

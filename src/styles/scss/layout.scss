@@ -158,6 +158,17 @@
     margin-bottom: 16px;
   }
 }
+.ant-modal-content {
+  border-radius: 0 !important;
+}
+
+.ant-modal-body {
+  border-radius: 0 !important;
+}
+
+.ant-modal {
+  border-radius: 0 !important;
+}
 
 .team-member-card {
   background-color: #fff;
