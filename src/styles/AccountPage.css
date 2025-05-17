@@ -49,6 +49,7 @@ background: linear-gradient(90deg, #38B6FF 0%, #004AAD 50%, #021B79 100%);
   justify-content: center;
   align-items: center;
   color: #FFFFFF;
+  font-size: 3rem;
 }
 
 .profile-image {
