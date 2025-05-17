@@ -114,6 +114,7 @@
     border: 1px solid #d0d0ff;
     padding: 1rem;
     border-radius: 0.5rem;
+    /* width: 200px; */
   }
   
   .plan-title {
@@ -141,14 +142,14 @@
   }
   
   .plan-item .label {
-    font-size: 0.85rem;
+    font-size: 0.65rem;
     color: #8A8894;
     display: block;
     margin-bottom: 0.4rem;
   }
   
   .plan-item .date {
-    font-weight: 600;
+    font-weight: 400;
     color: #38B6FF;
   }
 .pagination-dots {

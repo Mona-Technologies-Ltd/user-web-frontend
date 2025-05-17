@@ -7,7 +7,7 @@
 }
 
 .chat-sidebar {
-  width: 30%;
+  width: 40%;
   background: white;
   border-right: 1px solid #eee;
   padding: 20px;
@@ -42,13 +42,14 @@
 .chat-list {
   flex-grow: 1;
   overflow-y: auto;
+  /* width: 30rem; */
 }
 
 .chat-item {
   display: flex;
   align-items: center;
-  border-bottom: 1px solid #f0f0f0;
-  padding: 15px 0;
+  /* border-bottom: 1px solid #f0f0f0; */
+  /* padding: 10px 0; */
 }
 
 .chat-avatar {
@@ -156,8 +157,9 @@
   padding-top: 20px;
 }
 .chat-item.selected {
-  background-color: #f0f8ff;
-  border-left: 3px solid #007bff;
+  width: 100%;
+  background-color: #F5F5F5;
+  border-bottom: 1.2px solid #8A8894;
 }
 
 /* Responsive Design */

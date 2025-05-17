@@ -49,10 +49,10 @@ const ChatInterface = () => {
     <div className="chat-container">
       <div className="chat-sidebar">
         <h2>Chats</h2>
-        <div className="chat-tabs">
+        {/* <div className="chat-tabs">
           <span className="tab">Active Chat</span>
           <span className="tab active">Chat History</span>
-        </div>
+        </div> */}
         <div className="chat-list">
           {chatHistory.map((chat) => (
             <div

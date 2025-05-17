@@ -1,6 +1,7 @@
 import React from 'react';
 import './ClaimDetailsModal.css';
 import { FaShieldAlt } from 'react-icons/fa';
+import ReviewCardClaim from './ReviewCardClaim';
 
 export default function ClaimDetailsModal({ deviceId, claimId, model, date, issue, status }) {
   return (
@@ -75,6 +76,18 @@ export default function ClaimDetailsModal({ deviceId, claimId, model, date, issu
           </p>
         </div>
       </div>
+
+      {status.toLowerCase() == 'completed' ? (<ReviewCardClaim />): ''}
+
+
+        {status.toLowerCase() == 'rejected' ? (  <div className="description-block">
+          <h4 className="description-label">Rejection Message</h4>
+          <p className="description-text" id='d_t_m'>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit
+            interdum, ac aliquet odio mattis.
+          </p>
+        </div>): ''}
+     
     </div>
   );
 }

@@ -44,8 +44,8 @@ const AccountPage = () => {
             <Card className="profile-card">
               <div className="profile-header">
                 <div className="profile-image-container">
-                  
-                  <h1>{userData.name[0]}</h1>
+                  {userData.name[0]}
+                  {/* <h1></h1> */}
                   {/* <img
                     src={userData.profileImage}
                     alt="Profile"

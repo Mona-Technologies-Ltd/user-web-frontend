@@ -28,6 +28,7 @@ import styled from "@emotion/styled";
 import StatusCards from "./StatusCards";
 import { FaShieldAlt } from "react-icons/fa";
 import "./StatusCards.css";
+import './Claims.css';
 
 import { FiSearch } from "react-icons/fi";
 const { Search } = Input;
@@ -37,6 +38,7 @@ const { Title, Text } = Typography;
 import "./ SearchFilterBar.css";
 import NewClaimModal from "./NewClaimModal";
 import useModalStore from "./store/useModalStore";
+import ClaimDetailsModal from "./ClaimDetailsModal";
 const StyledCard = styled(Card)`
   margin-bottom: 16px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
@@ -404,113 +406,8 @@ const StyledSuccessModal = styled(Modal)`
   }
 `;
 
-const ClaimDetailsModal = styled(Modal)`
-  .ant-modal-content {
-    border-radius: 0;
-    padding: 0;
-  }
-
-  .ant-modal-body {
-    padding: 24px;
-  }
-
-  .ant-modal-close {
-    top: 20px;
-    right: 20px;
-  }
-
-  .device-id {
-    font-size: 16px;
-    color: #595959;
-    margin-bottom: 8px;
-  }
-
-  .claim-id {
-    color: #0066cc;
-    font-size: 24px;
-    font-weight: 600;
-    margin-bottom: 8px;
-  }
-
-  .device-name {
-    color: #38b6ff;
-    font-size: 18px;
-    margin-bottom: 24px;
-  }
-
-  .amount-row {
-    display: flex;
-    justify-content: start;
-    align-items: start;
-    flex-direction: column;
-    margin-bottom: 30px;
-  }
-
-  .amount-container {
-    background-color: #f0f7ff;
-    padding: 5px;
-    border-radius: 0;
-  }
-
-  .amount-label {
-    font-size: 16px;
-    font-weight: 500;
-    color: #262626;
-  }
-
-  .amount-value {
-    color: #0066cc;
-    font-weight: 600;
-    font-size: 18px;
-  }
-
-  .date-container {
-    background-color: #f0f9ff;
-    padding: 8px 16px;
-    border-radius: 0;
-  }
-
-  .date-label {
-    font-size: 16px;
-    font-weight: 500;
-    color: #262626;
-  }
-
-  .date-value {
-    color: #1890ff;
-    font-size: 18px;
-  }
-
-  .section-title {
-    font-size: 20px;
-    font-weight: 600;
-    margin-bottom: 16px;
-    margin-top: 30px;
-  }
-
-  .description-label {
-    font-size: 18px;
-    font-weight: 500;
-    margin-bottom: 12px;
-  }
-
-  .description-text {
-    background-color: #f5f7fa;
-    padding: 16px;
-    border-radius: 4px;
-    color: #0066cc;
-    margin-bottom: 24px;
-  }
-
-  .claims-table {
-    margin-bottom: 30px;
-  }
-
-  .claims-table .ant-table-thead > tr > th {
-    background-color: #f5f5f5;
-    color: #262626;
-    font-weight: 500;
-  }
+const ClaimDetailsModals = styled(Modal)`
+ 
 `;
   const mockClaims = [
     {
@@ -737,33 +634,33 @@ const filteredClaims = mockClaims.filter((claim) => {
     setSelectedClaim(null);
   };
 
-  // Add mock details for the claim
-  const claimDetails = {
-    items: [
-      { description: "Screen Damage", amount: "₦50,000" },
-      { description: "Battery Issue", amount: "₦60,000" },
-    ],
-    total: "₦110,000",
-    when: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis.",
-    where:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis.",
-    how: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis.",
-  };
+  // // Add mock details for the claim
+  // const claimDetails = {
+  //   items: [
+  //     { description: "Screen Damage", amount: "₦50,000" },
+  //     { description: "Battery Issue", amount: "₦60,000" },
+  //   ],
+  //   total: "₦110,000",
+  //   when: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis.",
+  //   where:
+  //     "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis.",
+  //   how: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis.",
+  // };
 
-  // Table columns for claim details
-  const claimsTableColumns = [
-    {
-      title: "Description",
-      dataIndex: "description",
-      key: "description",
-    },
-    {
-      title: "Amount",
-      dataIndex: "amount",
-      key: "amount",
-      align: "right",
-    },
-  ];
+  // // Table columns for claim details
+  // const claimsTableColumns = [
+  //   {
+  //     title: "Description",
+  //     dataIndex: "description",
+  //     key: "description",
+  //   },
+  //   {
+  //     title: "Amount",
+  //     dataIndex: "amount",
+  //     key: "amount",
+  //     align: "right",
+  //   },
+  // ];
 
   return (
     <div style={{ padding: "10px" }}>
@@ -835,6 +732,7 @@ const filteredClaims = mockClaims.filter((claim) => {
           <Col xs={24} sm={12} lg={8} key={index}>
             <StyledCard
               onClick={() => showDetailsModal(claim)}
+              
               style={{ cursor: "pointer" }}
             >
                <div className="cardStatue" key={index}>
@@ -1154,102 +1052,61 @@ const filteredClaims = mockClaims.filter((claim) => {
           ))}
         </div>
       </StyledSuccessModal>
+{/* {isDetailsModalOpen && selectedClaim && (
+  <div className="custom-claim-details-overlay">
+    <button className="close-button" onClick={handleDetailsModalClose}>
+      <CloseOutlined />
+    </button>
+    <ClaimDetailsModal
+      deviceId={selectedClaim.deviceId}
+      claimId={selectedClaim.id}
+      model={selectedClaim.model}
+      date={selectedClaim.date}
+      issue={selectedClaim.issue}
+      status={selectedClaim.status}
+    />
+  </div>
 
+)} */}
+{/* <ClaimDetailsModals
+  open={isDetailsModalOpen}
+  onCancel={handleDetailsModalClose}
+  // footer={null}
+  width={800} // Uncomment this
+  closeIcon={<CloseOutlined />}
+  // style={{ height: '200vh', overflowY: 'auto' }} // limit height and allow scroll
+> */}
+  {/* {selectedClaim && (
+    <ClaimDetailsModal
+      deviceId={selectedClaim.deviceId}
+      claimId={selectedClaim.id}
+      model={selectedClaim.model}
+      date={selectedClaim.date}
+      issue={selectedClaim.issue}
+      status={selectedClaim.status}
+    />
+  )} */}
+{/* </ClaimDetailsModals> */}
+<NewClaimModal visible={showModal} onClose={closeModal} />
+
+{/* 👇 INSERT THIS BLOCK HERE */}
+{isDetailsModalOpen && selectedClaim && (
+  <div className="custom-claim-details-overlay">
+    <div className="custom-claim-details-modal">
+      <button className="close-button" onClick={handleDetailsModalClose}>
+        <CloseOutlined />
+      </button>
       <ClaimDetailsModal
-        open={isDetailsModalOpen}
-        onCancel={handleDetailsModalClose}
-        footer={null}
-        width={800}
-        closeIcon={<CloseOutlined />}
-      >
-        {selectedClaim && (
-          <>
-            <div style={{ marginTop: "20px" }}>
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  alignItems: "flex-start",
-                }}
-              >
-                <div>
-                  <div className="device-id">
-                    Device id: {selectedClaim.deviceId}
-                  </div>
-                  <div className="claim-id">{selectedClaim.id}</div>
-                  <div className="device-name">{selectedClaim.device}</div>
-                </div>
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    gap: "8px",
-                  }}
-                >
-                  <IconContainer status={selectedClaim.status}>
-                    <StatusIcon
-                      src={getStatusIcon(selectedClaim.status)}
-                      alt={selectedClaim.status}
-                    />
-                  </IconContainer>
-                  <StatusTag status={selectedClaim.status}>
-                    {selectedClaim.status === "pending"
-                      ? "pending"
-                      : selectedClaim.status.charAt(0).toUpperCase() +
-                        selectedClaim.status.slice(1)}
-                  </StatusTag>
-                </div>
-              </div>
-
-              <div className="amount-row">
-                <div className="amount-label">Date</div>
-                <div className="amount-container">
-                  
-                  <div className="amount-value">{selectedClaim.date}</div>
-                </div>
-
-                {/* <div className="date-container">
-                  <div className="date-label">Date</div>
-                  <div className="date-value">{selectedClaim.date}</div>
-                </div> */}
-              </div>
-            </div>
-
-            <div className="section-title">Claims Information</div>
-            <Table
-              className="claims-table"
-              columns={claimsTableColumns}
-              dataSource={claimDetails.items}
-              pagination={false}
-              bordered
-              summary={() => (
-                <Table.Summary fixed>
-                  <Table.Summary.Row>
-                    <Table.Summary.Cell index={0}>
-                      <strong>Total:</strong>
-                    </Table.Summary.Cell>
-                    <Table.Summary.Cell index={1} align="right">
-                      <strong>{claimDetails.total}</strong>
-                    </Table.Summary.Cell>
-                  </Table.Summary.Row>
-                </Table.Summary>
-              )}
-            />
-
-            <div className="section-title">General Description</div>
-
-            <div className="description-label">When</div>
-            <div className="description-text">{claimDetails.when}</div>
-
-            <div className="description-label">Where</div>
-            <div className="description-text">{claimDetails.where}</div>
-
-            <div className="description-label">How</div>
-            <div className="description-text">{claimDetails.how}</div>
-          </>
-        )}
-      </ClaimDetailsModal>
+        deviceId={selectedClaim.deviceId}
+        claimId={selectedClaim.id}
+        model={selectedClaim.model}
+        date={selectedClaim.date}
+        issue={selectedClaim.issue}
+        status={selectedClaim.status}
+      />
+    </div>
+  </div>
+)}
     </div>
   );
 };
