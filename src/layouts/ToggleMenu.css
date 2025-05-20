@@ -13,6 +13,8 @@
   border: none;
   cursor: pointer;
   padding: 0.5rem;
+  position: absolute;
+  /* right: -55rem; */
 }
 
 .nav-links {
@@ -54,7 +56,7 @@
   transition: transform 0.2s;
   /* margin-right: -10; */
   position: relative;
-  right: -10rem;
+  right: -16rem;
 }
 
 .menu-toggle:hover {
