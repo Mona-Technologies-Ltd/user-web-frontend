@@ -71,11 +71,17 @@ const StyledCard = styled(Card)`
       font-size: 14px;
       margin-bottom: 6px;
     }
+    
     .value {
       color: #262626;
       font-size: 15px;
       font-weight: 500;
     }
+
+     .issue{
+    color: #8A8894;
+    font-weight: 100;
+  }
   }
 
   .info-row {
@@ -105,6 +111,11 @@ const StyledCard = styled(Card)`
       color: #1890ff;
       font-size: 16px;
     }
+  }
+    #device_id{
+    font-weight: 100;
+     color: #8A8894;
+     font-size: 13px;
   }
 `;
 
@@ -756,11 +767,11 @@ const getStatusStyles = (status) => {
                           <div className="device-name">{claim.device}</div>
                           <div className="deviceStatue-details">
                             <div className="detail-block">
-                              <span className="label">Device id</span>
-                              <div className="value">{claim.deviceId}</div>
+                              <span className="label" id="device_id">Device id</span>
+                              <div className="value" >{claim.deviceId}</div>
                             </div>
                             <div className="detail-block">
-                              <span className="label">Issue</span>
+                              <span className="label" id="device_id">Issue</span>
                               <div className="value">{claim.issue}</div>
                             </div>
                           </div>
