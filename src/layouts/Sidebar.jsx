@@ -1,3 +1,5 @@
+import { BiLogOut } from "react-icons/bi"; 
+import { AiOutlineSetting } from "react-icons/ai"; 
 import { BsPerson } from "react-icons/bs"; 
 import { BsFillPersonFill } from "react-icons/bs"; 
 import { RxDashboard } from "react-icons/rx"; 
@@ -39,7 +41,7 @@ const Sidebar = ({ collapsed, setCollapsed }) => {
     },
     {
       key: "/support",
-      icon: <Icon icon="mdi:headset" width="20" height="20" />,
+      icon:<AiOutlineSetting size={20} /> ,//<Icon icon="mdi:headset" width="20" height="20" />,
       label: "Support",
     },
     {
@@ -142,12 +144,13 @@ const Sidebar = ({ collapsed, setCollapsed }) => {
           ...menuItems,
           {
             key: "logout",
-            icon: <Icon icon="mdi:logout" width="20" height="20" />,
+            icon: <BiLogOut size={20} />, //<Icon icon="mdi:logout" width="20" height="20" />,
             label: "Logout",
             className: "logout-item",
             style: {
               marginTop: "20px",
-              color: "#ff4d4f",
+              color: "#000",
+              // color: "#ff4d4f",
             },
           },
         ]}

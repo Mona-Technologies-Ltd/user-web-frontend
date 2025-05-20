@@ -85,7 +85,7 @@ const ChatComponent = ({ onClose }) => {
       >
         <h3 className="mb-4">Chats</h3>
         {/* Tabs */}
-        <div style={{ display: "flex", marginTop: "10px" }}>
+        <div style={{ width:'100%', display: "flex", justifyContent:'space-between' , marginTop: "10px" }}>
           <div
             onClick={() => setActiveTab("active")}
             style={{
@@ -300,7 +300,11 @@ const SupportPage = () => {
             color: "white",
             padding: "12px 24px",
             borderRadius: "20px",
+            borderBottomLeftRadius:0,
             boxShadow: "0 4px 8px rgba(0,0,0,0.1)",
+            position:'relative',
+            top:'-2rem'
+
           }}
         >
           <p style={{ margin: 0 }}>Hello, how can we help?</p>
@@ -317,6 +321,7 @@ const SupportPage = () => {
             justifyContent: "center",
             alignItems: "center",
             cursor: "pointer",
+            top:'2rem'
           }}
         >
           {/* Hexagon Background */}

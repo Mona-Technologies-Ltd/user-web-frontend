@@ -19,15 +19,17 @@
     width: 50%;
   display: none;
   flex-direction: column;
-  gap: 10px;
+  gap: 3px;
   /* margin-top: 460px; */
   position: absolute;
+  background: #fff;
 }
 
 .nav-links a {
   text-decoration: none;
-  padding: 10px;
-  background: #f0f0f0;
+  padding: 2px;
+  /* background: #f0f0f0; */
+  border-bottom: 1px solid #333;
   color: #333;
   border-radius: 4px;
   transition: background 0.3s ease;

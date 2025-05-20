@@ -59,7 +59,7 @@ const AccountPage = () => {
                   <Title level={3} className="user-name">
                     {userData.name}
                   </Title>
-                  <Tag className="user-role">
+                  <Tag className="userRole">
                     {userData.role}
                   </Tag>
                 </div>
@@ -107,7 +107,7 @@ const AccountPage = () => {
                   </div>
                 </Col>
               </Row>
-              <Button type="primary" className="edit-button">
+              <Button type="primary" className="editButton" style={{ borderRadius:0 }}>
                 Edit
               </Button>
             </Card>
@@ -132,6 +132,7 @@ const AccountPage = () => {
                   prefixIconName="basil:lock-outline"
                   suffixIconName="lets-icons:eye-light"
                   showCircle={true}
+                   style={{ backgroundColor: "#DBEBFF" }}
                 />
               </Form.Item>
 
@@ -143,6 +144,7 @@ const AccountPage = () => {
                   prefixIconName="basil:lock-outline"
                   suffixIconName="lets-icons:eye-light"
                   showCircle={true}
+                   style={{ backgroundColor: "#DBEBFF" }}
                 />
               </Form.Item>
 
@@ -154,6 +156,7 @@ const AccountPage = () => {
                   prefixIconName="basil:lock-outline"
                   suffixIconName="lets-icons:eye-light"
                   showCircle={true}
+                   style={{ backgroundColor: "#DBEBFF" }}
                 />
               </Form.Item>
 
@@ -161,7 +164,7 @@ const AccountPage = () => {
                 type="primary"
                 className="change-password-button"
                 onClick={handlePasswordChange}
-                style={{ backgroundColor: "#0056b3" }}
+                style={{ backgroundColor: "#0056b3",borderRadius:0 }}
               >
                 Change
               </Button>

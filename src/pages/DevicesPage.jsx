@@ -156,14 +156,15 @@ const DeviceImage = styled.img`
 `;
 
 const ViewDetailsButton = styled.button`
-  padding: 8px 16px;
+  padding: 5px 10px;
   border: 1px solid #004aad;
   color: #004aad;
-  background: #d7f0ff;
+  /* background: #d7f0ff; */
+            background: #D7F0FF59;
   cursor: pointer;
   font-weight: 500;
   transition: all 0.2s;
-  width: 100%;
+  width: 60%;
   text-align: center;
 
   &:hover {
@@ -201,7 +202,7 @@ const BrandName = styled.span`
 const DetailsSection = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 15px;
   border: 1px solid rgba(79, 70, 229, 0.45);
   padding: 16px;
   box-shadow: 0 0 5px 14px #E8F2FF73;
@@ -222,11 +223,11 @@ const DetailLabel = styled.span`
 
 const DetailValue = styled.span`
   color: #004AAD;
-  font-weight: 400;
+  font-weight: 300;
   display: flex;
   align-items: center;
-  gap: 8px;
-  font-size: 13px;
+  gap: 12px;
+  font-size: 12px;
 `;
 
 const EditIcon = styled.span`

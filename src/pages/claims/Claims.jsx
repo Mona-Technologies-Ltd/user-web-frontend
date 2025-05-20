@@ -724,10 +724,11 @@ const getStatusStyles = (status) => {
               <option value="rejected">Rejected</option>
             </select>
           </div>
-        <Space size="middle">
+        <Space size="middle" id="filter_id">
           <Button
             icon={<FilterOutlined />}
-            style={{ height: 48, paddingLeft: 16, paddingRight: 16 }}
+            className="btn_search_id"
+            // style={{ height: 48, paddingLeft: 16, paddingRight: 16 }}
             size="large"
           >
             Filter
@@ -736,7 +737,8 @@ const getStatusStyles = (status) => {
                  
           <Button
             type="primary"
-            style={{ height: 48, paddingLeft: 16, paddingRight: 16 }}
+            // style={{ height: 48, paddingLeft: 16, paddingRight: 16 }}
+              className="btn_search_id"
             size="large"
             // onClick={showModal}
             onClick={openModal}
