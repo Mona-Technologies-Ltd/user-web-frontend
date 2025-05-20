@@ -1,3 +1,4 @@
+import { IoIosPhonePortrait } from "react-icons/io"; 
 import React from 'react';
 import './UserProfile.css';
 import { FiPhone, FiMail } from 'react-icons/fi';
@@ -14,7 +15,8 @@ export default function UserProfile() {
       </div>
 
       <div className="contact-box">
-        <FiPhone className="icon" />
+        {/* <FiPhone className="icon" /> */}
+        <IoIosPhonePortrait className="icon" />
         <span>081 4939 4586</span>
       </div>
 

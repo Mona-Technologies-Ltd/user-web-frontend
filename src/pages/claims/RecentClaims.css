@@ -21,7 +21,7 @@
     border: 2px solid #0f52ba;
     color: #0f52ba;
     padding: 0.4rem 1rem;
-    border-radius: 5px;
+    /* border-radius: 5px; */
     background: transparent;
     font-weight: 500;
     cursor: pointer;
@@ -35,7 +35,8 @@
   
   .claim-card {
     background: #ffffff;
-    border-radius: 10px;
+   
+    /* border-radius: 10px; */
     padding: 1.5rem;
     display: flex;
     justify-content: space-between;
@@ -49,16 +50,17 @@
   }
   
   .claim-id {
-    font-size: 1.2rem;
-    font-weight: 700;
+    font-size: 24px;
+    font-weight: 500;
     color: #004AAD;
     margin-bottom: 0.2rem;
   }
   
   .claim-model {
-    font-size: 1rem;
+    font-size: 14px;
     color: #38B6FF;
     margin-bottom: 1rem;
+    font-weight: 400;
   }
   
   .claim-rows {
@@ -71,16 +73,26 @@
     font-size: 0.85rem;
     color: #111827;
   }
-  
+  .device_id{
+    font-weight: 100;
+     color: #8A8894;
+     font-size: 13px;
+  }
+
   .value {
-    font-weight: 600;
+    font-weight: 500;
     color: #111827;
     margin-top: 0.2rem;
+    font-size: 12px;
   }
-  
+  .issue{
+    color: #8A8894;
+    font-weight: 100;
+  }
   .claim-date .label {
     display: block;
     margin-bottom: 0.3rem;
+    font-weight: 400;
   }
   
   .date-box {
@@ -98,9 +110,12 @@
     align-items: center;
     justify-content: center;
     border-radius: 10px;
-    padding: 0.5rem 1rem;
-    min-width: 100px;
-    gap: 15px;
+    /* padding: 0.5rem 1rem; */
+    width: 90px;
+    height: 83px;
+    gap: 5px;
+    position: relative;
+    top: 3rem;
   }
   
   .shield-icon {
@@ -108,16 +123,17 @@
   }
  
   .status-text {
-    font-weight: 600;
-    font-size: 0.95rem;
+    font-weight: 500;
+    font-size: 14px;
+    padding: .4rem .8rem;
   }
   .card-badge {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width:80px;
-  height: 80px;
+  width:70px;
+  height: 65px;
   border-radius: 50%;
   font-size: 13px;
   font-weight: 500;
@@ -127,23 +143,53 @@
 }
   /* Badge Variants */
 .Pending {
-  background: #FFB82E40;
-  color: #f59e0b;
-  box-shadow: 0 0 12px 4px rgba(253, 224, 71, 0.5);
+  background: #f5d49a;
+  /* color: #f59e0b; */
+  box-shadow: 0 0 2px 7px #e0cfab1a;
 }
-
+.Pending_2 {
+    /* width:80px;
+  height: 80px; */
+  /* background: #78104540; */
+  /* color: #1b160e; */
+  box-shadow: 0 0 8px 2px #c0a7741a;
+  display: flex;
+  justify-content: center;
+  padding: 0.2rem;
+  border-radius: 50%;
+}
 .Approved {
-  background: #004AAD40;
+  background: rgb(84, 137, 218);
   color: #3b82f6;
-  box-shadow: 0 0 12px 4px rgba(59, 130, 246, 0.4);
+  box-shadow: 0 0 2px 7px rgba(80, 150, 243, 0.251);
 }
-
+.Approved_2 {
+    /* width:80px;
+  height: 80px; */
+  /* background: #78104540; */
+  /* color: #1b160e; */
+  box-shadow: 0 0 8px 2px #40567240;
+  display: flex;
+  justify-content: center;
+  padding: 0.2rem;
+  border-radius: 50%;
+}
 .Completed {
-  background: #00752F40;
+  background: rgb(150, 194, 150);
   color: #10b981;
-  box-shadow: 0 0 12px 4px rgba(16, 185, 129, 0.4);
+  box-shadow: 0 0 8px 2px rgba(16, 185, 129, 0.4);
 }
-
+.Completed_2 {
+    /* width:80px;
+  height: 80px; */
+  /* background: #78104540; */
+  /* color: #1b160e; */
+  box-shadow: 0 0 8px 2px #00752F14;
+  display: flex;
+  justify-content: center;
+  padding: 0.2rem;
+  border-radius: 50%;
+}
 .Rejected {
   background: rgba(239, 68, 68, 0.2);
   color: #ef4444;
@@ -174,13 +220,11 @@
   /* box-shadow: 0 0 12px 4px rgba(239, 68, 68, 0.4); */
 }
 .uncategorized {
-  background: rgba(107, 114, 128, 0.2);
+  background: rgba(33, 37, 44, 0.2);
   color: #6b7280;
   /* box-shadow: 0 0 12px 4px rgba(107, 114, 128, 0.4); */
 }
- .issue{
-    color: #111827;
-  }
+ 
 .custom-modal .ant-modal-content {
   border-radius: 0 !important; /* Removes border-radius from modal content */
 }
@@ -194,23 +238,64 @@
 }
 
 
-
+#issue_id{
+   color: #6b7280;
+   font-weight: 100;
+}
   /* Mobile responsiveness */
-  @media screen and (max-width: 768px) {
+  @media all and (max-width: 768px) {
     .claims-grid {
-      flex-direction: column;
+      /* flex-direction: column; */
     }
   
     .claim-card {
-      flex-direction: column;
+      /* flex-direction: column; */
       align-items: flex-start;
     }
   
     .claim-status {
-      flex-direction: row;
-      justify-content: flex-start;
+      /* flex-direction: row; */
+      /* justify-content: flex-start; */
       gap: 0.5rem;
-      margin-top: 1rem;
+      /* margin-top: 1rem; */
+      /* top: -1rem; */
     }
+    .Pending_2 {
+    /* width:80px;
+  height: 70%; */
+  /* background: #78104540; */
+  /* color: #1b160e; */
+  box-shadow: 0 0 0 0 #c0a7741a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem;
+  border-radius: 50%;
+}
+
+
+.Completed_2 {
+    /* width:80px;
+  height: 80px; */
+  /* background: #78104540; */
+  /* color: #1b160e; */
+  box-shadow: 0 0 0 0 #00752F14;
+  display: flex;
+  justify-content: center;
+  padding: 0.2rem;
+  border-radius: 50%;
+}
+
+.Approved_2 {
+    /* width:80px;
+  height: 80px; */
+  /* background: #78104540; */
+  /* color: #1b160e; */
+  box-shadow: 0 0 0 0 #40567240;
+  display: flex;
+  justify-content: center;
+  padding: 0.2rem;
+  border-radius: 50%;
+}
   }
   

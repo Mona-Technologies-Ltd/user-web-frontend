@@ -28,8 +28,8 @@ import styled from "@emotion/styled";
 import StatusCards from "./StatusCards";
 import { FaShieldAlt } from "react-icons/fa";
 import "./StatusCards.css";
+import "./RecentClaims.css";
 import './Claims.css';
-
 import { FiSearch } from "react-icons/fi";
 const { Search } = Input;
 const { Option } = Select;
@@ -125,12 +125,12 @@ const IconContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 0 6px 4px ${(props) => {
+  box-shadow: 0 0 8px 5px ${(props) => {
     switch (props.status) {
       case "pending":
         return "#FFB82E40";
       case "approved":
-        return "#E6F4FF";
+        return "rgba(80, 150, 243, 0.251)";
       case "completed":
         return "#00752F40";
       case "rejected":
@@ -142,15 +142,15 @@ const IconContainer = styled.div`
   background-color: ${(props) => {
     switch (props.status) {
       case "pending":
-        return "#FFB82E40";
+        return "#f5d49a";
       case "approved":
-        return "#E6F4FF";
+        return "rgb(84, 137, 218)";
       case "completed":
-        return "#00752F40";
+        return "rgb(150, 194, 150)";
       case "rejected":
         return "#FF460240";
       default:
-        return "#F0F0F0";
+        return "rgba(33, 37, 44, 0.2)";
     }
   }};
 `;
@@ -661,6 +661,18 @@ const filteredClaims = mockClaims.filter((claim) => {
   //     align: "right",
   //   },
   // ];
+const getStatusStyles = (status) => {
+  switch (status) {
+    case 'Pending':
+      return { color: '#EEA10D', bg: '#FFB82E40', box: '#FFB82E40' };
+    case 'Approved':
+      return { color: '#004AAD', bg: '#004AAD40', box: '#dbeafe' };
+    case 'Completed':
+      return { color: '#00752F', bg: '#00752F40', box: '#d1fae5' };
+    default:
+      return {};
+  }
+};
 
   return (
     <div style={{ padding: "10px" }}>
@@ -728,13 +740,16 @@ const filteredClaims = mockClaims.filter((claim) => {
         {/* <StatusCards /> */}
         {/* <StatusCards showDetailsModal={(claim) => console.log("Clicked claim:", claim)} /> */}
 
-        {filteredClaims.map((claim, index) => (
+        {filteredClaims.map((claim, index) => {
+                  const styles = getStatusStyles(claim.status);
+          return (
           <Col xs={24} sm={12} lg={8} key={index}>
             <StyledCard
               onClick={() => showDetailsModal(claim)}
               
               style={{ cursor: "pointer" }}
             >
+              
                <div className="cardStatue" key={index}>
                         <div className="cardStatue-left">
                           <div className="claim-id">{claim.id}</div>
@@ -763,25 +778,46 @@ const filteredClaims = mockClaims.filter((claim) => {
                        </div>
                       </div>
 
-             
+                         {/* <div className="claim-status">
+                            <div className={`${claim.status}_2`}>
+                              <div className={`card-badge ${claim.status}`}>
+                               <FaShieldAlt size={30} style={{ color: styles.color }} />
+                             </div>
+                              </div>
+                             <span
+                               className={`status-text ${claim.status}_normal`}
+                               style={{ color: styles.color }}
+                             >
+                               {claim.status}
+                             </span>
+                           
+                           </div> */}
 
               <StatusContainer>
+                 <div className={`${claim.status}_2`}>
                 <IconContainer status={claim.status}>
                   <StatusIcon
                     src={getStatusIcon(claim.status)}
                     alt={claim.status}
                   />
                 </IconContainer>
+                </div>
                 <StatusTag status={claim.status}>
                   {claim.status === "pending"
                     ? "Pending"
                     : claim.status.charAt(0).toUpperCase() +
                       claim.status.slice(1)}
                 </StatusTag>
+                
               </StatusContainer>
             </StyledCard>
           </Col>
-        ))}
+        )
+
+
+      }
+      )
+        }
       </Row>
  <NewClaimModal visible={showModal} onClose={closeModal} />
       <StyledModal

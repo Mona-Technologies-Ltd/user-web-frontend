@@ -318,7 +318,8 @@ const DashboardPage = () => {
 <DeviceDetails />
 </div>
 </Col> */}
-<Col flex="100%" className="dashboard-main">
+<Col flex="100%" className="">
+{/* <Col flex="100%" className="dashboard-main"> */}
   <div className="profile-device-container">
     <UserProfile />
     <DeviceDetails />

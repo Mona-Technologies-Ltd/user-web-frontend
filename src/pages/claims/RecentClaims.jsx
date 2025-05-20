@@ -78,11 +78,11 @@ export default function RecentClaims() {
 
                 <div className="claim-rows">
                   <div>
-                    <span className="label">Device id</span>
-                    <p className="value issue">{claim.deviceId}</p>
+                    <span className="label device_id">Device id</span>
+                    <p className="value ">{claim.deviceId}</p>
                   </div>
                   <div>
-                    <span className="label">Issue</span>
+                    <span className="label"  id='issue_id'>Issue</span>
                     <p className="value">{claim.issue}</p>
                   </div>
                 </div>
@@ -94,15 +94,18 @@ export default function RecentClaims() {
               </div>
 
               <div className="claim-status">
-                <div className={`card-badge ${claim.status}`}>
+               <div className={`${claim.status}_2`}>
+                 <div className={`card-badge ${claim.status}`}>
                   <FaShieldAlt size={30} style={{ color: styles.color }} />
                 </div>
+                 </div>
                 <span
                   className={`status-text ${claim.status}_normal`}
                   style={{ color: styles.color }}
                 >
                   {claim.status}
                 </span>
+              
               </div>
             </div>
           );

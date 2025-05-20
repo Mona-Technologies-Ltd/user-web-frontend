@@ -45,22 +45,22 @@
     background-color: #E6F0FA;
     color: #004AAD;
     padding: 0.3rem 0.8rem;
-    border-radius: 4px;
+    /* border-radius: 4px; */
     font-weight: 500;
-    font-size: 0.9rem;
+    font-size: 13px;
     margin-top: 0.3rem;
   }
   
   .contact-box {
-    background-color: #D7F0FF59;
-    padding: 1rem;
+    background-color: #c7e6fa59;
+    padding: .5rem;
     display: flex;
     align-items: center;
     gap: 0.75rem;
-    font-size: 1rem;
+    font-size: 14px;
     color: #38B6FF;
     font-weight: 500;
-    border-radius: 4px;
+    /* border-radius: 4px; */
     margin-bottom: 1rem;
    justify-content: center;
   }

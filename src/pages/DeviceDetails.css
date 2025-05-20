@@ -2,6 +2,7 @@
 
 .device-section {
     background: #fff;
+    
     padding: 2rem 1rem;
     font-family: 'Inter', sans-serif;
     width: 70%;
@@ -10,12 +11,17 @@
   .device-wrapper {
     display: flex;
     justify-content: space-between;
-    gap: 2rem;
+     background-image: url(../../../public/Frame_image.png); /* Background image */
+  background-size: cover; /* Adjusts the image to cover the entire element */
+  background-position: center; /* Centers the image */
+  background-repeat: no-repeat; /* Prevents the image from repeating */
+    /* gap: 1.2rem; */
     flex-wrap: wrap;
     /* max-width: 1200px; */
     width: 100%;
     margin: 0 auto;
     align-items: flex-start;
+    /* background: #000; */
   }
   
   .left-panel {
@@ -28,14 +34,16 @@
   
   .brand-box {
     border: 1px solid #004AAD73;
-    border-radius: 0.5rem;
+    /* border-radius: 0.5rem; */
     text-align: center;
-    padding: 1rem;
-    width: 150px;
+    /* padding: 1rem; */
+    width: 162px;
+    height: 156px;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    gap: .4rem;
   }
   
   .apple-logo {
@@ -46,9 +54,10 @@
   }
   
   .brand-text {
-    font-size: 1.2rem;
+    font-size: 24px;
     font-weight: 600;
-    color: #000;
+    color: #00439E;
+    /* margin-top: .6rem; */
   }
   
   .center-panel {
@@ -64,13 +73,14 @@
   }
   
   .claim-button {
-    border: 1px solid #0056d2;
-    background: transparent;
-    color: #0056d2;
-    padding: 0.5rem 1rem;
-    border-radius: 0.4rem;
+    border: 1px solid #004AAD;
+    background: #D7F0FF59;
+    color: #004AAD;
+    padding: 0.9rem 1rem;
+    /* border-radius: 0.4rem; */
     font-weight: 500;
     cursor: pointer;
+    font-size: 14px;
   }
   
   .claim-button:hover {
@@ -79,7 +89,7 @@
   }
   
   .right-panel {
-    flex: 1.5;
+    flex: 2;
     min-width: 250px;
     display: flex;
     flex-direction: column;
@@ -87,10 +97,10 @@
   }
   
   .info-box {
-    border: 1px solid #d0d0ff;
+    border: 1px solid #4F46E573;
     padding: 1rem 1.5rem;
-    border-radius: 0.5rem;
-    color: #1a1a1a;
+    /* border-radius: 0.5rem; */
+    /* color: #1a1a1a; */
     font-size: 0.95rem;
   }
   
@@ -101,25 +111,28 @@
   }
   
   .info-item .label {
-    font-weight: 500;
-    color: #004AADA6;
+    font-weight: 300;
+    color: #1a70dfa6;
+    font-size: 13px;
+
   }
   
   .info-item .value {
     font-weight: 400;
-    color: #004AAD;
+    color: #277be8;
+    font-size: 13px;
   }
   
   .plan-box {
     border: 1px solid #d0d0ff;
     padding: 1rem;
-    border-radius: 0.5rem;
+    /* border-radius: 0.5rem; */
     /* width: 200px; */
   }
   
   .plan-title {
     font-weight: 500;
-    font-size: 1.05rem;
+    font-size: 16px;
     margin-bottom: 0.8rem;
     text-align: center;
     color: #111827;
@@ -137,20 +150,27 @@
     min-width: 120px;
     text-align: center;
     background-color: #DEE7FF59;
-    border-radius: 0.4rem;
+    /* border-radius: 0.4rem; */
     padding: 0.5rem;
   }
   
   .plan-item .label {
-    font-size: 0.65rem;
+    font-size: 13px;
     color: #8A8894;
     display: block;
     margin-bottom: 0.4rem;
+    font-weight: 400;
   }
   
   .plan-item .date {
     font-weight: 400;
     color: #38B6FF;
+    background: #E6F0FA;
+    padding-top: 2.1px;
+    padding-right: 4.19px;
+    padding-bottom: 2.1px;
+    padding-left: 4.9;
+    font-size: 13px;
   }
 .pagination-dots {
   margin-top: 2rem;
@@ -162,27 +182,29 @@
 }
 
 .bar {
-  width: 32px;
-  height: 6px;
+  width: 45px;
+  height: 3px;
   background-color: #e5e7eb; /* light gray (Tailwind's gray-200) */
   /* border-radius: 3px; */
   transition: background-color 0.3s ease;
 }
 
-.bar.active {
+.active {
+  width: 50%;
+  height: 100%;
   background-color: #004AAD; /* strong blue */
 }
 
 .circle_apple{
   width: 3.5rem;
   height: 3.5rem;
-  border: 1px solid black;
+  /* border: .3px solid black; */
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
 
-   border: 2px solid transparent;
+   border: 1px solid transparent;
   background: 
     linear-gradient(white, white) padding-box, 
     conic-gradient(#38B6FF, #021B79, #38B6FF) border-box;

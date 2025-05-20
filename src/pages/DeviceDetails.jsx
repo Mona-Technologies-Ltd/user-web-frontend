@@ -26,10 +26,12 @@ const DeviceDetails = () => {
 
         </div>
        <div className="pagination-dots">
-  <span className="bar active"></span>
-  <span className="bar"></span>
-  <span className="bar"></span>
-</div>
+          <div className="bar">
+            <div className="active"></div>
+          </div>
+          <div className="bar"></div>
+          <div className="bar"></div>
+      </div>
 
        </div>
         {/* Center Phone Display */}
@@ -54,7 +56,7 @@ const DeviceDetails = () => {
             </div>
             <div className="info-item">
               <span className="label">Nickname</span>
-              <span className="value">My fav <span role="img" aria-label="edit"><BiEditAlt color="#004AAD" /></span></span>
+              <span className="value">My fav <span role="img" aria-label="edit"><BiEditAlt color="#004AAD"  size={18}/></span></span>
             </div>
             <div className="info-item">
               <span className="label">Device id</span>
