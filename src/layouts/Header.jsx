@@ -45,12 +45,26 @@ const Header = ({ collapsed, colorBgContainer }) => {
         marginLeft: collapsed ? 0 : "0",
       }}
     >
-      <div
+      {/* <div
         className="header-left"
-        style={{ display: "flex", alignItems: "center" }}
+        style={{ display: "flex", alignItems: "center", width:'20rem', background:'red' }}
       >
         <BreadcrumbComponent />
-      </div>
+      </div> */}
+      <div
+  className="header-left"
+  style={{
+    display: "flex",
+    alignItems: "center",
+    width: "40%",
+    flexShrink: 0,
+    // background: "red",
+    position:'absolute'
+  }}
+>
+  <BreadcrumbComponent />
+</div>
+
 
       <div className="mobile_nav">
         <ToggleMenu />

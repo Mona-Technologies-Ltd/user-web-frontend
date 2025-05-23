@@ -174,24 +174,55 @@ const BackButton = styled.button`
   font-size: 16px;
 `;
 
+// const ContentWrapper = styled.div`
+//   display: flex;
+//   justify-content: space-around;
+// `;
 const ContentWrapper = styled.div`
   display: flex;
   justify-content: space-around;
-`;
+  gap: 24px;
+  flex-wrap: wrap;
 
+  @media (max-width: 768px) {
+    flex-direction: column;
+    padding: 16px;
+    align-items: center;
+  }
+`;  
+
+// const LeftSection = styled.div`
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   gap: 20px;
+//   width: 220px;
+// `;
 const LeftSection = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 20px;
   width: 220px;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
+// const DeviceImage = styled.img`
+//   height: 650px;
+//   object-fit: contain;
+// `;
 const DeviceImage = styled.img`
   height: 650px;
   object-fit: contain;
-`;
 
+  @media (max-width: 768px) {
+    height: auto;
+    width: 80%;
+  }
+`;
 const FileClaimButton = styled.button`
   background-color: #e8f2ff;
   color: #38b6ff;
@@ -202,24 +233,55 @@ const FileClaimButton = styled.button`
   width: 100%;
 `;
 
+// const RightContentSection = styled.div`
+//   display: flex;
+//   flex-direction: column;
+//   gap: 24px;
+//   width: 800px;
+//   flex: none;
+//   background-color: white;
+//   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+//   padding: 24px;
+//   margin-bottom: 24px;
+// `;
 const RightContentSection = styled.div`
   display: flex;
   flex-direction: column;
   gap: 24px;
   width: 800px;
-  flex: none;
   background-color: white;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   padding: 24px;
   margin-bottom: 24px;
-`;
 
+  @media (max-width: 768px) {
+    width: 100%;
+    padding: 16px;
+  }
+`;
+// const TopRowContainer = styled.div`
+//   display: flex;
+//   gap: 24px;
+//   align-items: stretch;
+// `;
 const TopRowContainer = styled.div`
   display: flex;
   gap: 24px;
   align-items: stretch;
-`;
 
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 16px;
+  }
+`;
+// const MiddleSection = styled.div`
+//   display: flex;
+//   flex-direction: column;
+//   gap: 16px;
+//   width: 320px;
+//   box-shadow: 0 0 5px 14px #E8F2FF73;
+
+// `;
 const MiddleSection = styled.div`
   display: flex;
   flex-direction: column;
@@ -227,8 +289,10 @@ const MiddleSection = styled.div`
   width: 320px;
   box-shadow: 0 0 5px 14px #E8F2FF73;
 
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `;
-
 const BrandSection = styled.div`
   display: flex;
   align-items: center;
@@ -273,13 +337,25 @@ const DetailValue = styled.span`
   font-weight: 500;
 `;
 
+// const ClaimsSection = styled.div`
+//   display: flex;
+//   flex-direction: column;
+//   width: 450px;
+//   flex: none;
+//   height: 305px;
+//   overflow: hidden;
+// `;
 const ClaimsSection = styled.div`
   display: flex;
   flex-direction: column;
   width: 450px;
-  flex: none;
   height: 305px;
   overflow: hidden;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    height: auto;
+  }
 `;
 
 const ClaimsHeader = styled.div`
@@ -390,9 +466,17 @@ const ProtectionPlanContent = styled.div`
   padding: 16px;
 `;
 
+// const DatesSection = styled.div`
+//   display: flex;
+//   gap: 16px;
+// `;
 const DatesSection = styled.div`
   display: flex;
   gap: 16px;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
 `;
 
 const DateBox = styled.div`
@@ -408,14 +492,24 @@ const DateLabel = styled.div`
   margin-bottom: 8px;
 `;
 
+// const DateValue = styled.div`
+//   color: #38B6FF;
+//   font-weight: 500;
+//   background: #E6F0FA;
+//   width: 50%;
+//   margin: auto;
+// `;
 const DateValue = styled.div`
   color: #38B6FF;
   font-weight: 500;
   background: #E6F0FA;
   width: 50%;
   margin: auto;
-`;
 
+  @media (max-width: 768px) {
+    width: 100%;
+  }
+`;
 const CoverageSection = styled.div`
   background-color: #DEE7FF59;
   padding: 12px;
@@ -428,13 +522,22 @@ const CoverageLabel = styled.div`
   text-align: center;
 `;
 
+// const CoverageItems = styled.div`
+//   display: flex;
+//   gap: 8px;
+//   flex-wrap: wrap;
+//   justify-content: center;
+// `;
 const CoverageItems = styled.div`
   display: flex;
   gap: 8px;
   flex-wrap: wrap;
   justify-content: center;
-`;
 
+  @media (max-width: 768px) {
+    justify-content: flex-start;
+  }
+`;
 const CoverageItem = styled.div`
   background-color: #E6F0FA;
   color: #38B6FF;

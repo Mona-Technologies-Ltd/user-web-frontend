@@ -127,12 +127,26 @@ const PageTitle = styled.h1`
   font-weight: 600;
 `;
 
+// const DevicesList = styled.div`
+//   display: flex;
+//   flex-direction: column;
+//   gap: 24px;
+// `;
 const DevicesList = styled.div`
   display: flex;
   flex-direction: column;
   gap: 24px;
+  padding: 0 16px;
 `;
 
+// const DeviceCard = styled.div`
+//   display: flex;
+//   background-color: #fff;
+//   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+//   overflow: hidden;
+//   padding: 24px;
+//   gap: 24px;
+// `;
 const DeviceCard = styled.div`
   display: flex;
   background-color: #fff;
@@ -140,14 +154,32 @@ const DeviceCard = styled.div`
   overflow: hidden;
   padding: 24px;
   gap: 24px;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 
+// const DeviceImageSection = styled.div`
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   gap: 16px;
+//   width: 180px;
+// `;
 const DeviceImageSection = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 16px;
   width: 180px;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
 const DeviceImage = styled.img`
@@ -172,11 +204,21 @@ const ViewDetailsButton = styled.button`
   }
 `;
 
+// const DeviceInfoSection = styled.div`
+//   display: flex;
+//   flex-direction: column;
+//   gap: 16px;
+//   width: 300px;
+// `;
 const DeviceInfoSection = styled.div`
   display: flex;
   flex-direction: column;
   gap: 16px;
   width: 300px;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
 const BrandSection = styled.div`
@@ -235,13 +277,21 @@ const EditIcon = styled.span`
   font-size: 12px;
 `;
 
+// const PlanDetailsContainer = styled.div`
+// width: 50% !important;
+//   display: flex;
+//   flex-direction: column;
+//   gap: 16px;
+// `;
 const PlanDetailsContainer = styled.div`
-width: 50% !important;
-/* background: red; */
+  width: 50%;
   display: flex;
   flex-direction: column;
-  /* flex: 1; */
   gap: 16px;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
 const PlanDetailsSection = styled.div`
@@ -259,10 +309,19 @@ const PlanDetailsTitle = styled.h3`
   text-align: center;
 `;
 
+// const DateContainer = styled.div`
+//   display: flex;
+//   gap: 16px;
+//   margin-bottom: 16px;
+// `;
 const DateContainer = styled.div`
   display: flex;
   gap: 16px;
   margin-bottom: 16px;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
 `;
 
 const DateBox = styled.div`
