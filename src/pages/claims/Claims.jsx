@@ -833,7 +833,7 @@ const getStatusStyles = (status) => {
         }
       </Row>
  <NewClaimModal visible={showModal} onClose={closeModal} />
-      <StyledModal
+      {/* <StyledModal
         title={
           <div>
             <div style={{ fontSize: 28, fontWeight: 600, marginBottom: 4 }}>
@@ -1035,7 +1035,7 @@ const getStatusStyles = (status) => {
             Submit
           </Button>
         </Form>
-      </StyledModal>
+      </StyledModal> */}
 
       <StyledSuccessModal
         open={isSuccessModalOpen}
@@ -1136,7 +1136,7 @@ const getStatusStyles = (status) => {
     />
   )} */}
 {/* </ClaimDetailsModals> */}
-<NewClaimModal visible={showModal} onClose={closeModal} />
+{/* <NewClaimModal visible={showModal} onClose={closeModal} /> */}
 
 {/* 👇 INSERT THIS BLOCK HERE */}
 {isDetailsModalOpen && selectedClaim && (
