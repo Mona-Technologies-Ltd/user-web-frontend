@@ -1,255 +1,213 @@
-/* DeviceDetails.css */
-
 .device-section {
-    background: #fff;
-    
-    padding: 2rem 1rem;
-    font-family: 'Inter', sans-serif;
-    width: 70%;
-  }
-  
-  .device-wrapper {
-    display: flex;
-    justify-content: space-between;
-     background-image: url(../../../public/Frame_image.png); /* Background image */
-  background-size: cover; /* Adjusts the image to cover the entire element */
-  background-position: center; /* Centers the image */
-  background-repeat: no-repeat; /* Prevents the image from repeating */
-    /* gap: 1.2rem; */
-    flex-wrap: wrap;
-    /* max-width: 1200px; */
-    width: 100%;
-    margin: 0 auto;
-    align-items: flex-start;
-    /* background: #000; */
-  }
-  
-  .left-panel {
-    flex: 1;
-    min-width: 180px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .brand-box {
-    border: 1px solid #004AAD73;
-    /* border-radius: 0.5rem; */
-    text-align: center;
-    /* padding: 1rem; */
-    width: 162px;
-    height: 156px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    gap: .4rem;
-  }
-  
-  .apple-logo {
-    width: 40px;
-    height: 40px;
-    object-fit: contain;
-    margin-bottom: 0.5rem;
-  }
-  
-  .brand-text {
-    font-size: 24px;
-    font-weight: 600;
-    color: #00439E;
-    /* margin-top: .6rem; */
-  }
-  
-  .center-panel {
-    flex: 1;
-    min-width: 200px;
-    text-align: center;
-    position: relative;
-  }
-  
-  .phone-image {
-    max-width: 180px;
-    margin: 0 auto 1rem;
-  }
-  
-  .claim-button {
-    border: 1px solid #004AAD;
-    background: #D7F0FF59;
-    color: #004AAD;
-    padding: 0.9rem 1rem;
-    /* border-radius: 0.4rem; */
-    font-weight: 500;
-    cursor: pointer;
-    font-size: 14px;
-  }
-  
-  .claim-button:hover {
-    background-color: #0056d2;
-    color: #fff;
-  }
-  
-  .right-panel {
-    flex: 2;
-    min-width: 250px;
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-  }
-  
-  .info-box {
-    border: 1px solid #4F46E573;
-    padding: 1rem 1.5rem;
-    /* border-radius: 0.5rem; */
-    /* color: #1a1a1a; */
-    font-size: 0.95rem;
-  }
-  
-  .info-item {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 0.7rem;
-  }
-  
-  .info-item .label {
-    font-weight: 300;
-    color: #1a70dfa6;
-    font-size: 13px;
+  background: #fff;
+  padding: 2rem 1rem;
+  font-family: 'Inter', sans-serif;
+  width: 70%;
+  /* max-width: 1200px; */
+  margin: 0 auto;
+}
 
-  }
-  
-  .info-item .value {
-    font-weight: 400;
-    color: #277be8;
-    font-size: 13px;
-  }
-  
-  .plan-box {
-    border: 1px solid #d0d0ff;
-    padding: 1rem;
-    /* border-radius: 0.5rem; */
-    /* width: 200px; */
-  }
-  
-  .plan-title {
-    font-weight: 500;
-    font-size: 16px;
-    margin-bottom: 0.8rem;
-    text-align: center;
-    color: #111827;
-  }
-  
-  .plan-dates {
-    display: flex;
-    justify-content: space-between;
-    gap: 1rem;
-    flex-wrap: wrap;
-  }
-  
-  .plan-item {
-    flex: 1;
-    min-width: 120px;
-    text-align: center;
-    background-color: #DEE7FF59;
-    /* border-radius: 0.4rem; */
-    padding: 0.5rem;
-  }
-  
-  .plan-item .label {
-    font-size: 13px;
-    color: #8A8894;
-    display: block;
-    margin-bottom: 0.4rem;
-    font-weight: 400;
-  }
-  
-  .plan-item .date {
-    font-weight: 400;
-    color: #38B6FF;
-    background: #E6F0FA;
-    padding-top: 2.1px;
-    padding-right: 4.19px;
-    padding-bottom: 2.1px;
-    padding-left: 4.9;
-    font-size: 13px;
-  }
+.device-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  background-image: url(../../../public/Frame_image.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  gap: 1rem;
+}
+
+.left-panel,
+.center-panel,
+.right-panel {
+  flex: 1 1 30%;
+  min-width: 280px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.center-panel {
+  text-align: center;
+  position: relative;
+}
+
+.phone-image {
+  max-width: 180px;
+  margin-bottom: 1rem;
+}
+
+.claim-button {
+  border: 1px solid #004AAD;
+  background: #D7F0FF59;
+  color: #004AAD;
+  padding: 0.9rem 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  font-size: 14px;
+  transition: 0.3s ease;
+}
+
+.claim-button:hover {
+  background-color: #0056d2;
+  color: #fff;
+}
+
+.right-panel {
+  align-items: stretch;
+}
+
+.info-box, .plan-box {
+  width: 100%;
+  border: 1px solid #d0d0ff;
+  padding: 1rem 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.info-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.7rem;
+}
+
+.info-item .label, .info-item .value {
+  font-size: 13px;
+}
+
 .pagination-dots {
-  margin-top: 2rem;
+  margin-top: 1rem;
   display: flex;
   justify-content: center;
   gap: 12px;
-  position: relative;
-  bottom: -200px;
 }
 
 .bar {
-  width: 45px;
+  width: 30px;
   height: 3px;
-  background-color: #e5e7eb; /* light gray (Tailwind's gray-200) */
-  /* border-radius: 3px; */
-  transition: background-color 0.3s ease;
+  background-color: #e5e7eb;
 }
 
 .active {
   width: 50%;
   height: 100%;
-  background-color: #004AAD; /* strong blue */
+  background-color: #004AAD;
 }
 
-.circle_apple{
+.circle_apple {
   width: 3.5rem;
   height: 3.5rem;
-  /* border: .3px solid black; */
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
-
-   border: 1px solid transparent;
-  background: 
-    linear-gradient(white, white) padding-box, 
-    conic-gradient(#38B6FF, #021B79, #38B6FF) border-box;
-
+  border: 1px solid transparent;
+  background: linear-gradient(white, white) padding-box,
+              conic-gradient(#38B6FF, #021B79, #38B6FF) border-box;
 }
-@media (max-width: 780px) {
-  .bar {
-    width: 24px;
-    height: 5px;
+
+.brand-box {
+  width: 162px;
+  height: 156px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  gap: 0.4rem;
+  border: 1px solid #004AAD73;
+}
+
+.brand-text {
+  font-size: 24px;
+  font-weight: 600;
+  color: #00439E;
+}
+
+.plan-box .plan-title {
+  text-align: center;
+  font-weight: 500;
+  font-size: 16px;
+  margin-bottom: 0.8rem;
+  color: #111827;
+}
+
+.plan-dates {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.plan-item {
+  flex: 1 1 45%;
+  text-align: center;
+  background-color: #DEE7FF59;
+  padding: 0.5rem;
+}
+
+.plan-item .label {
+  font-size: 13px;
+  color: #8A8894;
+  margin-bottom: 0.4rem;
+  display: block;
+}
+
+.plan-item .date {
+  font-size: 13px;
+  color: #38B6FF;
+  background: #E6F0FA;
+  padding: 2px 5px;
+}
+
+/* Tablet-specific */
+@media screen and (max-width: 1024px) {
+  .device-wrapper {
+    flex-direction: row;
+    gap: 1.5rem;
+    justify-content: center;
   }
 
-  .device-section{
+  .left-panel, .center-panel, .right-panel {
+    flex: 1 1 100%;
+    align-items: center;
+  }
+
+  .info-box, .plan-box {
+    padding: 1rem;
     width: 100%;
   }
-  .center-panel{
-    display: flex;
-    flex-direction: column;
+
+  .plan-dates {
+    flex-direction: row;
+    gap: 1rem;
+  }
+
+  .pagination-dots {
+    margin-top: 1rem;
+    position: static;
+  }
+
+  .claim-button {
+    margin-top: 1rem;
   }
 }
 
-  
-  /* Responsive adjustments */
-  @media (max-width: 768px) {
-    .device-wrapper {
-      flex-direction: column;
-      align-items: center;
-      padding: 1rem;
-    }
-  
-    .left-panel,
-    .center-panel,
-    .right-panel {
-      width: 100%;
-      text-align: center;
-    }
-  
-    .info-item {
-      flex-direction: column;
-      align-items: flex-start;
-      margin-bottom: 1rem;
-    }
-  
-    .plan-dates {
-      flex-direction: column;
-      gap: 1rem;
-    }
+/* Mobile */
+@media screen and (max-width: 768px) {
+  .device-wrapper {
+    flex-direction: column;
+    padding: 1rem;
   }
-  
+
+  .info-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.3rem;
+  }
+
+  .plan-dates {
+    flex-direction: column;
+    gap: 1rem;
+  }
+}

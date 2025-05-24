@@ -117,8 +117,13 @@ const DevicesPage = () => {
 };
 
 // Styled Components
+// const Container = styled.div`
+//   margin: 0 auto;
+// `;
 const Container = styled.div`
   margin: 0 auto;
+  padding: 24px 16px;
+  max-width: 1200px; /* Keeps content from stretching too wide */
 `;
 
 const PageTitle = styled.h1`
@@ -127,11 +132,7 @@ const PageTitle = styled.h1`
   font-weight: 600;
 `;
 
-// const DevicesList = styled.div`
-//   display: flex;
-//   flex-direction: column;
-//   gap: 24px;
-// `;
+
 const DevicesList = styled.div`
   display: flex;
   flex-direction: column;
@@ -139,14 +140,6 @@ const DevicesList = styled.div`
   padding: 0 16px;
 `;
 
-// const DeviceCard = styled.div`
-//   display: flex;
-//   background-color: #fff;
-//   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-//   overflow: hidden;
-//   padding: 24px;
-//   gap: 24px;
-// `;
 const DeviceCard = styled.div`
   display: flex;
   background-color: #fff;
@@ -154,22 +147,15 @@ const DeviceCard = styled.div`
   overflow: hidden;
   padding: 24px;
   gap: 24px;
-  flex-direction: row;
   flex-wrap: wrap;
 
-  @media (max-width: 768px) {
-    flex-direction: column;
-    align-items: center;
+  @media (min-width: 1024px) {
+    flex-wrap: nowrap;
   }
 `;
 
-// const DeviceImageSection = styled.div`
-//   display: flex;
-//   flex-direction: column;
-//   align-items: center;
-//   gap: 16px;
-//   width: 180px;
-// `;
+
+
 const DeviceImageSection = styled.div`
   display: flex;
   flex-direction: column;
@@ -204,12 +190,7 @@ const ViewDetailsButton = styled.button`
   }
 `;
 
-// const DeviceInfoSection = styled.div`
-//   display: flex;
-//   flex-direction: column;
-//   gap: 16px;
-//   width: 300px;
-// `;
+
 const DeviceInfoSection = styled.div`
   display: flex;
   flex-direction: column;
@@ -277,14 +258,10 @@ const EditIcon = styled.span`
   font-size: 12px;
 `;
 
-// const PlanDetailsContainer = styled.div`
-// width: 50% !important;
-//   display: flex;
-//   flex-direction: column;
-//   gap: 16px;
-// `;
+
 const PlanDetailsContainer = styled.div`
-  width: 50%;
+  flex: 1;
+  min-width: 300px;
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -293,6 +270,7 @@ const PlanDetailsContainer = styled.div`
     width: 100%;
   }
 `;
+
 
 const PlanDetailsSection = styled.div`
   display: flex;
@@ -309,11 +287,7 @@ const PlanDetailsTitle = styled.h3`
   text-align: center;
 `;
 
-// const DateContainer = styled.div`
-//   display: flex;
-//   gap: 16px;
-//   margin-bottom: 16px;
-// `;
+
 const DateContainer = styled.div`
   display: flex;
   gap: 16px;
