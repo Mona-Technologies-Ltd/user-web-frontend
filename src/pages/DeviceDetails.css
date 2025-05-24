@@ -195,6 +195,9 @@
 
 /* Mobile */
 @media screen and (max-width: 768px) {
+  .device-section{
+    width: 100%;
+  }
   .device-wrapper {
     flex-direction: column;
     padding: 1rem;

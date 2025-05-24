@@ -200,17 +200,53 @@ width: 60% !important;
   }
 } */
 
-@media (max-width: 600px) {
+
+/* 🔽 Tablet responsiveness (768px and below) */
+@media (max-width: 1024px) {
   .repair-cards {
-    flex-direction: column;
-    align-items: center;
+    padding-left: 2rem;
+    justify-content: center;
   }
 
   .repair-card {
     width: 100%;
+    /* background: #000; */
   }
 
   .claim-id-box {
     font-size: 14px;
+  }
+
+  .success-title {
+    font-size: 20px;
+  }
+}
+
+/* 🔽 Mobile responsiveness (600px and below) */
+@media (max-width: 600px) {
+  .repair-cards {
+    flex-direction: column;
+    align-items: center;
+    padding-left: 0;
+  }
+
+  .repair-card {
+    width: 90%;
+  }
+
+  .claim-id-box {
+    font-size: 13px;
+  }
+
+  .success-title {
+    font-size: 18px;
+  }
+
+  .success-subtitle {
+    font-size: 14px;
+  }
+
+  .copyBtn {
+    width: 100% !important;
   }
 }

@@ -63,18 +63,21 @@ const NewClaimModal = ({ visible, onClose }) => {
           />
 
           <label>Issue Type</label>
-          <Select
-            mode="multiple"
-            allowClear
-            placeholder="Select issue(s)"
-            value={selectedIssues}
-            onChange={handleIssueChange}
-            className="full-width"
-            options={issueOptions.map((issue) => ({
-              value: issue,
-              label: issue,
-            }))}
-          />
+         <Select
+  mode="multiple"
+  allowClear
+  placeholder="Select issue(s)"
+  value={selectedIssues}
+  onChange={handleIssueChange}
+  className="full-width"
+  maxTagCount={3}
+  maxTagPlaceholder={(omittedValues) => `+${omittedValues.length} more`}
+  options={issueOptions.map((issue) => ({
+    value: issue,
+    label: issue,
+  }))}
+/>
+
 
           <label>When</label>
           <Input placeholder="Enter time of issue" className="full-width" />

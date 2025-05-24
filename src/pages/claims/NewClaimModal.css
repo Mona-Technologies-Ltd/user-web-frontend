@@ -48,6 +48,16 @@
   height: 40px;
   font-weight: 500;
 }
+.ant-select-multiple .ant-select-selection-item {
+  font-size: 7px; /* You can adjust to 12px or 14px as needed */
+  padding: 2px 8px;
+  border-radius: 4px;
+  background-color: #D7F0FF;
+  color: #004AAD;
+  font-weight: 500;
+  white-space: normal;
+  word-break: break-word;
+}
 
 @media (max-width: 600px) {
   .claim-modal .ant-modal {
@@ -63,4 +73,17 @@
     font-size: 16px;
     height: 48px;
   }
+  /* Ensure modal body doesn't overflow */
+.modal-body {
+  max-height: 65vh;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+/* Style for selected tags inside the Select */
+.ant-select-multiple .ant-select-selection-item {
+  font-size: 5px; /* You can adjust to 12px or 14px as needed */
+  padding: 2px 3px;
+ 
+ 
+}
 }
