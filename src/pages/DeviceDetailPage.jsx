@@ -206,7 +206,7 @@ const LeftSection = styled.div`
   width: 220px;
 
   @media (max-width: 768px) {
-    width: 100%;
+    width: 50%;
   }
 `;
 
@@ -220,7 +220,7 @@ const DeviceImage = styled.img`
 
   @media (max-width: 768px) {
     height: auto;
-    width: 80%;
+    width: 70%;
   }
 `;
 const FileClaimButton = styled.button`
@@ -231,6 +231,14 @@ const FileClaimButton = styled.button`
   cursor: pointer;
   font-weight: 500;
   width: 100%;
+
+
+    @media (max-width: 768px) {
+    height: auto;
+    width: 70%;
+    font-weight: 500;
+     padding: 6px 10px;
+  }
 `;
 
 // const RightContentSection = styled.div`
@@ -256,32 +264,23 @@ const RightContentSection = styled.div`
 
   @media (max-width: 768px) {
     width: 100%;
-    padding: 16px;
+    padding: 5px;
+     gap: 4px;
+     
   }
 `;
-// const TopRowContainer = styled.div`
-//   display: flex;
-//   gap: 24px;
-//   align-items: stretch;
-// `;
+
 const TopRowContainer = styled.div`
   display: flex;
   gap: 24px;
   align-items: stretch;
 
   @media (max-width: 768px) {
-    flex-direction: column;
-    gap: 16px;
+    /* flex-direction: column; */
+    gap: 10px;
   }
 `;
-// const MiddleSection = styled.div`
-//   display: flex;
-//   flex-direction: column;
-//   gap: 16px;
-//   width: 320px;
-//   box-shadow: 0 0 5px 14px #E8F2FF73;
 
-// `;
 const MiddleSection = styled.div`
   display: flex;
   flex-direction: column;
@@ -290,7 +289,7 @@ const MiddleSection = styled.div`
   box-shadow: 0 0 5px 14px #E8F2FF73;
 
   @media (max-width: 768px) {
-    width: 100%;
+    width: 50%;
   }
 `;
 const BrandSection = styled.div`
@@ -299,18 +298,35 @@ const BrandSection = styled.div`
   gap: 12px;
   border: 1px solid rgba(79, 70, 229, 0.45);
   padding: 16px;
+
+
+    @media (max-width: 768px) {
+      gap: 5px;
+  border: .7px solid rgba(79, 70, 229, 0.45);
+  padding: 6px;
+  }
 `;
 
 const BrandLogo = styled.img`
   width: 40px;
   height: 40px;
   object-fit: contain;
+
+    @media (max-width: 768px) {
+      width: 25px;
+  height: 25px;
+  }
 `;
 
 const BrandName = styled.span`
   font-size: 18px;
   font-weight: 500;
   color: #00439e;
+
+
+    @media (max-width: 768px) {
+    font-size: 12px;
+  }
 `;
 
 const DetailsSection = styled.div`
@@ -319,6 +335,12 @@ const DetailsSection = styled.div`
   gap: 12px;
   border: 1px solid rgba(79, 70, 229, 0.45);
   padding: 16px;
+
+     @media (max-width: 768px) {
+     gap: 12px;
+  border: .5px solid rgba(79, 70, 229, 0.45);
+  padding: 6px;
+  }
 `;
 
 const DetailRow = styled.div`
@@ -330,21 +352,28 @@ const DetailRow = styled.div`
 const DetailLabel = styled.span`
   color: #38b6ff;
   font-size: 14px;
+
+
+
+    @media (max-width: 768px) {
+     font-size: 8px;
+  }
 `;
 
 const DetailValue = styled.span`
   color: #38b6ff;
   font-weight: 500;
+
+
+
+    @media (max-width: 768px) {
+       font-weight: 200;
+            font-size: 7px;
+
+  }
 `;
 
-// const ClaimsSection = styled.div`
-//   display: flex;
-//   flex-direction: column;
-//   width: 450px;
-//   flex: none;
-//   height: 305px;
-//   overflow: hidden;
-// `;
+
 const ClaimsSection = styled.div`
   display: flex;
   flex-direction: column;
@@ -372,6 +401,10 @@ width: 95%;
   margin-bottom: .5rem;
     box-shadow: 0 0 5px 14px #E8F2FF73;
 
+   @media (max-width: 768px) {
+       /* padding: 12px 10px; */
+  font-size: 12px;
+  }
 `;
 
 const ClaimsCount = styled.span`
@@ -379,6 +412,11 @@ const ClaimsCount = styled.span`
   color: #38b6ff;
   text-align: center;
   /* background: green; */
+
+
+   @media (max-width: 768px) {
+     margin-left: 4px;
+  }
 `;
 
 const ClaimsList = styled.div`
@@ -389,11 +427,21 @@ const ClaimsList = styled.div`
   background-color: #D7F0FF59;
   height: calc(100% - 52px); /* Subtract header height */
   overflow-y: auto;
+
+
+     @media (max-width: 768px) {
+       gap: 10px;
+  padding: 8px;
+  }
 `;
 
 const ClaimItem = styled.div`
   background-color: #D7F0FF;
   padding: 16px;
+
+     @media (max-width: 768px) {
+  padding: 10px;
+  }
 `;
 
 const ClaimRow = styled.div`
@@ -404,6 +452,8 @@ const ClaimRow = styled.div`
   &:last-child {
     margin-bottom: 0;
   }
+
+  
 `;
 const ClaimRowStatus = styled.div`
   display: flex;
@@ -425,6 +475,11 @@ const ClaimLabel = styled.span`
 const ClaimValue = styled.span`
   color: #38b6ff;
   font-weight: 500;
+
+
+       @media (max-width: 768px) {
+    font-weight: 300;
+  }
 `;
 
 const StatusBadge = styled.span`
@@ -457,6 +512,13 @@ const ProtectionPlanTitle = styled.div`
   font-weight: 600;
   text-align: center;
   padding: 16px;
+
+
+     @media (max-width: 768px) {
+     font-size: 10px;
+  font-weight: 400;
+  padding: 10px;
+  }
 `;
 
 const ProtectionPlanContent = styled.div`
@@ -464,12 +526,15 @@ const ProtectionPlanContent = styled.div`
   flex-direction: column;
   gap: 16px;
   padding: 16px;
+
+
+    @media (max-width: 768px) {
+    gap: 8px;
+  padding: 10px;
+  }
 `;
 
-// const DatesSection = styled.div`
-//   display: flex;
-//   gap: 16px;
-// `;
+
 const DatesSection = styled.div`
   display: flex;
   gap: 16px;
@@ -484,6 +549,11 @@ const DateBox = styled.div`
   background-color: #DEE7FF59;
   padding: 12px;
   text-align: center;
+
+
+    @media (max-width: 768px) {
+      padding: 8px;
+  }
 `;
 
 const DateLabel = styled.div`
@@ -492,13 +562,7 @@ const DateLabel = styled.div`
   margin-bottom: 8px;
 `;
 
-// const DateValue = styled.div`
-//   color: #38B6FF;
-//   font-weight: 500;
-//   background: #E6F0FA;
-//   width: 50%;
-//   margin: auto;
-// `;
+
 const DateValue = styled.div`
   color: #38B6FF;
   font-weight: 500;

@@ -13,7 +13,8 @@ const DeviceDetails = () => {
     <div className="device-section">
       <div className="device-wrapper">
         {/* Left Panel */}
-       <div className=''>
+       <div className='desk'>
+        <div className=''>
        <div className="left-panel">
           <div className="brand-box">
             {/* <img src="/apple-logo.png" alt="Apple" className="apple-logo" /> */}
@@ -32,7 +33,6 @@ const DeviceDetails = () => {
           <div className="bar"></div>
           <div className="bar"></div>
       </div>
-
        </div>
         {/* Center Phone Display */}
         <div className="center-panel">
@@ -46,6 +46,7 @@ const DeviceDetails = () => {
             File New Claim</button>
         </div>
         <NewClaimModal visible={showModal} onClose={closeModal} />
+       </div>
 
         {/* Right Info Panel */}
         <div className="right-panel">

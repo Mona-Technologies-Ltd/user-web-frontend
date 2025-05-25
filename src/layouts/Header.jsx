@@ -23,7 +23,7 @@ const Header = ({ collapsed, colorBgContainer }) => {
     navigate("/login");
   };
 
-  // Check if we're on the dashboard page
+  // Check if we're on the dashboard page    AntHeaderAntHeader
   const isDashboard =
     location.pathname === "/" || location.pathname === "/dashboard";
 

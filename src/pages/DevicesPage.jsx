@@ -46,7 +46,9 @@ const DevicesPage = () => {
       <DevicesList>
         {deviceData.map((device) => (
           <DeviceCard key={device.id}>
-            <DeviceImageSection>
+           <div className="device_resolve" style={{ display:'flex' }}>
+
+             <DeviceImageSection>
               <DeviceImage
                 src={device.deviceImage}
                 alt={`${device.brand} device`}
@@ -92,6 +94,7 @@ const DevicesPage = () => {
                 </DetailRow>
               </DetailsSection>
             </DeviceInfoSection>
+           </div>
 
             <PlanDetailsContainer>
               <PlanDetailsSection>
@@ -171,14 +174,17 @@ const DeviceImageSection = styled.div`
 const DeviceImage = styled.img`
   height: 255px;
   object-fit: contain;
+
+   @media (max-width: 768px) {
+     height: 125px;
+  }
 `;
 
 const ViewDetailsButton = styled.button`
   padding: 5px 10px;
   border: 1px solid #004aad;
   color: #004aad;
-  /* background: #d7f0ff; */
-            background: #D7F0FF59;
+  background: #D7F0FF59;
   cursor: pointer;
   font-weight: 500;
   transition: all 0.2s;
@@ -187,6 +193,14 @@ const ViewDetailsButton = styled.button`
 
   &:hover {
     background-color: rgba(0, 112, 243, 0.05);
+  }
+
+    @media (max-width: 768px) {
+        width: 70%;
+       padding: 3px 4px;
+       font-weight: 200;
+       font-size: .5rem;
+        border: .6px solid #004aad;
   }
 `;
 
@@ -198,7 +212,8 @@ const DeviceInfoSection = styled.div`
   width: 300px;
 
   @media (max-width: 768px) {
-    width: 100%;
+   width: 150px;
+    gap: 5px;
   }
 `;
 
@@ -208,18 +223,35 @@ const BrandSection = styled.div`
   gap: 12px;
   border: 1px solid rgba(79, 70, 229, 0.45);
   padding: 16px;
+
+
+  @media (max-width: 768px) {
+    padding: 6px;
+    gap: 6px;
+  }
 `;
 
 const BrandLogo = styled.img`
   width: 40px;
   height: 40px;
   object-fit: contain;
+
+
+    @media (max-width: 768px) {
+      width: 25px;
+  height: 25px;
+  }
 `;
 
 const BrandName = styled.span`
   font-size: 18px;
   font-weight: 500;
   color: #00439e;
+
+  @media (max-width: 768px) {
+ font-size: 15px;
+  font-weight: 300;
+  }
 `;
 
 const DetailsSection = styled.div`
@@ -230,6 +262,11 @@ const DetailsSection = styled.div`
   padding: 16px;
   box-shadow: 0 0 5px 14px #E8F2FF73;
 
+
+  @media (max-width: 768px) {
+ gap: 5px;
+  padding: 8px;
+  }
 `;
 
 const DetailRow = styled.div`
@@ -242,6 +279,12 @@ const DetailLabel = styled.span`
   color: #004AADA6;
   font-size: 13px;
   font-weight: 400;
+
+
+    @media (max-width: 768px) {
+ font-size: 8px;
+  font-weight: 300;
+  }
 `;
 
 const DetailValue = styled.span`
@@ -251,6 +294,13 @@ const DetailValue = styled.span`
   align-items: center;
   gap: 12px;
   font-size: 12px;
+
+
+      @media (max-width: 768px) {
+ font-size: 7px;
+  font-weight: 200;
+    gap: 8px;
+  }
 `;
 
 const EditIcon = styled.span`
@@ -278,6 +328,13 @@ const PlanDetailsSection = styled.div`
   width: 100%;
   border: 1px solid rgba(79, 70, 229, 0.45);
   padding: 16px;
+
+
+    @media (max-width: 768px) {
+      width: 80%;
+  border: 1px solid rgba(79, 70, 229, 0.45);
+  padding: 16px;
+  }
 `;
 
 const PlanDetailsTitle = styled.h3`
@@ -285,6 +342,13 @@ const PlanDetailsTitle = styled.h3`
   font-weight: 600;
   margin-bottom: 16px;
   text-align: center;
+
+
+      @media (max-width: 768px) {
+    font-size: 14px;
+  font-weight: 400;
+  margin-bottom: 10px;
+  }
 `;
 
 
@@ -327,6 +391,14 @@ const RenewButton = styled.button`
   cursor: pointer;
   font-weight: 500;
   transition: all 0.2s;
+
+
+      @media (max-width: 768px) {
+        width: 80%;
+    padding: 6px;
+  font-weight: 300;
+ 
+  }
 `;
 
 export default DevicesPage;
