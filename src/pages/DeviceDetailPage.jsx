@@ -215,7 +215,7 @@ const LeftSection = styled.div`
 //   object-fit: contain;
 // `;
 const DeviceImage = styled.img`
-  height: 650px;
+  height: 500px;
   object-fit: contain;
 
   @media (max-width: 768px) {
