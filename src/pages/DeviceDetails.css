@@ -1,9 +1,9 @@
 .device-section {
   overflow-x: hidden; /* Prevent horizontal scroll */
   background: #fff;
-  padding: 2rem 1rem;
+  padding: 1rem .6rem;
   font-family: 'Inter', sans-serif;
-  /* width: 70%; */
+  width: 75%;
   /* max-width: 1200px; */
   margin: 0 auto;
 
@@ -19,14 +19,14 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  gap: 1rem;
+  gap: .5rem;
 }
 
 .left-panel,
 .center-panel,
 .right-panel {
   flex: 1 1 30%;
-  min-width: 280px;
+  min-width: 255px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -38,7 +38,7 @@
 }
 
 .phone-image {
-  max-width: 180px;
+  max-width: 160px;
   margin-bottom: 1rem;
 }
 
@@ -111,8 +111,8 @@
 }
 
 .brand-box {
-  width: 162px;
-  height: 156px;
+  width: 142px;
+  height: 150px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -123,7 +123,7 @@
 }
 
 .brand-text {
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 600;
   color: #00439E;
 }
@@ -142,20 +142,21 @@
 
 .plan-dates {
   display: flex;
-  gap: 1rem;
+  gap: .4rem;
   flex-wrap: wrap;
   justify-content: space-between;
 }
 
 .plan-item {
-  flex: 1 1 45%;
+  width: 48%;
+  /* flex: 1 2 45%; */
   text-align: center;
   background-color: #DEE7FF59;
   padding: 0.5rem;
 }
 
 .plan-item .label {
-  font-size: 13px;
+  font-size: 10px;
   color: #8A8894;
   margin-bottom: 0.4rem;
   display: block;

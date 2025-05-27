@@ -1,7 +1,7 @@
 .user-profile-container {
-  width: 28%;
+  width: 23%;
   margin: auto;
-  padding: 2rem 1rem;
+  padding: .2rem .5rem;
   height: 100%;
   font-family: 'Inter', sans-serif;
   text-align: left;
@@ -64,13 +64,13 @@
 }
 
 /* Tablet responsiveness */
-@media all and (max-width: 1744px){
+@media all and (max-width: 900px){
 .user-profile-container {
     /* width: 70%; */
     /* height: auto; */
   }
 }
-@media all and (max-width: 1574px) and (min-width: 481px) {
+@media all and (max-width: 1304px) and (min-width: 481px) {
   .user-profile-container {
     width: 70%;
     height: auto;
