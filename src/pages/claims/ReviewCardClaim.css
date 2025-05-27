@@ -12,6 +12,7 @@
   max-width: 400px;
   margin: auto;
   flex-wrap: wrap;
+  margin-top: 5rem;
 }
 
 .review-content {
@@ -104,6 +105,7 @@
   .review-card {
     flex-direction: column;
     align-items: flex-start;
+    margin-top: 1.2rem;
   }
 
   .review-score-container {
@@ -123,5 +125,8 @@
   .corner-stripes {
     width: 80px;
     height: 80px;
+  }
+  .eview-title{
+    font-size: 1rem;
   }
 }

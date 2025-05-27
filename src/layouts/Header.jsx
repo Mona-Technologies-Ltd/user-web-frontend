@@ -1,6 +1,8 @@
+import { AiOutlineCloseSquare } from "react-icons/ai"; 
+import { AiOutlineMenu } from "react-icons/ai"; 
 import React from "react";
 import { Layout, Button, Space, Avatar, Dropdown } from "antd";
-import {
+import Icon, {
   LogoutOutlined,
   UserOutlined,
   SettingOutlined,
@@ -9,14 +11,16 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { logout } from "../redux/slices/authSlice";
 import BreadcrumbComponent from "../components/Breadcrumb";
-import ToggleMenu from "./ToggleMenu";
+// import ToggleMenu from "./ToggleMenu";
 
 const { Header: AntHeader } = Layout;
 
-const Header = ({ collapsed, colorBgContainer }) => {
+const Header = ({ collapsed, colorBgContainer, setMobileSidebarVisible,mobileSidebarVisible }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const location = useLocation();
+  const [isOpen, setIsOpen] = React.useState(false);
+  const toggleMenu = () => setIsOpen(!isOpen);
 
   const handleLogout = () => {
     dispatch(logout());
@@ -55,20 +59,29 @@ const Header = ({ collapsed, colorBgContainer }) => {
   className="header-left"
   style={{
     display: "flex",
-    alignItems: "center",
+     alignItems: "center" ,
+    // display: "flex",
+    // alignItems: "center",
     width: "40%",
-    flexShrink: 0,
+    // flexShrink: 0,
     // background: "red",
-    position:'absolute'
+    // position:'absolute'
   }}
 >
+
+<div id="menu_mobile_nav">
+ <button style={{ padding:12,border:'none', height:10, background:'none'}} onClick={() => setMobileSidebarVisible((prev) => !prev)}>
+  {mobileSidebarVisible ? <AiOutlineCloseSquare size={20} /> : <AiOutlineMenu size={20} />}
+</button>
+
+</div>
+
   <BreadcrumbComponent />
 </div>
 
 
-      <div className="mobile_nav">
-        <ToggleMenu />
-      </div>
+  
+
     </AntHeader>
   );
 };

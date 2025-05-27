@@ -26,7 +26,7 @@ const repairShops = [
   },
    {
     id: 3,
-    name: "Shop 2",
+    name: "Shop 3",
     title: "PHONEHUBB Capital Abuja",
     address:
       "Suite F8, 4 Aminu Kano Cres, Wuse, Abuja 900288, Federal Capital Territory",
@@ -72,7 +72,7 @@ const ClaimSuccessModal = ({ visible, onClose, claimId = "CL-134763" }) => {
         <p className="success-subtitle">
           Based on your current location, here are the list of repair shops near you
         </p>
-
+<div className="repair-cards-wrapper">
         <div className="repair-cards">
           {repairShops.map((shop) => (
             <div className="repair-card" key={shop.id}>
@@ -101,6 +101,7 @@ const ClaimSuccessModal = ({ visible, onClose, claimId = "CL-134763" }) => {
             </div>
           ))}
         </div>
+      </div>
       </div>
     </Modal>
   );

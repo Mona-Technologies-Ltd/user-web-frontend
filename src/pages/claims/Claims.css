@@ -24,9 +24,11 @@
   max-width: 600px;
   position: relative;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
-  height: 140vh;
+  height: 100vh;
 }
-
+.custom-claim-details-modal_1{
+    height: 130vh;
+}
 /* Close Button */
 .custom-claim-details-modal .close-button {
   position: absolute;
@@ -45,3 +47,16 @@
   color: #000;
 }
 
+
+@media (max-width: 768px) {
+  .custom-claim-details-modal_1{
+    height: 120vh;
+}
+}
+
+
+@media (max-width: 400px) {
+  .custom-claim-details-modal_1{
+    height: 130vh;
+}
+}

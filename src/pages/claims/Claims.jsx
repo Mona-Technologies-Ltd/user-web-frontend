@@ -1141,10 +1141,11 @@ const getStatusStyles = (status) => {
 {/* 👇 INSERT THIS BLOCK HERE */}
 {isDetailsModalOpen && selectedClaim && (
   <div className="custom-claim-details-overlay">
-    <div className="custom-claim-details-modal">
+<div className={`custom-claim-details-modal ${selectedClaim.status === 'completed' || selectedClaim.status === 'rejected' ? 'custom-claim-details-modal_1' : ''}`}>
       <button className="close-button" onClick={handleDetailsModalClose}>
         <CloseOutlined />
       </button>
+      
       <ClaimDetailsModal
         deviceId={selectedClaim.deviceId}
         claimId={selectedClaim.id}

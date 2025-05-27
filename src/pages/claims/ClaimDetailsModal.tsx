@@ -80,7 +80,8 @@ export default function ClaimDetailsModal({ deviceId, claimId, model, date, issu
       {status.toLowerCase() == 'completed' ? (<ReviewCardClaim />): ''}
 {/* {status.toLowerCase()} */}
 
-        {status.toLowerCase() == 'rejected' ? (  <div className="description-block" style={{ marginTop:'8rem' }}>
+        {status.toLowerCase() == 'rejected' ? ( 
+           <div className="description-block new_block_reject" >
           <h4 className="description-label">Rejection Message</h4>
           <p className="description-text" id='d_t_m'>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit

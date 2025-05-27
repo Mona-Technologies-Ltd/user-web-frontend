@@ -14,14 +14,21 @@ import monaSingleLogo from "../assets/monaSingleLogo.png";
 
 const { Sider } = Layout;
 
-const Sidebar = ({ collapsed, setCollapsed }) => {
+const Sidebar = ({ collapsed, setCollapsed, mobileSidebarVisible,setMobileSidebarVisible }) => {
   const navigate = useNavigate();
   const location = useLocation();
   const dispatch = useDispatch();
-
-  // Extract the current path from location to determine which menu item is active
   const currentPath = location.pathname;
+  // Extract the current path from location to determine which menu item is active
 
+
+  const [toggle, setToggle] = React.useState(true);
+  
+const handleMenuClicks = () => {
+  setToggle((prev) => !prev); // safer toggle
+};
+
+console.log(mobileSidebarVisible)
   // Menu items configuration with paths and icons <Icon icon="material-symbols:dashboard"  />
   const menuItems = [
     {
@@ -70,7 +77,7 @@ const Sidebar = ({ collapsed, setCollapsed }) => {
       collapsible
       collapsed={collapsed}
       width={250}
-      className="dashboard-sidebar"
+      className={!mobileSidebarVisible ? "dashboard-sidebar" : ""}
       theme="light"
     >
       <div

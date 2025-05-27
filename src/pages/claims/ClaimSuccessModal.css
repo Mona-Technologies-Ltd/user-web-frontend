@@ -1,9 +1,17 @@
+.repair-cards-wrapper {
+  overflow-x: auto;
+  width: 100%;
+}
+
 .success-container {
   text-align: center;
   /* padding: 1rem; */
    overflow-x: scroll;  
+  
 }
-
+.claim-modal{
+  overflow: scroll;
+}
 .success-title {
   font-size: 22px;
   font-weight: bold;
@@ -38,7 +46,9 @@
   /* flex-wrap: wrap; */
   gap: 10px;
   justify-content: center;
-  padding-left: 9rem;
+  justify-content: flex-start; 
+  /* margin-left: 3rem; */
+  /* padding-left: 9rem; */
   
 }
 
@@ -49,6 +59,7 @@
   border-radius: 6px;
   text-align: center;
   background: #E8F2FF59;
+  
  
 }
 
@@ -122,6 +133,9 @@ width: 60% !important;
   stroke: #4bb543;
   animation: dashCheck 2s infinite ease-in-out;
 }
+.repair-cards::-webkit-scrollbar {
+  display: none; /* Optional: hide scrollbar on mobile */
+}
 
 @keyframes dashCircle {
   0% {
@@ -156,97 +170,33 @@ width: 60% !important;
   }
 }
 
-/* .checkmark {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  display: block;
-  stroke-width: 2;
-  stroke: #4bb543;
-  stroke-miterlimit: 10;
-  box-shadow: inset 0px 0px 0px #4bb543;
-  animation: scale .3s ease-in-out .2s both;
-}
-
-.checkmark-circle {
-  stroke-dasharray: 166;
-  stroke-dashoffset: 166;
-  stroke-width: 2;
-  stroke-miterlimit: 10;
-  stroke: #4bb543;
-  fill: none;
-  animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
-}
-
-.checkmark-check {
-  transform-origin: 50% 50%;
-  stroke-dasharray: 48;
-  stroke-dashoffset: 48;
-  animation: stroke 0.3s 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
-}
-
-@keyframes stroke {
-  100% {
-    stroke-dashoffset: 0;
-  }
-}
-
-@keyframes scale {
-  0%, 100% {
-    transform: none;
-  }
-  50% {
-    transform: scale(1.1);
-  }
-} */
 
 
-/* 🔽 Tablet responsiveness (768px and below) */
-@media (max-width: 1024px) {
-  .repair-cards {
-    padding-left: 2rem;
-    justify-content: center;
-  }
-
-  .repair-card {
-    width: 100%;
-    /* background: #000; */
-  }
-
-  .claim-id-box {
-    font-size: 14px;
-  }
-
-  .success-title {
-    font-size: 20px;
-  }
-}
-
-/* 🔽 Mobile responsiveness (600px and below) */
 @media (max-width: 600px) {
+  .repair-cards-wrapper {
+    overflow-x: auto;
+    width: 100%;
+    padding-left: 1rem;
+  }
+
   .repair-cards {
-    flex-direction: column;
-    align-items: center;
-    padding-left: 0;
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    width: max-content;
+    scroll-behavior: smooth;
+    justify-content: flex-start; /* ✅ critical */
   }
 
   .repair-card {
-    width: 90%;
-  }
-
-  .claim-id-box {
-    font-size: 13px;
-  }
-
-  .success-title {
-    font-size: 18px;
-  }
-
-  .success-subtitle {
-    font-size: 14px;
+    flex: 0 0 auto;
+    width: 250px;
+    min-width: 250px;
   }
 
   .copyBtn {
     width: 100% !important;
   }
 }
+
+

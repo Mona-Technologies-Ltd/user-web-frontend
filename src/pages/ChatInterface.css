@@ -35,8 +35,8 @@
 }
 
 .chat-tabs .active {
-  color: #007bff;
-  border-bottom: 2px solid #007bff;
+  color: #0033cc;
+  border-bottom: 2px solid #0033cc;
 }
 
 .chat-list {
@@ -55,7 +55,9 @@
 .chat-avatar {
   width: 32px;
   height: 32px;
-  background: #0066ff;
+  /* background: #0066ff; */
+    background: linear-gradient(135deg, #00aaff, #0033cc);
+
   color: white;
   border-radius: 50%;
   display: flex;
@@ -116,7 +118,9 @@
 .message .avatar {
   width: 30px;
   height: 30px;
-  background: #0066ff;
+  /* background: #0066ff; */
+    background: linear-gradient(135deg, #00aaff, #0033cc);
+
   color: white;
   border-radius: 50%;
   font-size: 14px;
@@ -137,7 +141,7 @@
 }
 
 .message.outgoing .bubble {
-  background: #1d4ed8;
+  background: #0033cc;
   color: white;
   border-radius: 10px;
 }

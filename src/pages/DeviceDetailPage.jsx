@@ -501,9 +501,10 @@ const StatusBadge = styled.span`
 `;
 
 const ProtectionPlanSection = styled.div`
+width: 100%;
   border: 1px solid rgba(79, 70, 229, 0.45);
   overflow: hidden;
-  max-width: 800px;
+  /* max-width: 1000px; */
   margin: 0 auto;
 `;
 
@@ -597,9 +598,10 @@ const CoverageItems = styled.div`
   gap: 8px;
   flex-wrap: wrap;
   justify-content: center;
+  align-items: center;
 
   @media (max-width: 768px) {
-    justify-content: flex-start;
+    /* justify-content: flex-start; */
   }
 `;
 const CoverageItem = styled.div`

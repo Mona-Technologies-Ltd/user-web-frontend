@@ -22,6 +22,6 @@ const ToggleMenu = () => {
       </nav>
     </div>
   );
-};
+}
 
 export default ToggleMenu;

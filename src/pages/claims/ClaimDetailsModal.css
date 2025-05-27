@@ -241,6 +241,7 @@
 
 .description-block {
   margin-bottom: 15px;
+  /* margin-top: 10rem; */
  
 }
 
@@ -254,17 +255,20 @@
   font-size: 14px;
   
   padding: 10px;
-  border-radius: 5px;
+  /* border-radius: 5px; */
  
 }
 #d_t_m{
      background: #DBEBFF59;
       color: #004AAD;
 }
+.new_block_reject{
+  margin-top: 10rem;
+}
 /* Responsive Design */
 @media (max-width: 768px) {
   .modal-container {
-    padding: 16px;
+    padding: 1px;
   }
 
   .modal-title {
@@ -279,4 +283,26 @@
   .general-description p {
     font-size: 0.9rem;
   }
+
+
+.description-block {
+  /* margin-bottom: 15px; */
+/* margin-top: 8rem; */
+ 
+}
+
+
+.description-label {
+  font-size: 7px;
+  font-weight: 700;
+  margin-bottom: 3px;
+}
+
+.descriptionText {
+  font-size: 7px;
+  
+  padding: 4px;
+  /* border-radius: 5px; */
+ 
+}
 }
