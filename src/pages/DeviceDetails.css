@@ -175,7 +175,7 @@
   gap: 0;
 }
 /* Tablet-specific */
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1304px) {
   .device-wrapper {
     flex-direction: row;
     gap: 1.5rem;
