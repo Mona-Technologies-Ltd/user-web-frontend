@@ -197,7 +197,7 @@
 
   .plan-dates {
     flex-direction: row;
-    gap: 1rem;
+    /* gap: .5rem; */
   }
 
   .pagination-dots {
@@ -208,6 +208,15 @@
   .claim-button {
     margin-top: 1rem;
   }
+
+
+.plan-item {
+  /* width: 35%; */
+  /* flex: 1 2 45%; */
+  text-align: center;
+  background-color: #DEE7FF59;
+  padding: 0.5rem;
+}
 }
 
 /* Mobile */
@@ -227,8 +236,8 @@
   }
 
   .plan-dates {
-    flex-direction: column;
-    gap: 1rem;
+    /* flex-direction: column; */
+    /* gap: 1rem; */
   }
 
   .phone-image {
