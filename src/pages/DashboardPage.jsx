@@ -87,7 +87,7 @@ const DashboardPage = () => {
   className="dashboard-container"
   style={{
     display: "flex",
-    // flexWrap: "wrap",
+    flexWrap: "wrap",
     // gap: "1rem",
     width: "100%",
   }}
