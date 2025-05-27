@@ -10,7 +10,7 @@
   position: relative;
   font-family: 'Arial', sans-serif;
   top: 5rem;
-  height: 40rem;
+  height: auto;
 }
 
 .modal-header {
@@ -269,7 +269,6 @@
 @media (max-width: 768px) {
   .modal-container {
     padding: 1px;
-    height: auto;
   }
 
   .modal-title {
