@@ -48,15 +48,15 @@
 }
 
 
-@media (max-width: 768px) {
+/* @media (max-width: 1408px) {
   .custom-claim-details-modal_1{
     height: 120vh;
 }
-}
+} */
 
 
-@media (max-width: 400px) {
+@media (max-width: 700px) {
   .custom-claim-details-modal_1{
-    height: 130vh;
+    height: 160vh;
 }
 }
