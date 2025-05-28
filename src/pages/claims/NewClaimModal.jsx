@@ -77,15 +77,9 @@ const NewClaimModal = ({ visible, onClose }) => {
         </div>
 
         <div className="modal-body">
-          {/* <label>My Device</label>
-          <Select
-            placeholder="Select device"
-            className="full-width"
-            options={[{ value: "iPhone 13", label: "iPhone 13" }]}
-            style={{ background: "#E8F2FF59" }}
-          /> */}
+        
           <label>My Device</label>
-<Select
+ {/*<Select
   placeholder="Select device"
   className="full-width custom-device-select"
   options={devices.map((device) => ({
@@ -111,7 +105,43 @@ const NewClaimModal = ({ visible, onClose }) => {
       </div>
     ),
   }))}
+/> */}
+<Select
+  placeholder="Select device"
+  className="full-width custom-device-select"
+  options={devices.map((device) => ({
+    value: device.id,
+    label: (
+      <div className="device-option" key={device.id}>
+        <div className="device-infos">
+          <div className="device-name">
+            {device.brand === "Apple" && (
+              <span role="img" aria-label="apple">
+                <img src="/apples.svg" className="apple-icon" />
+              </span>
+            )}{" "}
+            {device.brand} – {device.model}
+          </div>
+          <div style={{ display:'flex' }}>
+            <div className="device-imei">IMEI: {device.imei}</div>
+          <div
+          className={`device-status ${
+            device.status.toLowerCase() === "active" ? "active" : "inactive"
+          }`}
+          id="device_id"
+        >
+          {device.status}
+        </div>
+          </div>
+        </div>
+        
+      </div>
+    ),
+  }))}
+  dropdownClassName="device-dropdown"
 />
+
+
 
 
           <label>Issue Type</label>
