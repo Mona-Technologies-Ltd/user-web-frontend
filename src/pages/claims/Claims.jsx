@@ -39,6 +39,8 @@ import "./ SearchFilterBar.css";
 import NewClaimModal from "./NewClaimModal";
 import useModalStore from "./store/useModalStore";
 import ClaimDetailsModal from "./ClaimDetailsModal";
+import { DatePicker } from "antd";
+
 const StyledCard = styled(Card)`
   margin-bottom: 16px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
@@ -445,7 +447,7 @@ const ClaimDetailsModals = styled(Modal)`
       deviceId: "IP12567",
       issue: "Damaged screen",
       amount: "₦25,000.00",
-      date: "Dec 6, 2024",
+      date: "jan 2, 2025",
       status: "completed",
     },
     {
@@ -463,7 +465,7 @@ const ClaimDetailsModals = styled(Modal)`
       deviceId: "IP12567",
       issue: "Damaged screen",
       amount: "₦25,000.00",
-      date: "Dec 6, 2024",
+      date: "jan 6, 2025",
       status: "completed",
     },
     {
@@ -513,18 +515,32 @@ const Claims = () => {
   const [searchTerm, setSearchTerm] = useState("");
 const [statusFilter, setStatusFilter] = useState("");
   const { showModal, openModal, closeModal } = useModalStore(); // Access Zustand state and actions
+const [dateRange, setDateRange] = useState([]);
 
   const [selectedIssues, setSelectedIssues] = useState([
     "damaged_screen",
     "broken_back_glass",
   ]);
   const [generatedClaimId, setGeneratedClaimId] = useState("CL-134763");
+// const filteredClaims = mockClaims.filter((claim) => {
+//   const matchesSearch = claim.device.toLowerCase().includes(searchTerm.toLowerCase()) || 
+//                         claim.id.toLowerCase().includes(searchTerm.toLowerCase());
+//   const matchesStatus = statusFilter ? claim.status === statusFilter : true;
+//   return matchesSearch && matchesStatus;
+// });
 const filteredClaims = mockClaims.filter((claim) => {
   const matchesSearch = claim.device.toLowerCase().includes(searchTerm.toLowerCase()) || 
                         claim.id.toLowerCase().includes(searchTerm.toLowerCase());
   const matchesStatus = statusFilter ? claim.status === statusFilter : true;
-  return matchesSearch && matchesStatus;
+  
+  const matchesDate = dateRange.length === 2
+    ? new Date(claim.date) >= new Date(dateRange[0]) &&
+      new Date(claim.date) <= new Date(dateRange[1])
+    : true;
+
+  return matchesSearch && matchesStatus && matchesDate;
 });
+
   // Map of issue values to labels
   const issueOptions = [
     { value: "Broken Screen Complete", label: "Broken Screen Complete" },
@@ -725,14 +741,21 @@ const getStatusStyles = (status) => {
             </select>
           </div>
         <Space size="middle" id="filter_id">
-          <Button
+          {/* <Button
             icon={<FilterOutlined />}
             className="btn_search_id"
             // style={{ height: 48, paddingLeft: 16, paddingRight: 16 }}
             size="large"
           >
             Filter
-          </Button>
+          </Button> */}
+                    <DatePicker.RangePicker
+            onChange={(dates) => setDateRange(dates)}
+            style={{ height: 48 }}
+            size="large"
+            format="YYYY-MM-DD"
+          />
+
                   
                  
           <Button
@@ -751,7 +774,6 @@ const getStatusStyles = (status) => {
 
       <Row gutter={[16, 16]}>
         {/* <StatusCards /> */}
-        {/* <StatusCards showDetailsModal={(claim) => console.log("Clicked claim:", claim)} /> */}
 
         {filteredClaims.map((claim, index) => {
                   const styles = getStatusStyles(claim.status);
@@ -784,27 +806,11 @@ const getStatusStyles = (status) => {
                         </div>
                        <div className="badge_statue_cover">
                         
-                        {/* <div className={`badge-label ${claim.status}_normal`} style={{ background: claim.status}}>
-                          {claim.status}
-                  
-                          </div> */}
+                       
                        </div>
                       </div>
 
-                         {/* <div className="claim-status">
-                            <div className={`${claim.status}_2`}>
-                              <div className={`card-badge ${claim.status}`}>
-                               <FaShieldAlt size={30} style={{ color: styles.color }} />
-                             </div>
-                              </div>
-                             <span
-                               className={`status-text ${claim.status}_normal`}
-                               style={{ color: styles.color }}
-                             >
-                               {claim.status}
-                             </span>
-                           
-                           </div> */}
+                         
 
               <StatusContainer>
                  <div className={`${claim.status}_2`}>
@@ -833,210 +839,7 @@ const getStatusStyles = (status) => {
         }
       </Row>
  <NewClaimModal visible={showModal} onClose={closeModal} />
-      {/* <StyledModal
-        title={
-          <div>
-            <div style={{ fontSize: 28, fontWeight: 600, marginBottom: 4 }}>
-              New claim
-            </div>
-            <div style={{ color: "#8c8c8c", fontSize: 14 }}>
-              File claim to fix your device
-            </div>
-          </div>
-        }
-        open={isModalOpen}
-        onCancel={handleCancel}
-        footer={null}
-        width={600}
-        closeIcon={<CloseOutlined />}
-      >
-        <Form form={form} layout="vertical">
-          <div className="form-section">
-            <div className="form-label">My Device</div>
-            <Form.Item
-              name="device"
-              rules={[{ required: true, message: "Please select a device" }]}
-            >
-              <Select
-                placeholder="Select device model"
-                size="large"
-                style={{ width: "100%" }}
-              >
-                <Option value="iphone13">iPhone 13</Option>
-                <Option value="iphone13pro">iPhone 13 Pro</Option>
-                <Option value="iphone13promax">iPhone 13 Pro MAX</Option>
-                <Option value="samsungs21">Samsung Galaxy S21</Option>
-              </Select>
-            </Form.Item>
-          </div>
-
-          <div className="form-section">
-            <div className="form-label">Issue Type</div>
-            <Form.Item
-              name="issueType"
-              initialValue={selectedIssues}
-              rules={[
-                { required: true, message: "Please select at least one issue" },
-              ]}
-            >
-              <StyledSelect
-                mode="multiple"
-                placeholder="Select issue types"
-                style={{ width: "100%" }}
-                size="large"
-                onChange={handleIssueChange}
-                options={issueOptions}
-                
-                tagRender={(props) => {
-                  const { label, closable, onClose } = props;
-                  return (
-                    <Tag
-                      color="#e6f4ff"
-                      style={{
-                        color: "#0066cc",
-                        borderColor: "#91caff",
-                        borderRadius: "16px",
-                        padding: "2px 10px",
-                        marginRight: "8px",
-                        marginBottom: "4px",
-                        display: "inline-flex",
-                        alignItems: "center",
-                        maxWidth: "100%",
-                        overflow: "hidden",
-                        textOverflow: "ellipsis",
-                        whiteSpace: "nowrap",
-                      }}
-                      closable={closable}
-                      onClose={onClose}
-                      closeIcon={
-                        <span style={{ color: "#0066cc", marginLeft: "4px" }}>
-                          ×
-                        </span>
-                      }
-                    >
-                      <span
-                        style={{ overflow: "hidden", textOverflow: "ellipsis" }}
-                      >
-                        {label}
-                      </span>
-                    </Tag>
-                  );
-                }}
-                maxTagCount={10}
-                listHeight={250}
-                optionFilterProp="label"
-                dropdownStyle={{ borderRadius: "4px" }}
-              />
-            </Form.Item>
-          </div>
-
-          <div className="form-section">
-            <div className="form-label">Provide Details</div>
-
-            <div style={{ marginBottom: 8 }}>When</div>
-            <Form.Item
-              name="when"
-              rules={[
-                {
-                  required: true,
-                  message: "Please provide when the damage occurred",
-                },
-              ]}
-            >
-              <Input size="large" />
-            </Form.Item>
-
-            <div style={{ marginBottom: 8 }}>Where</div>
-            <Form.Item
-              name="where"
-              rules={[
-                {
-                  required: true,
-                  message: "Please provide where the damage occurred",
-                },
-              ]}
-            >
-              <div style={{ position: "relative" }}>
-                <Input size="large" />
-              </div>
-            </Form.Item>
-
-            <div style={{ marginBottom: 8 }}>How</div>
-            <Form.Item
-              name="how"
-              rules={[
-                {
-                  required: true,
-                  message: "Please provide how the damage occurred",
-                },
-              ]}
-            >
-              <TextArea rows={4} />
-            </Form.Item>
-          </div>
-
-          <div className="form-section">
-            <div className="form-label">Claim Type</div>
-            <Form.Item
-              name="claimType"
-              initialValue="accidental"
-              rules={[{ required: true }]}
-            >
-              <Radio.Group>
-                <Radio value="accidental">Accidental Damage</Radio>
-                <Radio value="non-accidental">Non-Accidental Damage</Radio>
-              </Radio.Group>
-            </Form.Item>
-          </div>
-
-          <div className="form-section">
-            <div className="form-label">State</div>
-            <Form.Item
-              name="state"
-              rules={[{ required: true, message: "Please select your state" }]}
-            >
-              <Select
-                placeholder="Select your state"
-                size="large"
-                style={{ width: "100%" }}
-              >
-                <Option value="lagos">Lagos</Option>
-                <Option value="abuja">Abuja</Option>
-                <Option value="kano">Kano</Option>
-                <Option value="rivers">Rivers</Option>
-              </Select>
-            </Form.Item>
-          </div>
-
-          <div className="form-section">
-            <div className="form-label">City</div>
-            <Form.Item
-              name="city"
-              rules={[{ required: true, message: "Please select your city" }]}
-            >
-              <Select
-                placeholder="Select your city"
-                size="large"
-                style={{ width: "100%" }}
-              >
-                <Option value="ikeja">Ikeja</Option>
-                <Option value="lekki">Lekki</Option>
-                <Option value="victoria_island">Victoria Island</Option>
-                <Option value="yaba">Yaba</Option>
-              </Select>
-            </Form.Item>
-          </div>
-
-          <Button
-            type="primary"
-            className="submit-button"
-            onClick={handleSubmit}
-          >
-            Submit
-          </Button>
-        </Form>
-      </StyledModal> */}
-
+ 
       <StyledSuccessModal
         open={isSuccessModalOpen}
         onCancel={handleSuccessModalClose}
@@ -1101,42 +904,6 @@ const getStatusStyles = (status) => {
           ))}
         </div>
       </StyledSuccessModal>
-{/* {isDetailsModalOpen && selectedClaim && (
-  <div className="custom-claim-details-overlay">
-    <button className="close-button" onClick={handleDetailsModalClose}>
-      <CloseOutlined />
-    </button>
-    <ClaimDetailsModal
-      deviceId={selectedClaim.deviceId}
-      claimId={selectedClaim.id}
-      model={selectedClaim.model}
-      date={selectedClaim.date}
-      issue={selectedClaim.issue}
-      status={selectedClaim.status}
-    />
-  </div>
-
-)} */}
-{/* <ClaimDetailsModals
-  open={isDetailsModalOpen}
-  onCancel={handleDetailsModalClose}
-  // footer={null}
-  width={800} // Uncomment this
-  closeIcon={<CloseOutlined />}
-  // style={{ height: '200vh', overflowY: 'auto' }} // limit height and allow scroll
-> */}
-  {/* {selectedClaim && (
-    <ClaimDetailsModal
-      deviceId={selectedClaim.deviceId}
-      claimId={selectedClaim.id}
-      model={selectedClaim.model}
-      date={selectedClaim.date}
-      issue={selectedClaim.issue}
-      status={selectedClaim.status}
-    />
-  )} */}
-{/* </ClaimDetailsModals> */}
-{/* <NewClaimModal visible={showModal} onClose={closeModal} /> */}
 
 {/* 👇 INSERT THIS BLOCK HERE */}
 {isDetailsModalOpen && selectedClaim && (
