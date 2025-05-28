@@ -256,8 +256,12 @@
 
 @media (max-width: 768px) {
   .ant-layout-sider.dashboard-sidebar {
-    display: none;
+    // display: none;
   }
+  
+.ant-layout-sider {
+  transition: all 0.3s ease-in-out !important;
+}
 
   #menu_mobile_nav{
     display: block;
@@ -274,18 +278,36 @@
     // position: absolute;
     // top: 0;
   }
-}
 
+  .dashboard-sidebar {
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1100;
+  background-color: #fff;
+  transition: transform 0.3s ease-in-out;
+  transform: translateX(-100%);
 
-.dashboard-sidebar {
-  position: relative;
-
-  .sidebar-toggle {
-    transition: all 0.3s ease;
-
-    &:hover {
-      background: #f5f7fa;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-    }
+  &.visible {
+    transform: translateX(0); // slide in
   }
 }
+}
+
+
+// .dashboard-sidebar {
+//   position: relative;
+
+//   .sidebar-toggle {
+//     transition: all 0.3s ease;
+
+//     &:hover {
+//       background: #f5f7fa;
+//       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+//     }
+//   }
+// }
+// Ensure sidebar fills the height on mobile
+
+

@@ -77,7 +77,9 @@ console.log(mobileSidebarVisible)
       collapsible
       collapsed={collapsed}
       width={250}
-      className={!mobileSidebarVisible ? "dashboard-sidebar" : ""}
+      className={`dashboard-sidebar ${mobileSidebarVisible ? "visible" : ""}`}
+
+      // className={!mobileSidebarVisible ? "dashboard-sidebar" : ""}
       theme="light"
     >
       <div
