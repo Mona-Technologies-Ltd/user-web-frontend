@@ -749,13 +749,19 @@ const getStatusStyles = (status) => {
             >
               Filter
             </Button> */}
-                      <DatePicker.RangePicker
+                      {/* <DatePicker.RangePicker
               onChange={(dates) => setDateRange(dates)}
               // style={{ height: 48 }}
               // size="large"
               format="YYYY-MM-DD"
               className="date_fil"
-            />
+            /> */}
+            <DatePicker.RangePicker
+  onChange={(dates) => setDateRange(dates || [])}
+  format="YYYY-MM-DD"
+  className="date_fil"
+/>
+
 
                     
                   
