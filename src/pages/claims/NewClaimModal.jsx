@@ -20,6 +20,29 @@ const issueOptions = [
   "Audio Issues (Microphone/Speaker)",
   "Others",
 ];
+const devices = [
+  {
+    id: "iphone-11",
+    brand: "Apple",
+    model: "iPhone 11 Pro Max",
+    imei: "123456789012345",
+    status: "Active",
+  },
+  {
+    id: "iphone-13",
+    brand: "Apple",
+    model: "iPhone 13",
+    imei: "987654321098765",
+    status: "Active",
+  },
+  {
+    id: "samsung-s22",
+    brand: "Samsung",
+    model: "Galaxy S22",
+    imei: "555666777888999",
+    status: "Inactive",
+  },
+];
 
 const NewClaimModal = ({ visible, onClose }) => {
   const [selectedIssues, setSelectedIssues] = useState([]);
@@ -54,13 +77,42 @@ const NewClaimModal = ({ visible, onClose }) => {
         </div>
 
         <div className="modal-body">
-          <label>My Device</label>
+          {/* <label>My Device</label>
           <Select
             placeholder="Select device"
             className="full-width"
             options={[{ value: "iPhone 13", label: "iPhone 13" }]}
             style={{ background: "#E8F2FF59" }}
-          />
+          /> */}
+          <label>My Device</label>
+<Select
+  placeholder="Select device"
+  className="full-width custom-device-select"
+  options={devices.map((device) => ({
+    value: device.id,
+    label: (
+      <div className="device-option" key={device.id}>
+        <div className="device-info">
+          <div className="device-name">
+            {device.brand === "Apple" && <span role="img" aria-label="apple">
+                <img src="/apples.svg" />
+              </span>}{" "}
+            {device.brand} – {device.model}
+          </div>
+          <div className="device-imei">IMEI: {device.imei}</div>
+        </div>
+        <div
+          className={`device-status ${
+            device.status.toLowerCase() === "active" ? "active" : "inactive"
+          }`}
+        >
+          {device.status}
+        </div>
+      </div>
+    ),
+  }))}
+/>
+
 
           <label>Issue Type</label>
          <Select
