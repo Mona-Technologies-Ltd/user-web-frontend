@@ -62,7 +62,7 @@ const Header = ({ collapsed, colorBgContainer, setMobileSidebarVisible,mobileSid
      alignItems: "center" ,
     // display: "flex",
     // alignItems: "center",
-    width: "40%",
+    // width: "40%",
     // flexShrink: 0,
     // background: "red",
     // position:'absolute'
