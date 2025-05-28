@@ -13,7 +13,7 @@
 }
 
 .notifications-header {
-  background-color: #0052cc;
+  background-color: #004AAD;
   color: white;
   padding:0 6px;
   position: relative;
@@ -61,7 +61,7 @@
   border-bottom: none;
   background-color: #fff;
   font-weight: 600;
-  color: #0052cc;
+  color: #004AAD;
 }
 
 .notifications-body {
@@ -84,7 +84,7 @@
 }
 
 .icon-circle {
-  background-color: #e5efff;
+  background-color: #E4EFFF;
   width: 36px;
   height: 36px;
   border-radius: 50%;
@@ -143,12 +143,12 @@ flex-direction: column;
   }
 
   .notifications-header {
-    padding: 12px;
+    padding: 0 12px ;
   }
 
   .tab.active {
   font-weight: 300;
-  color: #0052cc;
+  color: #004AAD;
 }
   .tab {
     flex: 1;
@@ -158,7 +158,7 @@ flex-direction: column;
 
   .tab.active {
     font-weight: 600;
-    color: #0052cc;
+    color: #004AAD;
     background-color: #fff;
     border: 1px solid #ccc;
     border-bottom: none;

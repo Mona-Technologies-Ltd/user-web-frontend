@@ -1,3 +1,4 @@
+import { MdOutlineNotificationsActive } from "react-icons/md"; 
 import React from 'react';
 import './NotificationsPanel.css';
 
@@ -38,7 +39,8 @@ export default function NotificationsPanel() {
           <div key={note.id} className="notification-item">
             <div className="icon-wrapper">
               <div className="icon-circle">
-                <span role="img" aria-label="bell">🔔</span>
+                {/* <span role="img" aria-label="bell">🔔</span> */}
+                <MdOutlineNotificationsActive size={20} />
               </div>
             </div>
             <div className="notification-content">
