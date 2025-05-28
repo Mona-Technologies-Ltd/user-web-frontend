@@ -249,5 +249,12 @@
   .device-status {
     margin-top: 4px;
   }
+  .full-width{
+    padding: 1rem 0;
+  }
+
+  #textArea{
+    padding: 5rem 0;
+  }
 }
 

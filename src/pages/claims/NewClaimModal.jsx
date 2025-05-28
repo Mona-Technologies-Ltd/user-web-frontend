@@ -168,7 +168,7 @@ const NewClaimModal = ({ visible, onClose }) => {
           <Input placeholder="Enter location" className="full-width" />
 
           <label>How</label>
-          <TextArea rows={4} placeholder="Describe how the issue happened" />
+          <TextArea rows={10} placeholder="Describe how the issue happened" id="textArea" />
 
           <label>Claim Type</label>
           <Radio.Group
