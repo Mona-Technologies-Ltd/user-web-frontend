@@ -4,6 +4,7 @@ import { Icon } from "@iconify/react";
 import DeviceDetails from "./DeviceDetails";
 import UserProfile from "./UserProfile";
 import RecentClaims from "./claims/RecentClaims";
+import NotificationsPanel from "../layouts/NotificationsPanel";
 
 const DashboardPage = () => {
   const deviceInfo = {
@@ -95,7 +96,7 @@ const DashboardPage = () => {
 
     <UserProfile />
 
-
+{/* <NotificationsPanel /> */}
 
     <DeviceDetails />
 

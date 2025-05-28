@@ -1,35 +1,32 @@
-import { AiOutlineCloseSquare } from "react-icons/ai"; 
-import { AiOutlineMenu } from "react-icons/ai"; 
 import React from "react";
-import { Layout, Button, Space, Avatar, Dropdown } from "antd";
-import Icon, {
-  LogoutOutlined,
-  UserOutlined,
-  SettingOutlined,
-} from "@ant-design/icons";
+import { Layout } from "antd";
+import {
+  IoIosNotificationsOutline
+} from "react-icons/io";
+import { BiRefresh } from "react-icons/bi";
+import { AiOutlineCloseSquare, AiOutlineMenu } from "react-icons/ai";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { logout } from "../redux/slices/authSlice";
 import BreadcrumbComponent from "../components/Breadcrumb";
-// import ToggleMenu from "./ToggleMenu";
+import NotificationsPanel from "./NotificationsPanel";
 
 const { Header: AntHeader } = Layout;
 
-const Header = ({ collapsed, colorBgContainer, setMobileSidebarVisible,mobileSidebarVisible }) => {
+const Header = ({ collapsed, colorBgContainer, setMobileSidebarVisible, mobileSidebarVisible }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const location = useLocation();
-  const [isOpen, setIsOpen] = React.useState(false);
-  const toggleMenu = () => setIsOpen(!isOpen);
+  const [showNotifications, setShowNotifications] = React.useState(false);
 
   const handleLogout = () => {
     dispatch(logout());
     navigate("/login");
   };
 
-  // Check if we're on the dashboard page    AntHeaderAntHeader
-  const isDashboard =
-    location.pathname === "/" || location.pathname === "/dashboard";
+  const toggleNotifications = () => {
+    setShowNotifications((prev) => !prev);
+  };
 
   return (
     <AntHeader
@@ -46,42 +43,53 @@ const Header = ({ collapsed, colorBgContainer, setMobileSidebarVisible,mobileSid
         zIndex: 1000,
         width: "100%",
         transition: "all 0.2s",
-        marginLeft: collapsed ? 0 : "0",
       }}
     >
-      {/* <div
-        className="header-left"
-        style={{ display: "flex", alignItems: "center", width:'20rem', background:'red' }}
-      >
-        <BreadcrumbComponent />
-      </div> */}
       <div
-  className="header-left"
-  style={{
-    display: "flex",
-     alignItems: "center" ,
-    // display: "flex",
-    // alignItems: "center",
-    // width: "40%",
-    // flexShrink: 0,
-    // background: "red",
-    // position:'absolute'
-  }}
->
+        className="header-left"
+        style={{
+          display: "flex",
+          alignItems: "center",
+        }}
+      >
+        <div id="menu_mobile_nav">
+          <button
+            style={{ padding: 12, border: "none", height: 10, background: "none" }}
+            onClick={() => setMobileSidebarVisible((prev) => !prev)}
+          >
+            {mobileSidebarVisible ? <AiOutlineCloseSquare size={20} /> : <AiOutlineMenu size={20} />}
+          </button>
+        </div>
+        <BreadcrumbComponent />
+      </div>
 
-<div id="menu_mobile_nav">
- <button style={{ padding:12,border:'none', height:10, background:'none'}} onClick={() => setMobileSidebarVisible((prev) => !prev)}>
-  {mobileSidebarVisible ? <AiOutlineCloseSquare size={20} /> : <AiOutlineMenu size={20} />}
-</button>
+      <div style={{ position: "relative" }}>
+        <button
+          onClick={() => window.location.reload()}
+          style={{ padding: 12, border: "none", height: 10, background: "none" }}
+        >
+          <BiRefresh />
+        </button>
 
-</div>
+        <button
+          onClick={toggleNotifications}
+          style={{ padding: 12, border: "none", height: 10, background: "none" }}
+        >
+          <IoIosNotificationsOutline color="black" />
+        </button>
 
-  <BreadcrumbComponent />
-</div>
+        {showNotifications && (
+          <div
+          id="notification_modals"
+            style={{
 
-
-  
-
+             
+            }}
+          >
+            <NotificationsPanel />
+          </div>
+        )}
+      </div>
     </AntHeader>
   );
 };

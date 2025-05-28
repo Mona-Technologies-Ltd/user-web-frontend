@@ -59,17 +59,30 @@ console.log(mobileSidebarVisible)
   ];
 
   // Handle click on menu item
-  const handleMenuClick = (e) => {
-    if (e.key === "logout") {
-      // Dispatch logout action
-      dispatch(logout());
-      // Navigate to login page
-      navigate("/login");
-    } else {
-      // Navigate to the clicked menu item's path
-      navigate(e.key);
-    }
-  };
+  // const handleMenuClick = (e) => {
+  //   if (e.key === "logout") {
+  //     // Dispatch logout action
+  //     dispatch(logout());
+  //     // Navigate to login page
+  //     navigate("/login");
+  //   } else {
+  //     // Navigate to the clicked menu item's path
+  //     navigate(e.key);
+  //   }
+  // };
+const handleMenuClick = (e) => {
+  if (e.key === "logout") {
+    dispatch(logout());
+    navigate("/login");
+  } else {
+    navigate(e.key);
+  }
+
+  // Auto-close sidebar if on mobile
+  if (window.innerWidth <= 768) {
+    setMobileSidebarVisible(false);
+  }
+};
 
   return (
     <Sider
