@@ -715,7 +715,7 @@ const getStatusStyles = (status) => {
       >
         {/* <Search placeholder="Search here" style={{ width: 500 }} size="large" /> */}
         <div className="search-filter-container">
-            <div className="search-box">
+            <div className="search-box" id="s_b_f">
               <FiSearch className="search-icon" />
               <input type="text" 
               placeholder="Search by device or claim ID" 
@@ -725,13 +725,13 @@ const getStatusStyles = (status) => {
             <select className="status-dropdown"    
               value={statusFilter}
               onChange={(e) => setStatusFilter(e.target.value)}
-              style={{
-                  padding: "15px",
-                  paddingRight:"10px",
-                  paddingLeft:"10px",
-                  borderRadius: "4px",
-                  border: "1px solid #ccc",
-                }}
+              // style={{
+              //     padding: "15px",
+              //     paddingRight:"10px",
+              //     paddingLeft:"10px",
+              //     borderRadius: "4px",
+              //     border: "1px solid #ccc",
+              //   }}
             >
               <option value="">Status</option>
               <option value="pending">Pending</option>
@@ -740,35 +740,36 @@ const getStatusStyles = (status) => {
               <option value="rejected">Rejected</option>
             </select>
           </div>
-        <Space size="middle" id="filter_id">
-          {/* <Button
-            icon={<FilterOutlined />}
-            className="btn_search_id"
-            // style={{ height: 48, paddingLeft: 16, paddingRight: 16 }}
-            size="large"
-          >
-            Filter
-          </Button> */}
-                    <DatePicker.RangePicker
-            onChange={(dates) => setDateRange(dates)}
-            style={{ height: 48 }}
-            size="large"
-            format="YYYY-MM-DD"
-          />
-
-                  
-                 
-          <Button
-            type="primary"
-            // style={{ height: 48, paddingLeft: 16, paddingRight: 16 }}
+          <Space size="middle" id="filter_id">
+            {/* <Button
+              icon={<FilterOutlined />}
               className="btn_search_id"
-            size="large"
-            // onClick={showModal}
-            onClick={openModal}
-          >
-            New claim
-          </Button>
-        </Space>
+              // style={{ height: 48, paddingLeft: 16, paddingRight: 16 }}
+              size="large"
+            >
+              Filter
+            </Button> */}
+                      <DatePicker.RangePicker
+              onChange={(dates) => setDateRange(dates)}
+              // style={{ height: 48 }}
+              // size="large"
+              format="YYYY-MM-DD"
+              className="date_fil"
+            />
+
+                    
+                  
+            <Button
+              type="primary"
+              // style={{ height: 48, paddingLeft: 16, paddingRight: 16 }}
+                className="btn_search_id"
+              size="large"
+              // onClick={showModal}
+              onClick={openModal}
+            >
+              New claim
+            </Button>
+          </Space>
         
       </div>
 
