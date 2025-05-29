@@ -92,8 +92,8 @@ const ChatComponent = ({ onClose }) => {
               marginRight: "30px",
               paddingBottom: "10px",
               borderBottom:
-                activeTab === "active" ? "2px solid #0057B8" : "none",
-              color: activeTab === "active" ? "#0057B8" : "#888",
+                activeTab === "active" ? "2px solid #004AAD" : "none",
+              color: activeTab === "active" ? "#004AAD" : "#888",
               fontWeight: activeTab === "active" ? "500" : "normal",
               cursor: "pointer",
             }}
@@ -105,8 +105,8 @@ const ChatComponent = ({ onClose }) => {
             style={{
               paddingBottom: "10px",
               borderBottom:
-                activeTab === "history" ? "2px solid #0057B8" : "none",
-              color: activeTab === "history" ? "#0057B8" : "#888",
+                activeTab === "history" ? "2px solid #004AAD" : "none",
+              color: activeTab === "history" ? "#004AAD" : "#888",
               fontWeight: activeTab === "history" ? "500" : "normal",
               cursor: "pointer",
             }}
@@ -296,7 +296,7 @@ const SupportPage = () => {
         {/* Chat Bubble */}
         <div
           style={{
-            backgroundColor: "#0057B8",
+            backgroundColor: "#004AAD",
             color: "white",
             padding: "12px 24px",
             borderRadius: "20px",
