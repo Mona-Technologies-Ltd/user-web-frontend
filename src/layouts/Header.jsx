@@ -1,3 +1,4 @@
+import { RxCounterClockwiseClock } from "react-icons/rx"; 
 import React from "react";
 import { Layout } from "antd";
 import {
@@ -68,7 +69,8 @@ const Header = ({ collapsed, colorBgContainer, setMobileSidebarVisible, mobileSi
           onClick={() => window.location.reload()}
           style={{ padding: 12, border: "none", height: 10, background: "none" }}
         >
-          <BiRefresh />
+          {/* <BiRefresh /> */}
+            <RxCounterClockwiseClock />
         </button>
 
         <button
